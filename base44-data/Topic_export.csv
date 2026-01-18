@@ -1,0 +1,45 @@
+subject,grade,name,description,order,icon,explanation,id,created_date,updated_date,created_by_id,created_by,is_sample
+"Čeština","1","Písmenka A až Ž","Poznáváme celou abecedu","1","","🔤 ČESKÁ ABECEDA
+
+Česká abeceda má 42 písmen:
+A Á B C Č D Ď E É Ě F G H Ch I Í J K L M N Ň O Ó P Q R Ř S Š T Ť U Ú Ů V W X Y Ý Z Ž
+
+✨ SAMOHLÁSKY (10):
+A, Á, E, É, Ě, I, Í, O, Ó, U, Ú, Ů, Y, Ý
+Samohlásky jsou písmena, která můžeme zazpívat.
+Např.: A jak v AUTO, E jak v PES
+
+🎯 SOUHLÁSKY (32):
+Všechna ostatní písmena
+Např.: B jak v BABIČKA, M jak v MÁMA
+
+📝 SLABIKY:
+Slabika je část slova, kterou vyslovíme najednou.
+MA-MA má 2 slabiky
+AU-TO má 2 slabiky
+PES má 1 slabiku
+
+💡 TIPY:
+• Každé písmeno má velkou a malou podobu (A/a, B/b)
+• Jména píšeme s velkým písmenem na začátku
+• Na začátku věty píšeme vždy velké písmeno","696cd34015988b18c878c0a9","2026-01-18T12:34:08.412000","2026-01-18T12:34:08.412000","696aa9031255ba6e2495e926","f.masek68@gmail.com","false"
+"Čeština","1","Vyjmenovaná slova","Pravidla psaní Y/I po obojetných souhláskách","2","","📖 VYJMENOVANÁ SLOVA
+
+Vyjmenovaná slova jsou slova, která si musíme zapamatovat, protože se v nich píše Y místo I.
+
+🔤 SOUHLÁSKY S VYJMENOVANÝMI SLOVY:
+B, L, M, P, S, V, Z
+
+✨ JAK TO FUNGUJE:
+Po těchto souhláskách píšeme Y ve vyjmenovaných slovech a slovech z nich odvozených.
+Např.: být → bydlo, být → byt
+
+💡 TIPY:
+• Vyjmenovaná slova se musí naučit nazpaměť
+• Slova odvozená mají stejné psaní jako základní slovo
+• Ve všech ostatních slovech píšeme I
+
+📝 PŘÍKLADY:
+Po B: být, bydlit, obyvatel, příbytek, nábytek, dobytek
+Po L: lyko, lýtko, lyže, pelyněk, plyš
+Po M: mýt, mýdlo, hmyz, myš, mýlit se","696cd2c4545b113231ba9c22","2026-01-18T12:32:04.631000","2026-01-18T12:32:04.631000","696aa9031255ba6e2495e926","f.masek68@gmail.com","false"

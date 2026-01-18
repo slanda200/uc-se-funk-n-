@@ -1,0 +1,6921 @@
+[
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "analysis",
+    "title": "Rozbory - AUTO",
+    "instructions": "Klikni na každé písmeno a obarvi ho: 🔴 Červená = Samohlásky, 🔵 Modrá = Souhlásky",
+    "questions": [
+      {
+        "question": "Označ písmena ve slově AUTO",
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "A U T O",
+        "words": [
+          {
+            "word": "A",
+            "color": "red"
+          },
+          {
+            "word": "U",
+            "color": "red"
+          },
+          {
+            "word": "T",
+            "color": "blue"
+          },
+          {
+            "word": "O",
+            "color": "red"
+          }
+        ],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": null,
+    "is_test": false,
+    "id": "696cde25249c79107a073b52",
+    "created_date": "2026-01-18T13:20:37.215000",
+    "updated_date": "2026-01-18T13:20:37.215000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "analysis",
+    "title": "Rozbory - BABIČKA",
+    "instructions": "Klikni na každé písmeno a obarvi ho: 🔴 Červená = Samohlásky, 🔵 Modrá = Souhlásky",
+    "questions": [
+      {
+        "question": "Označ písmena ve slově BABIČKA",
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "B A B I Č K A",
+        "words": [
+          {
+            "word": "B",
+            "color": "blue"
+          },
+          {
+            "word": "A",
+            "color": "red"
+          },
+          {
+            "word": "B",
+            "color": "blue"
+          },
+          {
+            "word": "I",
+            "color": "red"
+          },
+          {
+            "word": "Č",
+            "color": "blue"
+          },
+          {
+            "word": "K",
+            "color": "blue"
+          },
+          {
+            "word": "A",
+            "color": "red"
+          }
+        ],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": null,
+    "is_test": false,
+    "id": "696cde25249c79107a073b53",
+    "created_date": "2026-01-18T13:20:37.215000",
+    "updated_date": "2026-01-18T13:20:37.215000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "cloze",
+    "title": "Doplňování - TATA",
+    "instructions": "Doplň chybějící písmena kliknutím na správnou variantu",
+    "questions": [
+      {
+        "question": null,
+        "answer": "A___A",
+        "options": [
+          "A",
+          "O",
+          "E",
+          "I"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": "T___T___",
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": null,
+    "is_test": false,
+    "id": "696cde25249c79107a073b54",
+    "created_date": "2026-01-18T13:20:37.215000",
+    "updated_date": "2026-01-18T13:20:37.215000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "cloze",
+    "title": "Doplňování - OKNO",
+    "instructions": "Doplň chybějící písmena kliknutím na správnou variantu",
+    "questions": [
+      {
+        "question": null,
+        "answer": "O___O",
+        "options": [
+          "O",
+          "A",
+          "E",
+          "U"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": "___KN___",
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": null,
+    "is_test": false,
+    "id": "696cde25249c79107a073b55",
+    "created_date": "2026-01-18T13:20:37.215000",
+    "updated_date": "2026-01-18T13:20:37.215000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "sort",
+    "title": "Rozřazovačka písmen - Lehká",
+    "instructions": "Zařaď písmena do správných skupin",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [
+          {
+            "name": "Samohlásky",
+            "items": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "name": "Souhlásky",
+            "items": [
+              "B",
+              "M"
+            ]
+          }
+        ],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaec",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "cloze",
+    "title": "Doplňování - Chybějící písmena",
+    "instructions": "Doplň chybějící písmena kliknutím na správnou variantu",
+    "questions": [
+      {
+        "text": "M___M___",
+        "answer": "A___A",
+        "options": [
+          "A",
+          "O",
+          "E",
+          "I"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "question": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaed",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T13:20:59.076000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "analysis",
+    "title": "Rozbory - Samohlásky a souhlásky",
+    "instructions": "Klikni na každé písmeno a obarvi ho: 🔴 Červená = Samohlásky, 🔵 Modrá = Souhlásky",
+    "questions": [
+      {
+        "question": "Označ písmena ve slově MAMA",
+        "text": "M A M A",
+        "words": [
+          {
+            "word": "M",
+            "color": "blue"
+          },
+          {
+            "word": "A",
+            "color": "red"
+          },
+          {
+            "word": "M",
+            "color": "blue"
+          },
+          {
+            "word": "A",
+            "color": "red"
+          }
+        ],
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "answer": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaee",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T13:20:57.904000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "listening",
+    "title": "Poslech a psaní - Lehké",
+    "instructions": "Poslechni si slovo a napiš ho",
+    "questions": [
+      {
+        "question": "Napiš, co slyšíš",
+        "answer": "PES",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": "placeholder-audio-pes.mp3",
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaef",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "image",
+    "title": "Obrázek a psaní - Lehké",
+    "instructions": "Podívej se na obrázek a napiš, co vidíš",
+    "questions": [
+      {
+        "question": "Co je na obrázku?",
+        "answer": "PES",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "placeholder-image-dog.jpg"
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf0",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "decision",
+    "title": "Rozhodovačka - Střední",
+    "instructions": "Vyber správnou odpověď",
+    "questions": [
+      {
+        "question": "Je písmeno O samohláska?",
+        "answer": "Ano",
+        "options": [
+          "Ano",
+          "Ne"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Je písmeno K souhláska?",
+        "answer": "Ano",
+        "options": [
+          "Ano",
+          "Ne"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf1",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Otázky - Střední",
+    "instructions": "Odpovídej na otázky",
+    "questions": [
+      {
+        "question": "Kolik slabik má slovo AUTO?",
+        "answer": "2",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Které písmeno je samohláska?",
+        "answer": "U",
+        "options": [
+          "T",
+          "U",
+          "K"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 20,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf2",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "memory",
+    "title": "Pexeso - Střední",
+    "instructions": "Najdi páry stejných písmen",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "E",
+            "right": "E"
+          },
+          {
+            "left": "F",
+            "right": "F"
+          },
+          {
+            "left": "G",
+            "right": "G"
+          },
+          {
+            "left": "H",
+            "right": "H"
+          },
+          {
+            "left": "I",
+            "right": "I"
+          }
+        ],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 25,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf3",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "fill",
+    "title": "Vpisování - Střední",
+    "instructions": "Napiš správné písmeno",
+    "questions": [
+      {
+        "question": "Jak začína slovo OKNO?",
+        "answer": "O",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jak začíná slovo STŮL?",
+        "answer": "S",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf4",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Otázky - Těžké",
+    "instructions": "Odpovídej na otázky",
+    "questions": [
+      {
+        "question": "Kolik písmen má česká abeceda?",
+        "answer": "42",
+        "options": [
+          "26",
+          "33",
+          "42",
+          "50"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Kolik slabik má slovo ABECEDA?",
+        "answer": "4",
+        "options": [
+          "3",
+          "4",
+          "5"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 25,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf5",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "memory",
+    "title": "Pexeso - Těžké",
+    "instructions": "Najdi páry stejných písmen",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "Š",
+            "right": "Š"
+          },
+          {
+            "left": "Č",
+            "right": "Č"
+          },
+          {
+            "left": "Ř",
+            "right": "Ř"
+          },
+          {
+            "left": "Ž",
+            "right": "Ž"
+          },
+          {
+            "left": "Ý",
+            "right": "Ý"
+          },
+          {
+            "left": "Á",
+            "right": "Á"
+          }
+        ],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 30,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf6",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "sort",
+    "title": "Rozřazovačka - Těžká",
+    "instructions": "Zařaď písmena do správných skupin",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [
+          {
+            "name": "Samohlásky",
+            "items": [
+              "Á",
+              "É",
+              "Í"
+            ]
+          },
+          {
+            "name": "Souhlásky",
+            "items": [
+              "Š",
+              "Č",
+              "Ř"
+            ]
+          }
+        ],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 25,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf7",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "analysis",
+    "title": "Rozbory slov - Těžké",
+    "instructions": "Označ písmena podle toho, zda jsou samohlásky nebo souhlásky",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "ŠKOLA",
+        "words": [
+          {
+            "word": "Š",
+            "color": "blue"
+          },
+          {
+            "word": "K",
+            "color": "blue"
+          },
+          {
+            "word": "O",
+            "color": "red"
+          },
+          {
+            "word": "L",
+            "color": "blue"
+          },
+          {
+            "word": "A",
+            "color": "red"
+          }
+        ],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "UČITEL",
+        "words": [
+          {
+            "word": "U",
+            "color": "red"
+          },
+          {
+            "word": "Č",
+            "color": "blue"
+          },
+          {
+            "word": "I",
+            "color": "red"
+          },
+          {
+            "word": "T",
+            "color": "blue"
+          },
+          {
+            "word": "E",
+            "color": "red"
+          },
+          {
+            "word": "L",
+            "color": "blue"
+          }
+        ],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 30,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf8",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "listening",
+    "title": "Poslech a psaní - Těžké",
+    "instructions": "Poslechni si slovo a napiš ho",
+    "questions": [
+      {
+        "question": "Napiš, co slyšíš",
+        "answer": "ŠKOLA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": "placeholder-audio-skola.mp3",
+        "image_url": null
+      },
+      {
+        "question": "Napiš, co slyšíš",
+        "answer": "UČITEL",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": "placeholder-audio-ucitel.mp3",
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 25,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeaf9",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "image",
+    "title": "Obrázek a psaní - Těžké",
+    "instructions": "Podívej se na obrázek a napiš, co vidíš",
+    "questions": [
+      {
+        "question": "Co je na obrázku?",
+        "answer": "KNIHA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "placeholder-image-book.jpg"
+      },
+      {
+        "question": "Co je na obrázku?",
+        "answer": "TUŽKA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "placeholder-image-pencil.jpg"
+      }
+    ],
+    "difficulty": 3,
+    "points": 25,
+    "is_test": false,
+    "id": "696cd4b960e4a14cf4aeeafa",
+    "created_date": "2026-01-18T12:40:25.501000",
+    "updated_date": "2026-01-18T12:40:25.501000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "decision",
+    "title": "Poznávání písmen",
+    "instructions": "Vyber správnou odpověď",
+    "questions": [
+      {
+        "question": "Jaké písmeno vidíš na obrázku A?",
+        "answer": "A",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jaké písmeno vidíš na obrázku M?",
+        "answer": "M",
+        "options": [
+          "M",
+          "N",
+          "W"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jaké písmeno vidíš na obrázku O?",
+        "answer": "O",
+        "options": [
+          "O",
+          "Q",
+          "D"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696cd39b51355b822b047ca9",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň písmena",
+    "instructions": "Napiš správné písmeno",
+    "questions": [
+      {
+        "question": "Jak začíná slovo MÁMA?",
+        "answer": "M",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jak začíná slovo AUTO?",
+        "answer": "A",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jak začíná slvo PES?",
+        "answer": "P",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696cd39b51355b822b047caa",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "memory",
+    "title": "Pexeso písmen",
+    "instructions": "Najdi páry stejných písmen",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "A",
+            "right": "A"
+          },
+          {
+            "left": "B",
+            "right": "B"
+          },
+          {
+            "left": "C",
+            "right": "C"
+          },
+          {
+            "left": "D",
+            "right": "D"
+          }
+        ],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 20,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cab",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Kvíz o písmenech",
+    "instructions": "Odpovízej na otázky",
+    "questions": [
+      {
+        "question": "Kolik má česká abeceda písmen?",
+        "answer": "42",
+        "options": [
+          "26",
+          "33",
+          "42",
+          "50"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Které písmeno je samohláska?",
+        "answer": "A",
+        "options": [
+          "B",
+          "A",
+          "K",
+          "M"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Kolik slabik má slovo MA-MA?",
+        "answer": "2",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cac",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "test",
+    "title": "Test - Lehké cvičení",
+    "instructions": "Ukáž, co vše znáš!",
+    "questions": [
+      {
+        "question": "Jaké písmeno vidíš?",
+        "answer": "A",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "decision",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jak začíná slovo PES?",
+        "answer": "P",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Které písmeno je samohláska?",
+        "answer": "E",
+        "options": [
+          "M",
+          "E",
+          "K"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 30,
+    "is_test": true,
+    "id": "696cd39b51355b822b047cad",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "sort",
+    "title": "Rozřazovačka písmen",
+    "instructions": "Zařaď písmena do správných skupin",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [
+          {
+            "name": "Samohlásky",
+            "items": [
+              "A",
+              "E",
+              "I"
+            ]
+          },
+          {
+            "name": "Souhlásky",
+            "items": [
+              "B",
+              "M",
+              "K"
+            ]
+          }
+        ],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 20,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cae",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "cloze",
+    "title": "Doplňování textu",
+    "instructions": "Doplň chybějící písmena",
+    "questions": [
+      {
+        "text": "M__M__",
+        "answer": "A___A",
+        "options": [
+          "A",
+          "O",
+          "E"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "question": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 25,
+    "is_test": false,
+    "id": "696cd39b51355b822b047caf",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:49:09.043000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "analysis",
+    "title": "Rozbory slov",
+    "instructions": "Oznaď písmena podle toho, zda jsou samohlásky nebo souhlásky",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "MAMA",
+        "words": [
+          {
+            "word": "M",
+            "color": "blue"
+          },
+          {
+            "word": "A",
+            "color": "red"
+          },
+          {
+            "word": "M",
+            "color": "blue"
+          },
+          {
+            "word": "A",
+            "color": "red"
+          }
+        ],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "PES",
+        "words": [
+          {
+            "word": "P",
+            "color": "blue"
+          },
+          {
+            "word": "E",
+            "color": "red"
+          },
+          {
+            "word": "S",
+            "color": "blue"
+          }
+        ],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 20,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cb0",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "test",
+    "title": "Test - Středně těžké cvičení",
+    "instructions": "Ukáž, co vše znáš!",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [
+          {
+            "name": "Samohlásky",
+            "items": [
+              "O",
+              "U"
+            ]
+          },
+          {
+            "name": "Souhlásky",
+            "items": [
+              "T",
+              "N"
+            ]
+          }
+        ],
+        "text": null,
+        "words": [],
+        "type": "sort",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": null,
+        "answer": "O___A___i",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "K__ČK__ loví MYŠ___.",
+        "words": [],
+        "type": "cloze",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "AUTO",
+        "words": [
+          {
+            "word": "A",
+            "color": "red"
+          },
+          {
+            "word": "U",
+            "color": "red"
+          },
+          {
+            "word": "T",
+            "color": "blue"
+          },
+          {
+            "word": "O",
+            "color": "red"
+          }
+        ],
+        "type": "analysis",
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 40,
+    "is_test": true,
+    "id": "696cd39b51355b822b047cb1",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "decision",
+    "title": "Velká a malá písmena",
+    "instructions": "Vyber správně napsané slovo",
+    "questions": [
+      {
+        "question": "Jak se píše jméno Anna?",
+        "answer": "Anna",
+        "options": [
+          "anna",
+          "Anna",
+          "ANNA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jak se píše jméno Praha?",
+        "answer": "Praha",
+        "options": [
+          "praha",
+          "Praha",
+          "PRAHA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jak se píše slovo pes?",
+        "answer": "pes",
+        "options": [
+          "Pes",
+          "pes",
+          "PES"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 15,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cb2",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "fill",
+    "title": "Psaní celých slov",
+    "instructions": "Napiš celé slovo",
+    "questions": [
+      {
+        "question": "Napiš slovo ŠKOLA",
+        "answer": "ŠKOLA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Napiš slovo UČITEL",
+        "answer": "UČITEL",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Napiš slovo ŽÁCI",
+        "answer": "ŽÁCI",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 25,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cb3",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "cloze",
+    "title": "Doplňování vět",
+    "instructions": "Doplň chybějící slova",
+    "questions": [
+      {
+        "text": "M__M__",
+        "answer": "A___A",
+        "options": [
+          "A",
+          "O",
+          "E"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "question": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 30,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cb4",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:49:09.043000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "test",
+    "title": "Finální test - Těžké cvičení",
+    "instructions": "Velký závěrečný test! Zdár zdar!",
+    "questions": [
+      {
+        "question": "Jak se píše jméno Petr?",
+        "answer": "Petr",
+        "options": [
+          "petr",
+          "Petr",
+          "PETR"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "decision",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Napiš slovo KNIHA",
+        "answer": "KNIHA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": null,
+        "answer": "učíme",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "Ve škole se ___ mnoho nového.",
+        "words": [],
+        "type": "cloze",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Kolik slabik má slovo ABECEDA?",
+        "answer": "4",
+        "options": [
+          "3",
+          "4",
+          "5"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 50,
+    "is_test": true,
+    "id": "696cd39b51355b822b047cb5",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "listening",
+    "title": "Poslech a psaní",
+    "instructions": "Poslechni si slovo a napiš ho",
+    "questions": [
+      {
+        "question": "Napiš, co slyšíš",
+        "answer": "MAMA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": "placeholder-audio-mama.mp3",
+        "image_url": null
+      },
+      {
+        "question": "Napiš, co slyšíš",
+        "answer": "AUTO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": "placeholder-audio-auto.mp3",
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 20,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cb6",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696cd34015988b18c878c0a9",
+    "category_id": null,
+    "type": "image",
+    "title": "Obrázek a psaní",
+    "instructions": "Podívej se na obrázek a napiš, co vidíš",
+    "questions": [
+      {
+        "question": "Co je na obrázku?",
+        "answer": "PES",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "placeholder-image-dog.jpg"
+      },
+      {
+        "question": "Co je na obrázku?",
+        "answer": "KOČKA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "placeholder-image-cat.jpg"
+      }
+    ],
+    "difficulty": 2,
+    "points": 20,
+    "is_test": false,
+    "id": "696cd39b51355b822b047cb7",
+    "created_date": "2026-01-18T12:35:39.660000",
+    "updated_date": "2026-01-18T12:35:39.660000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "listening",
+    "title": "Poslech slov",
+    "instructions": "Poslechni si slovo a napiš ho",
+    "questions": [
+      {
+        "question": "Poslechni a napiš",
+        "answer": "MAMA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Poslechni a napiš",
+        "answer": "AUTO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Poslechni a napiš",
+        "answer": "PES",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696cba2cc1d6c00b1e453db4",
+    "created_date": "2026-01-18T10:47:08.602000",
+    "updated_date": "2026-01-18T10:47:08.602000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "image",
+    "title": "Co vidíš na obrázku?",
+    "instructions": "Podívej se na obrázek a napiš, co vidíš",
+    "questions": [
+      {
+        "question": "Co vidíš na obrázku?",
+        "answer": "PES",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400"
+      },
+      {
+        "question": "Co vidíš na obrázku?",
+        "answer": "KOČKA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400"
+      },
+      {
+        "question": "Co vidíš na obrázku?",
+        "answer": "AUTO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400"
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696cba2cc1d6c00b1e453db5",
+    "created_date": "2026-01-18T10:47:08.602000",
+    "updated_date": "2026-01-18T10:47:08.602000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "listening",
+    "title": "Poslech slabik",
+    "instructions": "Poslechni si slovo a napiš ho správně",
+    "questions": [
+      {
+        "question": "Poslechni a napiš",
+        "answer": "KOLO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Poslechni a napiš",
+        "answer": "TATA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Poslechni a napiš",
+        "answer": "ŠKOLA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696cba2cc1d6c00b1e453db6",
+    "created_date": "2026-01-18T10:47:08.602000",
+    "updated_date": "2026-01-18T10:47:08.602000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "image",
+    "title": "Napiš slovo z obrázku",
+    "instructions": "Napiš celé slovo podle obrázku",
+    "questions": [
+      {
+        "question": "Napiš, co vidíš",
+        "answer": "DÙM",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
+      },
+      {
+        "question": "Napiš, co vidíš",
+        "answer": "STROM",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=400"
+      },
+      {
+        "question": "Napiš, co vidíš",
+        "answer": "KNIHA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400"
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696cba2cc1d6c00b1e453db7",
+    "created_date": "2026-01-18T10:47:08.602000",
+    "updated_date": "2026-01-18T10:47:08.602000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "listening",
+    "title": "Obtížná slova",
+    "instructions": "Poslechni si slovo a napiš ho přesně",
+    "questions": [
+      {
+        "question": "Poslechni a napiš",
+        "answer": "ZAHRADA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Poslechni a napiš",
+        "answer": "MOTÝL",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Poslechni a napiš",
+        "answer": "REPUBLIKA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696cba2cc1d6c00b1e453db8",
+    "created_date": "2026-01-18T10:47:08.602000",
+    "updated_date": "2026-01-18T10:47:08.602000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "image",
+    "title": "Těžká slova podle obrázku",
+    "instructions": "Podívej se a napiš přesně",
+    "questions": [
+      {
+        "question": "Co je na obrázku?",
+        "answer": "ZAHRADA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=400"
+      },
+      {
+        "question": "Co je na obrázku?",
+        "answer": "MOTÝL",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=400"
+      },
+      {
+        "question": "Co je na obrázku?",
+        "answer": "ŠKOLA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400"
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696cba2cc1d6c00b1e453db9",
+    "created_date": "2026-01-18T10:47:08.602000",
+    "updated_date": "2026-01-18T10:47:08.602000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "cloze",
+    "title": "Doplň písmeno do slova",
+    "instructions": "Vyber správné písmeno do mezery",
+    "questions": [
+      {
+        "question": "M___MA",
+        "answer": "A",
+        "options": [
+          "A",
+          "O",
+          "U",
+          "E"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "T___TA",
+        "answer": "Á",
+        "options": [
+          "Á",
+          "A",
+          "O",
+          "E"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "A___TO",
+        "answer": "U",
+        "options": [
+          "U",
+          "O",
+          "A",
+          "I"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696bec2f6b9497f6eff010eb",
+    "created_date": "2026-01-17T20:08:15.421000",
+    "updated_date": "2026-01-17T20:08:15.421000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "cloze",
+    "title": "Doplň slabiku do slova",
+    "instructions": "Vyber správnou slabiku",
+    "questions": [
+      {
+        "question": "___  ___  (KOLO)",
+        "answer": "KO",
+        "options": [
+          "KO",
+          "LO",
+          "KA",
+          "LA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "___  ___  (MAMA)",
+        "answer": "MA",
+        "options": [
+          "MA",
+          "PA",
+          "NA",
+          "TA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "___  ___  (AUTO)",
+        "answer": "AU",
+        "options": [
+          "AU",
+          "TO",
+          "OU",
+          "AT"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696bec2f6b9497f6eff010ec",
+    "created_date": "2026-01-17T20:08:15.421000",
+    "updated_date": "2026-01-17T20:08:15.421000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "cloze",
+    "title": "Doplň slovo do věty",
+    "instructions": "Vyber správné slovo",
+    "questions": [
+      {
+        "question": "Můj ___ je velký.",
+        "answer": "pes",
+        "options": [
+          "pes",
+          "auto",
+          "dům",
+          "strom"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Moje ___ je krásná.",
+        "answer": "zahrada",
+        "options": [
+          "zahrada",
+          "škola",
+          "kniha",
+          "kočka"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "___ je můj kamarád.",
+        "answer": "Petr",
+        "options": [
+          "Petr",
+          "auto",
+          "pes",
+          "dům"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": null,
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696bec2f6b9497f6eff010ed",
+    "created_date": "2026-01-17T20:08:15.421000",
+    "updated_date": "2026-01-17T20:08:15.421000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "test",
+    "title": "Finální test - Lehká úroveň",
+    "instructions": "Zvládl jsi všechna lehká cvičení! Teď ukáž, co umíš!",
+    "questions": [
+      {
+        "question": "Které písmeno je na začátku slova MAMA?",
+        "answer": "M",
+        "options": [
+          "M",
+          "N"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "decision",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Které písmeno je na začátku slova KOLO?",
+        "answer": "K",
+        "options": [
+          "K",
+          "L"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "decision",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jaké písmeno je první v abecedě?",
+        "answer": "A",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Které písmeno přijde po C?",
+        "answer": "D",
+        "options": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Kolik samohlásek má slovo AUTO?",
+        "answer": "3",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "_UTO",
+        "answer": "A",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "M_MA",
+        "answer": "A",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "_ES",
+        "answer": "P",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "KO_O",
+        "answer": "L",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "_ŮM",
+        "answer": "D",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 50,
+    "is_test": true,
+    "id": "696bea6501ace1c827f04d6e",
+    "created_date": "2026-01-17T20:00:37.229000",
+    "updated_date": "2026-01-17T20:00:37.229000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "test",
+    "title": "Finální test - Střední úroveň",
+    "instructions": "Skvěle! Teď ukáž, že zvládneš i středně těžké úkoly!",
+    "questions": [
+      {
+        "question": "Které písmeno je velké?",
+        "answer": "A",
+        "options": [
+          "A",
+          "a"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "decision",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Jak napíšeme jméno Anna?",
+        "answer": "Anna",
+        "options": [
+          "anna",
+          "Anna"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "decision",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Kolik slabik má slovo KOLO?",
+        "answer": "2",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Kolik slabik má slovo PES?",
+        "answer": "1",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Z jakých slabik se skládá AUTO?",
+        "answer": "AU-TO",
+        "options": [
+          "AU-TO",
+          "A-UTO",
+          "AUT-O",
+          "A-U-T-O"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "MA___ (MAMA)",
+        "answer": "MA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "___TO (AUTO)",
+        "answer": "AU",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "KO___ (KOLO)",
+        "answer": "LO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "___PA (TATA)",
+        "answer": "TA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "___LA (ŠKOLA)",
+        "answer": "KO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 75,
+    "is_test": true,
+    "id": "696bea6501ace1c827f04d6f",
+    "created_date": "2026-01-17T20:00:37.229000",
+    "updated_date": "2026-01-17T20:00:37.229000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "test",
+    "title": "Finální test - Těžká úroveň",
+    "instructions": "Gratuluju! Jsi skoro mistr! Dokáž, že zvládneš i nejobtížnější úkoly!",
+    "questions": [
+      {
+        "question": "Které slovo je správně napsané?",
+        "answer": "KOČKA",
+        "options": [
+          "KOČKA",
+          "KOCKA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "decision",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Které slovo je správně?",
+        "answer": "ZAHRADA",
+        "options": [
+          "ZAHRADA",
+          "ZAHARADA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "decision",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Kolik je v české abecedě písmen?",
+        "answer": "42",
+        "options": [
+          "26",
+          "33",
+          "42",
+          "50"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Které slovo má 3 slabiky?",
+        "answer": "ABABÍNA",
+        "options": [
+          "PES",
+          "MAMA",
+          "ABABÍNA",
+          "AUTO"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Které písmeno chybí: AB_DEFG?",
+        "answer": "C",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "quiz",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "Č___Á REPUBLIKA",
+        "answer": "ČESKÁ",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "KNI___ (KNIHA)",
+        "answer": "HA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "ŠKO___ (ŠKOLA)",
+        "answer": "LA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "ZA___ (ZAHRADA)",
+        "answer": "HRADA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      },
+      {
+        "question": "MO___ (MOTÝL)",
+        "answer": "TÝL",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "type": "fill",
+        "audio_url": null,
+        "image_url": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 100,
+    "is_test": true,
+    "id": "696bea6501ace1c827f04d70",
+    "created_date": "2026-01-17T20:00:37.229000",
+    "updated_date": "2026-01-17T20:00:37.229000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň celé slovo",
+    "instructions": "Napiš celé slovo",
+    "questions": [
+      {
+        "question": "Kde žijeme? (Č___Á REPUBLIKA)",
+        "answer": "ČESKÁ",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Co čteme? (KNI___)",
+        "answer": "KNIHA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Kde se učíme? (ŠKO___)",
+        "answer": "ŠKOLA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cdd",
+    "created_date": "2026-01-17T19:58:21.131000",
+    "updated_date": "2026-01-17T19:58:21.131000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "sort",
+    "title": "Roztřiď obtížná slova",
+    "instructions": "Zařaď slova do správných kategorií",
+    "questions": [
+      {
+        "question": "Roztřiď slova podle významu",
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [
+          {
+            "name": "Zvířata",
+            "items": [
+              "PES",
+              "KOČKA",
+              "KŮŇ"
+            ]
+          },
+          {
+            "name": "Věci",
+            "items": [
+              "DŮM",
+              "AUTO",
+              "KNIHA"
+            ]
+          }
+        ],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cde",
+    "created_date": "2026-01-17T19:58:21.131000",
+    "updated_date": "2026-01-17T19:58:21.131000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "analysis",
+    "title": "Rozbor věty",
+    "instructions": "Označ podstatná jména modře",
+    "questions": [
+      {
+        "question": "Označ podstatná jména",
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "PES BĚŽÍ DOMŮ",
+        "words": [
+          {
+            "word": "PES",
+            "color": "blue"
+          },
+          {
+            "word": "BĚŽÍ",
+            "color": "red"
+          },
+          {
+            "word": "DOMŮ",
+            "color": "blue"
+          }
+        ],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cdf",
+    "created_date": "2026-01-17T19:58:21.131000",
+    "updated_date": "2026-01-17T19:58:21.131000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "decision",
+    "title": "Obtížná slova",
+    "instructions": "Vyber správně napsané slovo",
+    "questions": [
+      {
+        "question": "Které slovo je správně?",
+        "answer": "MOTÝL",
+        "options": [
+          "MOTÝL",
+          "MOTYL"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Které slovo je správně?",
+        "answer": "ZAHRADA",
+        "options": [
+          "ZAHRADA",
+          "ZAHARADA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Které slovo je správně?",
+        "answer": "KOČKA",
+        "options": [
+          "KOČKA",
+          "KOCKA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cda",
+    "created_date": "2026-01-17T19:58:21.130000",
+    "updated_date": "2026-01-17T19:58:21.130000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Těžký kvíz",
+    "instructions": "Vyber správnou odpověď",
+    "questions": [
+      {
+        "question": "Které písmeno chybí: AB_DEFG?",
+        "answer": "C",
+        "options": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Kolik je v české abecedě písmen?",
+        "answer": "42",
+        "options": [
+          "26",
+          "33",
+          "42",
+          "50"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Které slovo má 3 slabiky?",
+        "answer": "ABABÍNA",
+        "options": [
+          "PES",
+          "MAMA",
+          "ABABÍNA",
+          "AUTO"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cdb",
+    "created_date": "2026-01-17T19:58:21.130000",
+    "updated_date": "2026-01-17T19:58:21.130000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "memory",
+    "title": "Pexeso - slova",
+    "instructions": "Najdi stejná slova",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "KOČKA",
+            "right": "KOČKA"
+          },
+          {
+            "left": "ZAHRADA",
+            "right": "ZAHRADA"
+          },
+          {
+            "left": "ŠKOLA",
+            "right": "ŠKOLA"
+          },
+          {
+            "left": "TÁTA",
+            "right": "TÁTA"
+          }
+        ],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 3,
+    "points": 20,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cdc",
+    "created_date": "2026-01-17T19:58:21.130000",
+    "updated_date": "2026-01-17T19:58:21.130000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "decision",
+    "title": "Velká a malá písmena",
+    "instructions": "Vyber správnou variantu",
+    "questions": [
+      {
+        "question": "Které písmeno je velké A?",
+        "answer": "A",
+        "options": [
+          "A",
+          "a"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Které písmeno je malé b?",
+        "answer": "b",
+        "options": [
+          "B",
+          "b"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Jak napíšeme jméno Petr?",
+        "answer": "Petr",
+        "options": [
+          "petr",
+          "Petr"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd4",
+    "created_date": "2026-01-17T19:58:21.090000",
+    "updated_date": "2026-01-17T19:58:21.090000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Slabiky - kvíz",
+    "instructions": "Vyber správnou odpověď",
+    "questions": [
+      {
+        "question": "Kolik slabik má slovo MAMA?",
+        "answer": "2",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Kolik slabik má slovo AUTO?",
+        "answer": "2",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Z jakých slabik se skládá slovo KOLO?",
+        "answer": "KO-LO",
+        "options": [
+          "KO-LO",
+          "K-OLO",
+          "KOL-O",
+          "K-O-L-O"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd5",
+    "created_date": "2026-01-17T19:58:21.090000",
+    "updated_date": "2026-01-17T19:58:21.090000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "memory",
+    "title": "Pexeso - slabiky",
+    "instructions": "Najdi stejné slabiky",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "MA",
+            "right": "MA"
+          },
+          {
+            "left": "PA",
+            "right": "PA"
+          },
+          {
+            "left": "KO",
+            "right": "KO"
+          },
+          {
+            "left": "LO",
+            "right": "LO"
+          }
+        ],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd6",
+    "created_date": "2026-01-17T19:58:21.090000",
+    "updated_date": "2026-01-17T19:58:21.090000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň slabiku",
+    "instructions": "Napiš chybějící slabiku",
+    "questions": [
+      {
+        "question": "MA___ (MAMA)",
+        "answer": "MA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "___TO (AUTO)",
+        "answer": "AU",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "___LO (KOLO)",
+        "answer": "KO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd7",
+    "created_date": "2026-01-17T19:58:21.090000",
+    "updated_date": "2026-01-17T19:58:21.090000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "sort",
+    "title": "Roztřiď slova",
+    "instructions": "Zařaď slova podle počtu slabik",
+    "questions": [
+      {
+        "question": "Roztřiď slova podle počtu slabik",
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [
+          {
+            "name": "1 slabika",
+            "items": [
+              "PES",
+              "DŮM"
+            ]
+          },
+          {
+            "name": "2 slabiky",
+            "items": [
+              "MAMA",
+              "AUTO",
+              "KOLO"
+            ]
+          }
+        ],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd8",
+    "created_date": "2026-01-17T19:58:21.090000",
+    "updated_date": "2026-01-17T19:58:21.090000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "analysis",
+    "title": "Označ slabiky",
+    "instructions": "Označ první slabiku modře, druhou zeleně",
+    "questions": [
+      {
+        "question": "Označ slabiky ve slově",
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "MA MA",
+        "words": [
+          {
+            "word": "MA",
+            "color": "blue"
+          },
+          {
+            "word": "MA",
+            "color": "green"
+          }
+        ],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 2,
+    "points": 15,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd9",
+    "created_date": "2026-01-17T19:58:21.090000",
+    "updated_date": "2026-01-17T19:58:21.090000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "decision",
+    "title": "Poznej písmenko",
+    "instructions": "Vyber správné písmeno",
+    "questions": [
+      {
+        "question": "Které písmeno je na začátku slova AUTO?",
+        "answer": "A",
+        "options": [
+          "A",
+          "O"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Které písmeno je na začátku slova BAL?",
+        "answer": "B",
+        "options": [
+          "B",
+          "P"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Které písmeno je na začátku slova DŮM?",
+        "answer": "D",
+        "options": [
+          "D",
+          "T"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cce",
+    "created_date": "2026-01-17T19:58:21.049000",
+    "updated_date": "2026-01-17T19:58:21.049000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Abeceda - kvíz",
+    "instructions": "Vyber správnou odpověď",
+    "questions": [
+      {
+        "question": "Jaké písmeno je první v abecedě?",
+        "answer": "A",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Které písmeno přijde po B?",
+        "answer": "C",
+        "options": [
+          "A",
+          "C",
+          "D",
+          "E"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "Jaké písmeno je poslední?",
+        "answer": "Ž",
+        "options": [
+          "Z",
+          "Y",
+          "Ž",
+          "X"
+        ],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04ccf",
+    "created_date": "2026-01-17T19:58:21.049000",
+    "updated_date": "2026-01-17T19:58:21.049000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "memory",
+    "title": "Pexeso - písmena",
+    "instructions": "Najdi stejná písmena",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "A",
+            "right": "A"
+          },
+          {
+            "left": "B",
+            "right": "B"
+          },
+          {
+            "left": "C",
+            "right": "C"
+          },
+          {
+            "left": "D",
+            "right": "D"
+          }
+        ],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd0",
+    "created_date": "2026-01-17T19:58:21.049000",
+    "updated_date": "2026-01-17T19:58:21.049000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň písmeno",
+    "instructions": "Napiš chybějící písmeno",
+    "questions": [
+      {
+        "question": "_UTO (Auto)",
+        "answer": "A",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "_ES (Pes)",
+        "answer": "P",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      },
+      {
+        "question": "_ŮM (Dům)",
+        "answer": "D",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd1",
+    "created_date": "2026-01-17T19:58:21.049000",
+    "updated_date": "2026-01-17T19:58:21.049000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "sort",
+    "title": "Roztřiď písmena",
+    "instructions": "Zařaď písmena do správných skupin",
+    "questions": [
+      {
+        "question": "Roztřiď písmena na samohlásky a souhlásky",
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [
+          {
+            "name": "Samohlásky",
+            "items": [
+              "A",
+              "E",
+              "I"
+            ]
+          },
+          {
+            "name": "Souhlásky",
+            "items": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "text": null,
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd2",
+    "created_date": "2026-01-17T19:58:21.049000",
+    "updated_date": "2026-01-17T19:58:21.049000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "analysis",
+    "title": "Označ samohlásky",
+    "instructions": "Klikni na samohlásky a obarvi je červeně",
+    "questions": [
+      {
+        "question": "Označ samohlásky ve slově",
+        "answer": null,
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "text": "A U T O",
+        "words": [
+          {
+            "word": "A",
+            "color": "red"
+          },
+          {
+            "word": "U",
+            "color": "red"
+          },
+          {
+            "word": "T",
+            "color": "blue"
+          },
+          {
+            "word": "O",
+            "color": "red"
+          }
+        ],
+        "audio_url": null,
+        "image_url": null,
+        "type": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696be9dd01ace1c827f04cd3",
+    "created_date": "2026-01-17T19:58:21.049000",
+    "updated_date": "2026-01-17T19:58:21.049000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91b",
+    "category_id": null,
+    "type": "fill",
+    "title": "Čísla do 20",
+    "instructions": "Napiš správné číslo",
+    "questions": [
+      {
+        "question": "11 = ?",
+        "answer": "11",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "15 = ?",
+        "answer": "15",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "20 = ?",
+        "answer": "20",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f39",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91b",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Poznej číslo do 20",
+    "instructions": "Kolik je?",
+    "questions": [
+      {
+        "question": "Kolik je 10 + 5?",
+        "answer": "15",
+        "options": [
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Kolik je 10 + 8?",
+        "answer": "18",
+        "options": [
+          "16",
+          "17",
+          "18",
+          "19"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f3a",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91b",
+    "category_id": null,
+    "type": "match",
+    "title": "Spoj čísla",
+    "instructions": "Spoj čísla s jejich názvy",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "11",
+            "right": "jedenáct"
+          },
+          {
+            "left": "12",
+            "right": "dvanáct"
+          },
+          {
+            "left": "13",
+            "right": "třináct"
+          },
+          {
+            "left": "14",
+            "right": "čtrnáct"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f3b",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91c",
+    "category_id": null,
+    "type": "fill",
+    "title": "Sčítání do 20",
+    "instructions": "Spočítej",
+    "questions": [
+      {
+        "question": "12 + 3 = ?",
+        "answer": "15",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "14 + 5 = ?",
+        "answer": "19",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "11 + 7 = ?",
+        "answer": "18",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f3c",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91c",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Odčítání do 20",
+    "instructions": "Vyber správný výsledek",
+    "questions": [
+      {
+        "question": "18 - 5 = ?",
+        "answer": "13",
+        "options": [
+          "12",
+          "13",
+          "14",
+          "15"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "20 - 7 = ?",
+        "answer": "13",
+        "options": [
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f3d",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91c",
+    "category_id": null,
+    "type": "match",
+    "title": "Spoj příklady a výsledky",
+    "instructions": "Najdi správný výsledek",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "10 + 10",
+            "right": "20"
+          },
+          {
+            "left": "15 + 3",
+            "right": "18"
+          },
+          {
+            "left": "12 + 4",
+            "right": "16"
+          },
+          {
+            "left": "11 + 6",
+            "right": "17"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f3e",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91d",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Násobení 2",
+    "instructions": "Kolik je?",
+    "questions": [
+      {
+        "question": "2 × 2 = ?",
+        "answer": "4",
+        "options": [
+          "2",
+          "4",
+          "6",
+          "8"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "2 × 3 = ?",
+        "answer": "6",
+        "options": [
+          "4",
+          "6",
+          "8",
+          "10"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "2 × 4 = ?",
+        "answer": "8",
+        "options": [
+          "6",
+          "8",
+          "10",
+          "12"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f3f",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91d",
+    "category_id": null,
+    "type": "fill",
+    "title": "Násobka 2",
+    "instructions": "Doplň výsledek",
+    "questions": [
+      {
+        "question": "2 × 5 = ?",
+        "answer": "10",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "2 × 6 = ?",
+        "answer": "12",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "2 × 7 = ?",
+        "answer": "14",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f40",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91d",
+    "category_id": null,
+    "type": "match",
+    "title": "Násobení - spoj",
+    "instructions": "Spoj příklad s výsledkem",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "2 × 8",
+            "right": "16"
+          },
+          {
+            "left": "2 × 9",
+            "right": "18"
+          },
+          {
+            "left": "2 × 10",
+            "right": "20"
+          },
+          {
+            "left": "3 × 3",
+            "right": "9"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f41",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aae7cf0d91f48e8e1e91e",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Poznej tvar",
+    "instructions": "Jaký je to tvar?",
+    "questions": [
+      {
+        "question": "Tvar s třemi rohy?",
+        "answer": "Trojúhelník",
+        "options": [
+          "Trojúhelník",
+          "Čtverec",
+          "Kruh",
+          "Obdélník"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Tvar se čtyřmi stejně dlouhými stranami?",
+        "answer": "Čtverec",
+        "options": [
+          "Trojúhelník",
+          "Čtverec",
+          "Kruh",
+          "Obdélník"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696ab24c40812c0229532f42",
+    "created_date": "2026-01-16T21:49:00.431000",
+    "updated_date": "2026-01-16T21:49:00.431000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cb",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň číslo anglicky",
+    "instructions": "Napiš anglicky",
+    "questions": [
+      {
+        "question": "6 = ?",
+        "answer": "Six",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "7 = ?",
+        "answer": "Seven",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "8 = ?",
+        "answer": "Eight",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "9 = ?",
+        "answer": "Nine",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "10 = ?",
+        "answer": "Ten",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e90c",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cb",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Numbers Quiz",
+    "instructions": "Vyber správnou odpověď",
+    "questions": [
+      {
+        "question": "How many? 🍎🍎🍎",
+        "answer": "Three",
+        "options": [
+          "Two",
+          "Three",
+          "Four",
+          "Five"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "How many? ⭐⭐⭐⭐⭐⭐",
+        "answer": "Six",
+        "options": [
+          "Four",
+          "Five",
+          "Six",
+          "Seven"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e90d",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cb",
+    "category_id": null,
+    "type": "memory",
+    "title": "Numbers Memory",
+    "instructions": "Najdi páry čísel",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "6",
+            "right": "Six"
+          },
+          {
+            "left": "7",
+            "right": "Seven"
+          },
+          {
+            "left": "8",
+            "right": "Eight"
+          },
+          {
+            "left": "9",
+            "right": "Nine"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e90e",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cc",
+    "category_id": null,
+    "type": "fill",
+    "title": "Napiš zvíře anglicky",
+    "instructions": "Jak se řekne anglicky?",
+    "questions": [
+      {
+        "question": "🐴 Kůň = ?",
+        "answer": "Horse",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "🐷 Prase = ?",
+        "answer": "Pig",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "🐮 Kráva = ?",
+        "answer": "Cow",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e90f",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cc",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Animals Quiz",
+    "instructions": "Vyber správné zvíře",
+    "questions": [
+      {
+        "question": "What animal says 'Woof'?",
+        "answer": "Dog",
+        "options": [
+          "Cat",
+          "Dog",
+          "Bird",
+          "Fish"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "What animal says 'Meow'?",
+        "answer": "Cat",
+        "options": [
+          "Cat",
+          "Dog",
+          "Bird",
+          "Fish"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e910",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cc",
+    "category_id": null,
+    "type": "match",
+    "title": "Farm Animals",
+    "instructions": "Spoj zvíře s anglickým názvem",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "🐴",
+            "right": "Horse"
+          },
+          {
+            "left": "🐷",
+            "right": "Pig"
+          },
+          {
+            "left": "🐮",
+            "right": "Cow"
+          },
+          {
+            "left": "🐑",
+            "right": "Sheep"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e911",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cd",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Greetings Quiz",
+    "instructions": "Vyber správný pozdrav",
+    "questions": [
+      {
+        "question": "Co řekneš večer?",
+        "answer": "Good evening",
+        "options": [
+          "Good morning",
+          "Good afternoon",
+          "Good evening",
+          "Good night"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Jak se zeptáš 'Jak se máš?'",
+        "answer": "How are you?",
+        "options": [
+          "Hello",
+          "How are you?",
+          "Thank you",
+          "Goodbye"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e912",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cd",
+    "category_id": null,
+    "type": "match",
+    "title": "Pozdravy a odpovědi",
+    "instructions": "Spoj pozdrav s odpovědí",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "Hello!",
+            "right": "Hi!"
+          },
+          {
+            "left": "How are you?",
+            "right": "I'm fine"
+          },
+          {
+            "left": "Thank you",
+            "right": "You're welcome"
+          },
+          {
+            "left": "Goodbye",
+            "right": "Bye"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e913",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cd",
+    "category_id": null,
+    "type": "memory",
+    "title": "Greetings Memory",
+    "instructions": "Najdi páry pozdravů",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "Dobré odpoledne",
+            "right": "Good afternoon"
+          },
+          {
+            "left": "Dobrý večer",
+            "right": "Good evening"
+          },
+          {
+            "left": "Dobrou noc",
+            "right": "Good night"
+          },
+          {
+            "left": "Prosím",
+            "right": "Please"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e914",
+    "created_date": "2026-01-16T21:31:47.511000",
+    "updated_date": "2026-01-16T21:31:47.511000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c8",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Vyber správnou slabiku",
+    "instructions": "Jaká slabika patří do slova?",
+    "questions": [
+      {
+        "question": "MA _ _ (MÁMA)",
+        "answer": "MA",
+        "options": [
+          "MA",
+          "TA",
+          "PA",
+          "LA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "BA _ _ (BÁBA)",
+        "answer": "BA",
+        "options": [
+          "BA",
+          "DA",
+          "PA",
+          "TA"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e903",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c8",
+    "category_id": null,
+    "type": "match",
+    "title": "Spoj slabiky",
+    "instructions": "Vytvoř slova ze slabik",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "VO + DA",
+            "right": "VODA"
+          },
+          {
+            "left": "NO + HA",
+            "right": "NOHA"
+          },
+          {
+            "left": "KO + LA",
+            "right": "KOLA"
+          },
+          {
+            "left": "SO + VA",
+            "right": "SOVA"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e904",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c8",
+    "category_id": null,
+    "type": "memory",
+    "title": "Slabikové pexeso",
+    "instructions": "Najdi páry slabik které dávají slovo",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "RA + NA",
+            "right": "RÁNA"
+          },
+          {
+            "left": "VA + TA",
+            "right": "VATA"
+          },
+          {
+            "left": "KA + PA",
+            "right": "KAPKA"
+          },
+          {
+            "left": "LO + PA",
+            "right": "LOPATA"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e905",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c9",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Přečti slovo",
+    "instructions": "Co je na obrázku?",
+    "questions": [
+      {
+        "question": "🏠 = ?",
+        "answer": "DŮM",
+        "options": [
+          "DŮM",
+          "PES",
+          "KŮŇ",
+          "VŮZ"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "🌳 = ?",
+        "answer": "STROM",
+        "options": [
+          "STROM",
+          "TRÁVA",
+          "LISTÍ",
+          "VĚTEV"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e906",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c9",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň slovo",
+    "instructions": "Napiš správné slovo",
+    "questions": [
+      {
+        "question": "Zvíře, které štěká: _ _ _",
+        "answer": "PES",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Pijeme z ní: _ _ _ _",
+        "answer": "VODA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Rostě na louce: _ _ _ _ _",
+        "answer": "TRÁVA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e907",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c9",
+    "category_id": null,
+    "type": "match",
+    "title": "Slova a obrázky",
+    "instructions": "Spoj slovo s obrázkem",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "AUTO",
+            "right": "🚗"
+          },
+          {
+            "left": "LOĎKA",
+            "right": "⛵"
+          },
+          {
+            "left": "LETADLO",
+            "right": "✈️"
+          },
+          {
+            "left": "KOLO",
+            "right": "🚲"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e908",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697ca",
+    "category_id": null,
+    "type": "fill",
+    "title": "Napiš barvu anglicky",
+    "instructions": "Jak se to řekne anglicky?",
+    "questions": [
+      {
+        "question": "🟠 Oranžová = ?",
+        "answer": "Orange",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "🟣 Fialová = ?",
+        "answer": "Purple",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "⚫ Černá = ?",
+        "answer": "Black",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e909",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697ca",
+    "category_id": null,
+    "type": "memory",
+    "title": "Barevné pexeso",
+    "instructions": "Najdi páry barev",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "🟠",
+            "right": "Orange"
+          },
+          {
+            "left": "🟣",
+            "right": "Purple"
+          },
+          {
+            "left": "🟤",
+            "right": "Brown"
+          },
+          {
+            "left": "⚫",
+            "right": "Black"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e90a",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697ca",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Barvy kvíz",
+    "instructions": "Jaká je správná barva?",
+    "questions": [
+      {
+        "question": "What color is the sun? ☀️",
+        "answer": "Yellow",
+        "options": [
+          "Red",
+          "Yellow",
+          "Blue",
+          "Green"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "What color is the sky? ☁️",
+        "answer": "Blue",
+        "options": [
+          "Red",
+          "Yellow",
+          "Blue",
+          "Green"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e90b",
+    "created_date": "2026-01-16T21:31:47.478000",
+    "updated_date": "2026-01-16T21:31:47.478000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c6",
+    "category_id": null,
+    "type": "memory",
+    "title": "Pexeso s písmeny",
+    "instructions": "Najdi páry velkých a malých písmen",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "F",
+            "right": "f"
+          },
+          {
+            "left": "G",
+            "right": "g"
+          },
+          {
+            "left": "H",
+            "right": "h"
+          },
+          {
+            "left": "I",
+            "right": "i"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e900",
+    "created_date": "2026-01-16T21:31:47.447000",
+    "updated_date": "2026-01-16T21:31:47.447000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c7",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Poznej písmeno N-Ž",
+    "instructions": "Vyber správné písmeno",
+    "questions": [
+      {
+        "question": "Jaké písmeno je ve slově NEBE první?",
+        "answer": "N",
+        "options": [
+          "M",
+          "N",
+          "O",
+          "P"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Jaké písmeno je ve slově ŽÁBA první?",
+        "answer": "Ž",
+        "options": [
+          "Z",
+          "Ž",
+          "Y",
+          "X"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e901",
+    "created_date": "2026-01-16T21:31:47.447000",
+    "updated_date": "2026-01-16T21:31:47.447000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c7",
+    "category_id": null,
+    "type": "match",
+    "title": "Velká a malá N-Ž",
+    "instructions": "Spoj velké písmeno s malým",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "N",
+            "right": "n"
+          },
+          {
+            "left": "O",
+            "right": "o"
+          },
+          {
+            "left": "P",
+            "right": "p"
+          },
+          {
+            "left": "R",
+            "right": "r"
+          },
+          {
+            "left": "S",
+            "right": "s"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e902",
+    "created_date": "2026-01-16T21:31:47.447000",
+    "updated_date": "2026-01-16T21:31:47.447000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c2",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň číslo",
+    "instructions": "Napiš správné číslo",
+    "questions": [
+      {
+        "question": "🍎 🍎 🍎 🍎 = ?",
+        "answer": "4",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "⭐ ⭐ ⭐ ⭐ ⭐ ⭐ = ?",
+        "answer": "6",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵 = ?",
+        "answer": "8",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e8f9",
+    "created_date": "2026-01-16T21:31:47.446000",
+    "updated_date": "2026-01-16T21:31:47.446000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c3",
+    "category_id": null,
+    "type": "match",
+    "title": "Spoj příklady",
+    "instructions": "Spoj příklad s výsledkem",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "1 + 2",
+            "right": "3"
+          },
+          {
+            "left": "2 + 2",
+            "right": "4"
+          },
+          {
+            "left": "3 + 3",
+            "right": "6"
+          },
+          {
+            "left": "4 + 4",
+            "right": "8"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e8fa",
+    "created_date": "2026-01-16T21:31:47.446000",
+    "updated_date": "2026-01-16T21:31:47.446000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c3",
+    "category_id": null,
+    "type": "memory",
+    "title": "Pexeso se sčítáním",
+    "instructions": "Najdi páry příkladů a výsledků",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "1 + 1",
+            "right": "2"
+          },
+          {
+            "left": "2 + 3",
+            "right": "5"
+          },
+          {
+            "left": "3 + 4",
+            "right": "7"
+          },
+          {
+            "left": "5 + 5",
+            "right": "10"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e8fb",
+    "created_date": "2026-01-16T21:31:47.446000",
+    "updated_date": "2026-01-16T21:31:47.446000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c4",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Vyber správný výsledek",
+    "instructions": "Kolik je...",
+    "questions": [
+      {
+        "question": "6 - 2 = ?",
+        "answer": "4",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "8 - 3 = ?",
+        "answer": "5",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "10 - 6 = ?",
+        "answer": "4",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e8fc",
+    "created_date": "2026-01-16T21:31:47.446000",
+    "updated_date": "2026-01-16T21:31:47.446000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c4",
+    "category_id": null,
+    "type": "match",
+    "title": "Spoj odčítání",
+    "instructions": "Spoj příklad s výsledkem",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "5 - 1",
+            "right": "4"
+          },
+          {
+            "left": "6 - 2",
+            "right": "4"
+          },
+          {
+            "left": "7 - 3",
+            "right": "4"
+          },
+          {
+            "left": "8 - 4",
+            "right": "4"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e8fd",
+    "created_date": "2026-01-16T21:31:47.446000",
+    "updated_date": "2026-01-16T21:31:47.446000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c5",
+    "category_id": null,
+    "type": "fill",
+    "title": "Napiš větší číslo",
+    "instructions": "Které číslo je větší?",
+    "questions": [
+      {
+        "question": "Větší: 3 nebo 7? Napiš větší:",
+        "answer": "7",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Větší: 5 nebo 2? Napiš větší:",
+        "answer": "5",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Větší: 9 nebo 4? Napiš větší:",
+        "answer": "9",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e8fe",
+    "created_date": "2026-01-16T21:31:47.446000",
+    "updated_date": "2026-01-16T21:31:47.446000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c6",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň písmeno",
+    "instructions": "Jaké písmeno chybí?",
+    "questions": [
+      {
+        "question": "A, B, ?, D",
+        "answer": "C",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "E, F, ?, H",
+        "answer": "G",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "J, K, ?, M",
+        "answer": "L",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aae43f0d91f48e8e1e8ff",
+    "created_date": "2026-01-16T21:31:47.446000",
+    "updated_date": "2026-01-16T21:31:47.446000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697ca",
+    "category_id": null,
+    "type": "match",
+    "title": "Barvy anglicky",
+    "instructions": "Spoj barvu s anglickým názvem",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "🔴 Červená",
+            "right": "Red"
+          },
+          {
+            "left": "🟢 Zelená",
+            "right": "Green"
+          },
+          {
+            "left": "🟡 Žlutá",
+            "right": "Yellow"
+          },
+          {
+            "left": "🔵 Modrá",
+            "right": "Blue"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697da",
+    "created_date": "2026-01-16T21:15:44.650000",
+    "updated_date": "2026-01-16T21:15:44.650000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697ca",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Jak se řekne...?",
+    "instructions": "Vyber správný překlad",
+    "questions": [
+      {
+        "question": "Jak se anglicky řekne Červená?",
+        "answer": "Red",
+        "options": [
+          "Red",
+          "Blue",
+          "Green",
+          "Yellow"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Jak se anglicky řekne Modrá?",
+        "answer": "Blue",
+        "options": [
+          "Red",
+          "Blue",
+          "Green",
+          "Yellow"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Jak se anglicky řekne Zelená?",
+        "answer": "Green",
+        "options": [
+          "Red",
+          "Blue",
+          "Green",
+          "Yellow"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697db",
+    "created_date": "2026-01-16T21:15:44.650000",
+    "updated_date": "2026-01-16T21:15:44.650000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cb",
+    "category_id": null,
+    "type": "match",
+    "title": "Čísla anglicky",
+    "instructions": "Spoj číslo s anglickým názvem",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "1",
+            "right": "One"
+          },
+          {
+            "left": "2",
+            "right": "Two"
+          },
+          {
+            "left": "3",
+            "right": "Three"
+          },
+          {
+            "left": "4",
+            "right": "Four"
+          },
+          {
+            "left": "5",
+            "right": "Five"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697dc",
+    "created_date": "2026-01-16T21:15:44.650000",
+    "updated_date": "2026-01-16T21:15:44.650000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cc",
+    "category_id": null,
+    "type": "memory",
+    "title": "Zvířátka anglicky",
+    "instructions": "Najdi páry zvířátek a jejich anglických názvů",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "🐶",
+            "right": "Dog"
+          },
+          {
+            "left": "🐱",
+            "right": "Cat"
+          },
+          {
+            "left": "🐦",
+            "right": "Bird"
+          },
+          {
+            "left": "🐟",
+            "right": "Fish"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697dd",
+    "created_date": "2026-01-16T21:15:44.650000",
+    "updated_date": "2026-01-16T21:15:44.650000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697cd",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň pozdrav",
+    "instructions": "Napiš anglický pozdrav",
+    "questions": [
+      {
+        "question": "Ahoj = ?",
+        "answer": "Hello",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Dobré ráno = Good ?",
+        "answer": "Morning",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Na shledanou = ?",
+        "answer": "Goodbye",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697de",
+    "created_date": "2026-01-16T21:15:44.650000",
+    "updated_date": "2026-01-16T21:15:44.650000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c6",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Poznej písmeno",
+    "instructions": "Vyber správné písmeno",
+    "questions": [
+      {
+        "question": "Které písmeno je první v abecedě?",
+        "answer": "A",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Jaké písmeno je ve slově MAMA na začátku?",
+        "answer": "M",
+        "options": [
+          "A",
+          "M",
+          "N",
+          "L"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Které písmeno následuje po B?",
+        "answer": "C",
+        "options": [
+          "A",
+          "C",
+          "D",
+          "E"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d6",
+    "created_date": "2026-01-16T21:15:44.623000",
+    "updated_date": "2026-01-16T21:15:44.623000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c6",
+    "category_id": null,
+    "type": "match",
+    "title": "Velká a malá písmena",
+    "instructions": "Spoj velké písmeno s malým",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "A",
+            "right": "a"
+          },
+          {
+            "left": "B",
+            "right": "b"
+          },
+          {
+            "left": "C",
+            "right": "c"
+          },
+          {
+            "left": "D",
+            "right": "d"
+          },
+          {
+            "left": "E",
+            "right": "e"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d7",
+    "created_date": "2026-01-16T21:15:44.623000",
+    "updated_date": "2026-01-16T21:15:44.623000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c8",
+    "category_id": null,
+    "type": "fill",
+    "title": "Doplň slabiku",
+    "instructions": "Doplň chybějící slabiku",
+    "questions": [
+      {
+        "question": "MA + MA = ?",
+        "answer": "MAMA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "TA + TA = ?",
+        "answer": "TATA",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "LE + GO = ?",
+        "answer": "LEGO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "AU + TO = ?",
+        "answer": "AUTO",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d8",
+    "created_date": "2026-01-16T21:15:44.623000",
+    "updated_date": "2026-01-16T21:15:44.623000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c9",
+    "category_id": null,
+    "type": "memory",
+    "title": "Slovní pexeso",
+    "instructions": "Najdi páry slov a obrázků",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "PES",
+            "right": "🐶"
+          },
+          {
+            "left": "KOČKA",
+            "right": "🐱"
+          },
+          {
+            "left": "DŮM",
+            "right": "🏠"
+          },
+          {
+            "left": "STROM",
+            "right": "🌳"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d9",
+    "created_date": "2026-01-16T21:15:44.623000",
+    "updated_date": "2026-01-16T21:15:44.623000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c2",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Poznej číslo",
+    "instructions": "Vyber správné číslo podle obrázku",
+    "questions": [
+      {
+        "question": "Kolik je jableček? 🍎🍎🍎",
+        "answer": "3",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Kolik je hvězdiček? ⭐⭐⭐⭐⭐",
+        "answer": "5",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Kolik je srdíček? ❤️❤️❤️❤️❤️❤️❤️",
+        "answer": "7",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Kolik je kuliček? 🔵🔵",
+        "answer": "2",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697cf",
+    "created_date": "2026-01-16T21:15:44.606000",
+    "updated_date": "2026-01-16T21:15:44.606000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c2",
+    "category_id": null,
+    "type": "match",
+    "title": "Spoj čísla a množství",
+    "instructions": "Spoj číslo se správným počtem",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "1",
+            "right": "🍎"
+          },
+          {
+            "left": "2",
+            "right": "🍎🍎"
+          },
+          {
+            "left": "3",
+            "right": "🍎🍎🍎"
+          },
+          {
+            "left": "4",
+            "right": "🍎🍎🍎🍎"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d0",
+    "created_date": "2026-01-16T21:15:44.606000",
+    "updated_date": "2026-01-16T21:15:44.606000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c2",
+    "category_id": null,
+    "type": "memory",
+    "title": "Číselné pexeso",
+    "instructions": "Najdi páry čísel a jejich množství",
+    "questions": [
+      {
+        "question": null,
+        "answer": null,
+        "options": [],
+        "pairs": [
+          {
+            "left": "2",
+            "right": "⭐⭐"
+          },
+          {
+            "left": "3",
+            "right": "⭐⭐⭐"
+          },
+          {
+            "left": "4",
+            "right": "⭐⭐⭐⭐"
+          },
+          {
+            "left": "5",
+            "right": "⭐⭐⭐⭐⭐"
+          }
+        ],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 15,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d1",
+    "created_date": "2026-01-16T21:15:44.606000",
+    "updated_date": "2026-01-16T21:15:44.606000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c3",
+    "category_id": null,
+    "type": "fill",
+    "title": "Sčítání příkladů",
+    "instructions": "Napiš výsledek příkladu",
+    "questions": [
+      {
+        "question": "1 + 1 = ?",
+        "answer": "2",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "2 + 1 = ?",
+        "answer": "3",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "3 + 2 = ?",
+        "answer": "5",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "4 + 3 = ?",
+        "answer": "7",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "5 + 4 = ?",
+        "answer": "9",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d2",
+    "created_date": "2026-01-16T21:15:44.606000",
+    "updated_date": "2026-01-16T21:15:44.606000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c3",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Vyber výsledek",
+    "instructions": "Vyber správný výsledek sčítání",
+    "questions": [
+      {
+        "question": "2 + 3 = ?",
+        "answer": "5",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "4 + 2 = ?",
+        "answer": "6",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "1 + 5 = ?",
+        "answer": "6",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "3 + 3 = ?",
+        "answer": "6",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d3",
+    "created_date": "2026-01-16T21:15:44.606000",
+    "updated_date": "2026-01-16T21:15:44.606000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c4",
+    "category_id": null,
+    "type": "fill",
+    "title": "Odčítání příkladů",
+    "instructions": "Napiš výsledek příkladu",
+    "questions": [
+      {
+        "question": "3 - 1 = ?",
+        "answer": "2",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "5 - 2 = ?",
+        "answer": "3",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "7 - 3 = ?",
+        "answer": "4",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "9 - 4 = ?",
+        "answer": "5",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "10 - 5 = ?",
+        "answer": "5",
+        "options": [],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d4",
+    "created_date": "2026-01-16T21:15:44.606000",
+    "updated_date": "2026-01-16T21:15:44.606000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  },
+  {
+    "topic_id": "696aaa54817ae3f616d697c5",
+    "category_id": null,
+    "type": "quiz",
+    "title": "Které je větší?",
+    "instructions": "Vyber větší číslo",
+    "questions": [
+      {
+        "question": "Které číslo je větší?",
+        "answer": "5",
+        "options": [
+          "3",
+          "5"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Které číslo je větší?",
+        "answer": "8",
+        "options": [
+          "8",
+          "4"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Které číslo je větší?",
+        "answer": "9",
+        "options": [
+          "7",
+          "9"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      },
+      {
+        "question": "Které číslo je větší?",
+        "answer": "6",
+        "options": [
+          "2",
+          "6"
+        ],
+        "pairs": [],
+        "categories": [],
+        "words": [],
+        "audio_url": null,
+        "image_url": null,
+        "type": null,
+        "text": null
+      }
+    ],
+    "difficulty": 1,
+    "points": 10,
+    "is_test": false,
+    "id": "696aaa80817ae3f616d697d5",
+    "created_date": "2026-01-16T21:15:44.606000",
+    "updated_date": "2026-01-16T21:15:44.606000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": false,
+    "order": null,
+    "grade": null
+  }
+]

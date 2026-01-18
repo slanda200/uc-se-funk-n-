@@ -1,0 +1,25 @@
+{
+  "name": "Subject",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "N\u00e1zev p\u0159edm\u011btu (Matika, \u010ce\u0161tina, Angli\u010dtina, Psan\u00ed)"
+    },
+    "icon": {
+      "type": "string",
+      "description": "N\u00e1zev ikony"
+    },
+    "color": {
+      "type": "string",
+      "description": "Barva p\u0159edm\u011btu"
+    },
+    "order": {
+      "type": "number",
+      "description": "Po\u0159ad\u00ed zobrazen\u00ed"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

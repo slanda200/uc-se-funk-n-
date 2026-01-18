@@ -1,0 +1,5 @@
+name,icon,color,order,id,created_date,updated_date,created_by_id,created_by,is_sample
+"Čeština","BookOpen","emerald","1","696aaa54817ae3f616d697bf","2026-01-16T21:15:00.865000","2026-01-16T21:30:35.676000","696aa9031255ba6e2495e926","f.masek68@gmail.com","false"
+"Angličtina","Globe","orange","2","696aaa54817ae3f616d697c0","2026-01-16T21:15:00.865000","2026-01-16T21:30:38.364000","696aa9031255ba6e2495e926","f.masek68@gmail.com","false"
+"Psaní","Keyboard","purple","4","696aaa54817ae3f616d697c1","2026-01-16T21:15:00.865000","2026-01-16T21:30:40.286000","696aa9031255ba6e2495e926","f.masek68@gmail.com","false"
+"Matematika","Calculator","blue","3","696aaa54817ae3f616d697be","2026-01-16T21:15:00.864000","2026-01-16T21:30:36.871000","696aa9031255ba6e2495e926","f.masek68@gmail.com","false"

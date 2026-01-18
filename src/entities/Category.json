@@ -1,0 +1,26 @@
+{
+  "name": "Category",
+  "type": "object",
+  "properties": {
+    "topic_id": {
+      "type": "string",
+      "description": "ID t\u00e9matu"
+    },
+    "name": {
+      "type": "string",
+      "description": "N\u00e1zev kategorie (nap\u0159. 'Slova po B', 'Slova po L')"
+    },
+    "description": {
+      "type": "string",
+      "description": "Popis kategorie"
+    },
+    "order": {
+      "type": "number",
+      "description": "Po\u0159ad\u00ed zobrazen\u00ed"
+    }
+  },
+  "required": [
+    "topic_id",
+    "name"
+  ]
+}

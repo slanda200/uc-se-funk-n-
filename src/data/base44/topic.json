@@ -1,0 +1,38 @@
+[
+  {
+    "subject": "Čeština",
+    "grade": 1,
+    "name": "Písmenka A až Ž",
+    "description": "Poznáváme celou abecedu",
+    "order": 1,
+    "icon": "",
+    "explanation": "🔤 ČESKÁ ABECEDA\n\nČeská abeceda má 42 písmen:\nA Á B C Č D Ď E É Ě F G H Ch I Í J K L M N Ň O Ó P Q R Ř S Š T Ť U Ú Ů V W X Y Ý Z Ž\n\n✨ SAMOHLÁSKY (10):\nA, Á, E, É, Ě, I, Í, O, Ó, U, Ú, Ů, Y, Ý\nSamohlásky jsou písmena, která můžeme zazpívat.\nNapř.: A jak v AUTO, E jak v PES\n\n🎯 SOUHLÁSKY (32):\nVšechna ostatní písmena\nNapř.: B jak v BABIČKA, M jak v MÁMA\n\n📝 SLABIKY:\nSlabika je část slova, kterou vyslovíme najednou.\nMA-MA má 2 slabiky\nAU-TO má 2 slabiky\nPES má 1 slabiku\n\n💡 TIPY:\n• Každé písmeno má velkou a malou podobu (A/a, B/b)\n• Jména píšeme s velkým písmenem na začátku\n• Na začátku věty píšeme vždy velké písmeno",
+    "id": "696cd34015988b18c878c0a9",
+    "created_date": "2026-01-18T12:34:08.412000",
+    "updated_date": "2026-01-18T12:34:08.412000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": "false",
+    "points": null,
+    "difficulty": null,
+    "is_test": false
+  },
+  {
+    "subject": "Čeština",
+    "grade": 1,
+    "name": "Vyjmenovaná slova",
+    "description": "Pravidla psaní Y/I po obojetných souhláskách",
+    "order": 2,
+    "icon": "",
+    "explanation": "📖 VYJMENOVANÁ SLOVA\n\nVyjmenovaná slova jsou slova, která si musíme zapamatovat, protože se v nich píše Y místo I.\n\n🔤 SOUHLÁSKY S VYJMENOVANÝMI SLOVY:\nB, L, M, P, S, V, Z\n\n✨ JAK TO FUNGUJE:\nPo těchto souhláskách píšeme Y ve vyjmenovaných slovech a slovech z nich odvozených.\nNapř.: být → bydlo, být → byt\n\n💡 TIPY:\n• Vyjmenovaná slova se musí naučit nazpaměť\n• Slova odvozená mají stejné psaní jako základní slovo\n• Ve všech ostatních slovech píšeme I\n\n📝 PŘÍKLADY:\nPo B: být, bydlit, obyvatel, příbytek, nábytek, dobytek\nPo L: lyko, lýtko, lyže, pelyněk, plyš\nPo M: mýt, mýdlo, hmyz, myš, mýlit se",
+    "id": "696cd2c4545b113231ba9c22",
+    "created_date": "2026-01-18T12:32:04.631000",
+    "updated_date": "2026-01-18T12:32:04.631000",
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "f.masek68@gmail.com",
+    "is_sample": "false",
+    "points": null,
+    "difficulty": null,
+    "is_test": false
+  }
+]

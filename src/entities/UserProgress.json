@@ -1,0 +1,34 @@
+{
+  "name": "UserProgress",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Email u\u017eivatele"
+    },
+    "exercise_id": {
+      "type": "string",
+      "description": "ID cvi\u010den\u00ed"
+    },
+    "completed": {
+      "type": "boolean",
+      "description": "Dokon\u010deno"
+    },
+    "score": {
+      "type": "number",
+      "description": "Sk\u00f3re v procentech"
+    },
+    "stars": {
+      "type": "number",
+      "description": "Po\u010det hv\u011bzdi\u010dek (1-3)"
+    },
+    "attempts": {
+      "type": "number",
+      "description": "Po\u010det pokus\u016f"
+    }
+  },
+  "required": [
+    "user_email",
+    "exercise_id"
+  ]
+}

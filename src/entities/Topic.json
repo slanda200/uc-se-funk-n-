@@ -1,0 +1,39 @@
+{
+  "name": "Topic",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "N\u00e1zev p\u0159edm\u011btu"
+    },
+    "grade": {
+      "type": "number",
+      "description": "T\u0159\u00edda (1-9)"
+    },
+    "name": {
+      "type": "string",
+      "description": "N\u00e1zev t\u00e9matu"
+    },
+    "description": {
+      "type": "string",
+      "description": "Popis t\u00e9matu"
+    },
+    "order": {
+      "type": "number",
+      "description": "Po\u0159ad\u00ed"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Ikona t\u00e9matu"
+    },
+    "explanation": {
+      "type": "string",
+      "description": "Vysv\u011btlivka pro \u017e\u00e1ky - z\u00e1kladn\u00ed principy a teorie k t\u00e9matu"
+    }
+  },
+  "required": [
+    "subject",
+    "grade",
+    "name"
+  ]
+}

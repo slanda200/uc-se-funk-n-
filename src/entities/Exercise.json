@@ -1,0 +1,136 @@
+{
+  "name": "Exercise",
+  "type": "object",
+  "properties": {
+    "topic_id": {
+      "type": "string",
+      "description": "ID t\u00e9matu"
+    },
+    "category_id": {
+      "type": "string",
+      "description": "ID kategorie (pro podkategorie)"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "decision",
+        "quiz",
+        "memory",
+        "fill",
+        "sort",
+        "analysis",
+        "cloze",
+        "test",
+        "listening",
+        "image"
+      ],
+      "description": "Typ cvi\u010den\u00ed: decision=Rozhodova\u010dka, quiz=Ot\u00e1zky, memory=Pexeso, fill=Vpisov\u00e1n\u00ed, sort=Roz\u0159azova\u010dka, analysis=Rozbory, cloze=Dopl\u0148ov\u00e1n\u00ed textu, test=Fin\u00e1ln\u00ed test, listening=Poslech a psan\u00ed, image=Obr\u00e1zek a psan\u00ed"
+    },
+    "title": {
+      "type": "string",
+      "description": "N\u00e1zev cvi\u010den\u00ed"
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Instrukce pro d\u011bti"
+    },
+    "questions": {
+      "type": "array",
+      "description": "Pole ot\u00e1zek/\u00fakol\u016f",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pairs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "left": {
+                  "type": "string"
+                },
+                "right": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "text": {
+            "type": "string"
+          },
+          "words": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "word": {
+                  "type": "string"
+                },
+                "color": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "type": {
+            "type": "string"
+          },
+          "audio_url": {
+            "type": "string",
+            "description": "URL audio nahr\u00e1vky pro poslech"
+          },
+          "image_url": {
+            "type": "string",
+            "description": "URL obr\u00e1zku"
+          }
+        }
+      }
+    },
+    "difficulty": {
+      "type": "number",
+      "description": "Obt\u00ed\u017enost 1=lehk\u00e9, 2=st\u0159edn\u00ed, 3=t\u011b\u017ek\u00e9"
+    },
+    "points": {
+      "type": "number",
+      "description": "Body za spln\u011bn\u00ed"
+    },
+    "is_test": {
+      "type": "boolean",
+      "description": "Je to fin\u00e1ln\u00ed test?"
+    }
+  },
+  "required": [
+    "topic_id",
+    "type",
+    "title",
+    "difficulty"
+  ]
+}
