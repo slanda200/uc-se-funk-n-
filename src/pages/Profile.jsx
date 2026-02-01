@@ -183,8 +183,12 @@ export default function Profile() {
     queryFn: async () => {
       const rows = await fetchMyProgress();
       return rows || [];
+
     },
     enabled: !!user?.id,
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   });
 
   // ✅ Denní aktivita (kolik cvičení denně) – pro kalendář v profilu
@@ -207,6 +211,10 @@ export default function Profile() {
       return data || [];
     },
     enabled: !!user?.id,
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
+
   });
 
   // --- Normalizace progressu (Supabase) ---
@@ -234,11 +242,14 @@ export default function Profile() {
   }, []);
 
   const getExerciseProgress = (exerciseId) => {
-    if (hasSbProgress) {
-      return sbProgressMap.get(String(exerciseId)) || null;
-    }
+    const id = String(exerciseId);
 
-    const lp = localProgressMap[String(exerciseId)] || localProgressMap[exerciseId];
+    // 1) preferuj Supabase
+    const sb = sbProgressMap.get(id);
+    if (sb) return sb;
+
+    // 2) fallback na localStorage (jen když Supabase pro tohle id nic nemá)
+    const lp = localProgressMap[id] || localProgressMap[exerciseId];
     if (!lp) return null;
 
     return {
@@ -247,6 +258,7 @@ export default function Profile() {
       score: Number(lp.bestScore ?? lp.score ?? 0) || 0,
     };
   };
+
 
   // --- Aktivita: mapování den -> počet cvičení ---
   const activityMap = useMemo(() => {
@@ -382,7 +394,9 @@ export default function Profile() {
       const p = getExerciseProgress(ex.id);
       if (!p) continue;
 
-      if (p.completed) totalCompleted += 1;
+      if (p.completed || (p.score ?? 0) > 0 || (p.stars ?? 0) > 0) {
+     totalCompleted += 1;
+      }
       totalStars += p.stars || 0;
 
       sumScore += p.score || 0;
