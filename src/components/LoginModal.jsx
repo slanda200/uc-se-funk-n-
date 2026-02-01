@@ -194,11 +194,12 @@ function LoginModal({ open, onClose }) {
             {/* Email */}
             <Input
               ref={emailRef}
+              type="email"
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
-              autoComplete="email"
+              autoComplete={mode === 'signup' ? 'email' : 'username'}
               disabled={loading}
             />
 
