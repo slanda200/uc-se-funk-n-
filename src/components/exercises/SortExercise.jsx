@@ -1,148 +1,236 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
-import confetti from './confetti';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, XCircle, RotateCcw } from "lucide-react";
+import confetti from "./confetti";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
-export default function SortExercise({ exercise, onComplete }) {
+export default function SortExercise({
+  exercise,
+  onComplete,
+  onStreak,
+  onAnswerResult, // fallback
+  onAttemptItem, // ✅ pro AttemptReview
+}) {
+  const questions = exercise?.questions || [];
+
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [items, setItems] = useState(() => {
-    const current = exercise.questions[0];
-    const allItems = current.categories?.flatMap(cat => cat.items) || [];
+
+  // ✅ Množina otázek, které už jsou perfektně splněné (počítáme po otázkách, ne po pokusech)
+  const [perfectSet, setPerfectSet] = useState(() => new Set());
+
+  const current = questions[currentIndex];
+
+  const initialPool = useMemo(() => {
+    const allItems = current?.categories?.flatMap((cat) => cat.items) || [];
     return allItems;
-  });
+  }, [current]);
+
+  const [items, setItems] = useState(initialPool);
   const [categoryItems, setCategoryItems] = useState({});
   const [showResult, setShowResult] = useState(false);
-  const [score, setScore] = useState(0);
 
-  const current = exercise.questions[currentIndex];
+  // ✅ skóre = počet unikátních perfektně splněných otázek
+  const score = perfectSet.size;
+
+  // ✅ streak jen 1× (prefer onStreak, fallback onAnswerResult)
+  const reportStreak = (correct) => {
+    if (onStreak) return onStreak(correct);
+    onAnswerResult?.(correct);
+  };
 
   const onDragEnd = (result) => {
     if (showResult) return;
     const { source, destination } = result;
     if (!destination) return;
 
-    // Moving from items pool to category
-    if (source.droppableId === 'items' && destination.droppableId !== 'items') {
+    if (source.droppableId === "items" && destination.droppableId !== "items") {
       const newItems = [...items];
       const [movedItem] = newItems.splice(source.index, 1);
       setItems(newItems);
 
-      setCategoryItems(prev => ({
+      setCategoryItems((prev) => ({
         ...prev,
-        [destination.droppableId]: [...(prev[destination.droppableId] || []), movedItem]
+        [destination.droppableId]: [...(prev[destination.droppableId] || []), movedItem],
       }));
+      return;
     }
-    // Moving from category back to items pool
-    else if (source.droppableId !== 'items' && destination.droppableId === 'items') {
+
+    if (source.droppableId !== "items" && destination.droppableId === "items") {
       const categoryName = source.droppableId;
       const newCategoryItems = [...(categoryItems[categoryName] || [])];
       const [movedItem] = newCategoryItems.splice(source.index, 1);
 
-      setCategoryItems(prev => ({
+      setCategoryItems((prev) => ({
         ...prev,
-        [categoryName]: newCategoryItems
+        [categoryName]: newCategoryItems,
       }));
 
       const newItems = [...items];
       newItems.splice(destination.index, 0, movedItem);
       setItems(newItems);
+      return;
     }
-    // Moving between categories
-    else if (source.droppableId !== destination.droppableId) {
+
+    if (source.droppableId !== destination.droppableId) {
       const sourceCat = source.droppableId;
       const destCat = destination.droppableId;
-      
+
       const sourceItems = [...(categoryItems[sourceCat] || [])];
       const destItems = [...(categoryItems[destCat] || [])];
-      
+
       const [movedItem] = sourceItems.splice(source.index, 1);
       destItems.splice(destination.index, 0, movedItem);
-      
-      setCategoryItems(prev => ({
+
+      setCategoryItems((prev) => ({
         ...prev,
         [sourceCat]: sourceItems,
-        [destCat]: destItems
+        [destCat]: destItems,
       }));
+      return;
     }
-    // Reordering within same category
-    else if (source.droppableId === destination.droppableId && source.droppableId !== 'items') {
+
+    if (source.droppableId === destination.droppableId && source.droppableId !== "items") {
       const categoryName = source.droppableId;
       const newItems = [...(categoryItems[categoryName] || [])];
       const [movedItem] = newItems.splice(source.index, 1);
       newItems.splice(destination.index, 0, movedItem);
-      
-      setCategoryItems(prev => ({
+
+      setCategoryItems((prev) => ({
         ...prev,
-        [categoryName]: newItems
+        [categoryName]: newItems,
       }));
     }
   };
 
-  const handleCheck = () => {
+  const calcQuestionScore = () => {
     let correctCount = 0;
     let totalCount = 0;
 
-    current.categories.forEach(category => {
+    (current?.categories || []).forEach((category) => {
       const placedItems = categoryItems[category.name] || [];
-      category.items.forEach(correctItem => {
+      (category.items || []).forEach((correctItem) => {
         totalCount++;
-        if (placedItems.includes(correctItem)) {
-          correctCount++;
-        }
+        if (placedItems.includes(correctItem)) correctCount++;
       });
     });
 
-    const questionScore = Math.round((correctCount / totalCount) * 100);
-    if (questionScore === 100) {
-      confetti();
-      setScore(score + 1);
+    const percentage = totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0;
+    return { correctCount, totalCount, percentage };
+  };
+
+  const buildPlacementSummary = () => {
+    const lines = (current?.categories || []).map((cat) => {
+      const placed = categoryItems[cat.name] || [];
+      return `${cat.name}: ${placed.length ? placed.join(", ") : "—"}`;
+    });
+    return lines.join("\n");
+  };
+
+  const buildCorrectSummary = () => {
+    const lines = (current?.categories || []).map((cat) => {
+      return `${cat.name}: ${(cat.items || []).join(", ")}`;
+    });
+    return lines.join("\n");
+  };
+
+  const handleCheck = () => {
+    const { correctCount, totalCount, percentage } = calcQuestionScore();
+    const isPerfect = percentage === 100;
+
+    // ✅ streak jen po "Zkontrolovat"
+    reportStreak(isPerfect);
+
+    // ✅ attempt log (pro review) — 1× na check
+    onAttemptItem?.({
+      index: currentIndex,
+      type: "sort",
+      prompt: current?.question || "Roztřiď do kategorií",
+      userAnswer: buildPlacementSummary(),
+      correctAnswer: buildCorrectSummary(),
+      correct: isPerfect,
+      explanation:
+        current?.explanation ||
+        (isPerfect
+          ? `Perfektní! ${correctCount}/${totalCount} (${percentage}%).`
+          : `${correctCount}/${totalCount} správně (${percentage}%).`),
+      meta: { correctCount, totalCount, percentage },
+    });
+
+    // ✅ Přičítáme bod jen pokud tato otázka ještě nebyla perfektní
+    if (isPerfect) {
+      setPerfectSet((prev) => {
+        const next = new Set(prev);
+        const wasNew = !next.has(currentIndex);
+        next.add(currentIndex);
+        if (wasNew) confetti();
+        return next;
+      });
     }
+
     setShowResult(true);
 
     setTimeout(() => {
-      if (currentIndex < exercise.questions.length - 1) {
-        const nextQuestion = exercise.questions[currentIndex + 1];
-        const nextItems = nextQuestion.categories?.flatMap(cat => cat.items) || [];
-        setCurrentIndex(currentIndex + 1);
+      if (currentIndex < questions.length - 1) {
+        const nextIndex = currentIndex + 1;
+        const nextQuestion = questions[nextIndex];
+        const nextItems = nextQuestion?.categories?.flatMap((cat) => cat.items) || [];
+
+        setCurrentIndex(nextIndex);
         setItems(nextItems);
         setCategoryItems({});
         setShowResult(false);
       } else {
-        const finalScore = Math.round(((score + (questionScore === 100 ? 1 : 0)) / exercise.questions.length) * 100);
+        // ✅ finální výpočet jen podle počtu perfektních otázek (unikátně)
+        const finalPerfect = (() => {
+          // pokud byla poslední otázka právě perfektní, Set update se může propsat až po renderu,
+          // proto to spočítáme "bezpečně":
+          const already = perfectSet.has(currentIndex);
+          return perfectSet.size + (isPerfect && !already ? 1 : 0);
+        })();
+
+        const finalScore = questions.length > 0 ? Math.round((finalPerfect / questions.length) * 100) : 0;
+
+        // hvězdy můžeš upravit jak chceš
         const stars = finalScore >= 80 ? 3 : finalScore >= 60 ? 2 : 1;
-        onComplete(finalScore, stars);
+
+        onComplete?.(finalScore, stars);
       }
     }, 2500);
   };
 
   const handleRetry = () => {
-    const allItems = current.categories?.flatMap(cat => cat.items) || [];
+    const allItems = current?.categories?.flatMap((cat) => cat.items) || [];
     setItems(allItems);
     setCategoryItems({});
     setShowResult(false);
   };
 
   const isCorrectPlacement = (item, categoryName) => {
-    const correctCategory = current.categories.find(cat => cat.items.includes(item));
+    const correctCategory = (current?.categories || []).find((cat) => (cat.items || []).includes(item));
     return correctCategory?.name === categoryName;
   };
 
   const allPlaced = items.length === 0;
 
+  if (!current) return null;
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-6">
         <div className="flex justify-between text-sm text-slate-600 mb-2">
-          <span>Úkol {currentIndex + 1} z {exercise.questions.length}</span>
-          <span>Skóre: {score}/{exercise.questions.length}</span>
+          <span>
+            Úkol {currentIndex + 1} z {questions.length}
+          </span>
+          <span>
+            Skóre: {score}/{questions.length}
+          </span>
         </div>
       </div>
 
       <div className="bg-white rounded-2xl p-6 shadow-lg mb-6">
         <h3 className="text-xl font-bold text-slate-800 mb-4">{current.question}</h3>
-        
+
         <DragDropContext onDragEnd={onDragEnd}>
           {/* Items pool */}
           <div className="mb-6">
@@ -153,21 +241,21 @@ export default function SortExercise({ exercise, onComplete }) {
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                   className={`min-h-[80px] p-4 rounded-xl border-2 border-dashed transition-colors ${
-                    snapshot.isDraggingOver ? 'border-blue-400 bg-blue-50' : 'border-slate-300 bg-slate-50'
+                    snapshot.isDraggingOver ? "border-blue-400 bg-blue-50" : "border-slate-300 bg-slate-50"
                   }`}
                 >
                   <div className="flex flex-wrap gap-2">
                     {items.map((item, index) => (
-                      <Draggable key={item} draggableId={item} index={index} isDragDisabled={showResult}>
+                      <Draggable key={`${item}-${index}`} draggableId={`${item}-${index}`} index={index} isDragDisabled={showResult}>
                         {(provided, snapshot) => (
                           <div
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                             className={`px-4 py-2 rounded-lg font-medium text-lg cursor-move transition-all ${
-                              snapshot.isDragging 
-                                ? 'bg-blue-500 text-white shadow-lg scale-105' 
-                                : 'bg-slate-200 text-slate-800 hover:bg-slate-300'
+                              snapshot.isDragging
+                                ? "bg-blue-500 text-white shadow-lg scale-105"
+                                : "bg-slate-200 text-slate-800 hover:bg-slate-300"
                             }`}
                           >
                             {item}
@@ -187,26 +275,29 @@ export default function SortExercise({ exercise, onComplete }) {
 
           {/* Categories */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            {current.categories?.map((category) => (
+            {(current.categories || []).map((category) => (
               <Droppable key={category.name} droppableId={category.name}>
                 {(provided, snapshot) => (
                   <div
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     className={`border-2 rounded-xl p-4 transition-colors ${
-                      snapshot.isDraggingOver 
-                        ? 'border-emerald-400 bg-emerald-50' 
-                        : 'border-slate-200 bg-white'
+                      snapshot.isDraggingOver ? "border-emerald-400 bg-emerald-50" : "border-slate-200 bg-white"
                     }`}
                   >
                     <h4 className="font-bold text-slate-700 mb-3 text-lg">{category.name}</h4>
                     <div className="space-y-2 min-h-[120px]">
                       {(categoryItems[category.name] || []).map((item, index) => {
-                        const isCorrect = showResult && isCorrectPlacement(item, category.name);
-                        const isWrong = showResult && !isCorrectPlacement(item, category.name);
-                        
+                        const ok = showResult && isCorrectPlacement(item, category.name);
+                        const bad = showResult && !isCorrectPlacement(item, category.name);
+
                         return (
-                          <Draggable key={item} draggableId={item} index={index} isDragDisabled={showResult}>
+                          <Draggable
+                            key={`${category.name}-${item}-${index}`}
+                            draggableId={`${category.name}-${item}-${index}`}
+                            index={index}
+                            isDragDisabled={showResult}
+                          >
                             {(provided, snapshot) => (
                               <div
                                 ref={provided.innerRef}
@@ -214,19 +305,17 @@ export default function SortExercise({ exercise, onComplete }) {
                                 {...provided.dragHandleProps}
                                 className={`px-4 py-3 rounded-lg font-medium text-lg transition-all ${
                                   snapshot.isDragging
-                                    ? 'bg-blue-500 text-white shadow-lg scale-105'
-                                    : isCorrect
-                                      ? 'bg-emerald-100 text-emerald-700 border-2 border-emerald-300'
-                                      : isWrong
-                                        ? 'bg-red-100 text-red-700 border-2 border-red-300'
-                                        : 'bg-blue-50 text-blue-700 border border-blue-200 cursor-move hover:bg-blue-100'
+                                    ? "bg-blue-500 text-white shadow-lg scale-105"
+                                    : ok
+                                    ? "bg-emerald-100 text-emerald-700 border-2 border-emerald-300"
+                                    : bad
+                                    ? "bg-red-100 text-red-700 border-2 border-red-300"
+                                    : "bg-blue-50 text-blue-700 border border-blue-200 cursor-move hover:bg-blue-100"
                                 }`}
                               >
                                 <div className="flex items-center justify-between">
                                   <span>{item}</span>
-                                  {showResult && (
-                                    isCorrect ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />
-                                  )}
+                                  {showResult && (ok ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />)}
                                 </div>
                               </div>
                             )}
@@ -250,6 +339,7 @@ export default function SortExercise({ exercise, onComplete }) {
               Opravit
             </Button>
           )}
+
           {!showResult && allPlaced && (
             <Button onClick={handleCheck} className="flex-1 h-12 text-lg bg-gradient-to-r from-blue-500 to-purple-500">
               Zkontrolovat
@@ -259,23 +349,9 @@ export default function SortExercise({ exercise, onComplete }) {
 
         {/* Result */}
         {showResult && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-4 p-4 rounded-xl bg-slate-50"
-          >
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-4 p-4 rounded-xl bg-slate-50">
             {(() => {
-              let correctCount = 0;
-              let totalCount = 0;
-              current.categories.forEach(cat => {
-                const placed = categoryItems[cat.name] || [];
-                cat.items.forEach(item => {
-                  totalCount++;
-                  if (placed.includes(item)) correctCount++;
-                });
-              });
-              const percentage = Math.round((correctCount / totalCount) * 100);
-              
+              const { correctCount, totalCount, percentage } = calcQuestionScore();
               return (
                 <div className="text-center">
                   <p className="text-lg font-bold text-slate-800">

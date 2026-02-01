@@ -6917,5 +6917,1863 @@
     "is_sample": false,
     "order": null,
     "grade": null
+  },
+  {
+   "topic_id": "6972c3f0a1b2c3d4e5f60731",
+   "category_id": "6972c420a1b2c3d4e5f60741",
+    "type": "fill",
+   "title": "Doplň chybějící písmeno – B (lehké)",
+   "instructions": "Doplň chybějící písmeno (i / y) a napiš celé slovo správně.",
+   "questions": [
+    {
+      "question": "b__k (zvíře v lese)",
+      "answer": "býk",
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": null,
+      "audio_url": null,
+      "image_url": null
+    },
+    {
+      "question": "b__dlit (kde žiješ)",
+      "answer": "bydlit",
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": null,
+      "audio_url": null,
+      "image_url": null
+    },
+    {
+      "question": "b__t (existovat)",
+      "answer": "být",
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": null,
+      "audio_url": null,
+      "image_url": null
+    },
+    {
+      "question": "b__lina (tráva, rostlina)",
+      "answer": "bylina",
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": null,
+      "audio_url": null,
+      "image_url": null
+    },
+    {
+      "question": "b__strý (rychlý / chytrý)",
+      "answer": "bystrý",
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": null,
+      "audio_url": null,
+      "image_url": null
+    }
+  ],
+    "difficulty": 1,
+    "points": 10,
+   "is_test": false,
+    "order": 1,
+    "id": "vyjm3_b_fill_01",
+    "created_date": "2026-01-21T00:00:00.000000",
+    "updated_date": "2026-01-21T00:00:00.000000",
+   "created_by_id": "local",
+    "created_by": "local",
+    "is_sample": "false",
+    "grade": null
+  }, 
+  {
+    "topic_id": "6972c3f0a1b2c3d4e5f60731",
+   "category_id": "6972c420a1b2c3d4e5f60741",
+   "type": "cloze",
+   "title": "Vyjmenovaná slova po B – doplň kliknutím",
+   "instructions": "Doplň chybějící písmeno kliknutím na správnou variantu.",
+   "pickCount": 20,
+   "questions": [
+    
+   {
+      "text": "b___t",
+      "answer": "ý",
+      "options": ["i","y","í","ý"],
+      "explanation": "Je to vyjmenované slovo být → píšeme ý."
+    },
+    {
+      "text": "b___dlit",
+      "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Je to vyjmenované slovo bydlet → píšeme y."
+    },
+    {
+     "text": "b___dlo",
+      "answer": "y",
+      "options": ["i","y","í","ý"],
+      "explanation": "Je to vyjmenované slovo bydlo → píšeme y."
+    },
+   {
+     "text": "b___tost",
+     "answer": "y",
+     "options": ["i","y","í","ý"],
+      "explanation": "Je to vyjmenované slovo bystrost → píšeme y."
+   },
+   {
+      "text": "b___strý",
+     "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Je to vyjmenované slovo bystrý → píšeme y."
+   },
+   {
+     "text": "b___lina",
+     "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Je to vyjmenované slovo bylina → píšeme y."
+   },
+   {
+     "text": "b___linka",
+     "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bylinka je příbuzné ke slovu bylina → píšeme y."
+   },
+   {
+     "text": "b___vat",
+     "answer": "ý",
+     "options": ["i","y","í","ý"],
+     "explanation": "Je to vyjmenované slovo bývat → píšeme ý."
+   },
+   {
+     "text": "náb___t",
+     "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo nábytek je příbuzné ke slovu být → píšeme y."
+   },
+   {
+     "text": "přib___t",
+     "answer": "ý",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo přibýt je příbuzné ke slovu být → píšeme ý."
+   },
+
+    {
+     "text": "odb___t",
+      "answer": "ý",
+     "options": ["i","y","í","ý"],
+      "explanation": "Slovo odbýt je příbuzné ke slovu být → píšeme ý."
+    },
+   {
+     "text": "zb___vat",
+     "answer": "ý",
+     "options": ["i","y","í","ý"],
+      "explanation": "Slovo zbývat je příbuzné ke slovu být → píšeme ý."
+   },
+   {
+      "text": "ub___tovat",
+      "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo ubytovat je příbuzné ke slovu být → píšeme y."
+   },
+   {
+      "text": "pob___t",
+      "answer": "y",
+      "options": ["i","y","í","ý"],
+     "explanation": "Slovo pobyt je příbuzné ke slovu být → píšeme y."
+   },  
+   {
+      "text": "b___dlení",
+     "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bydlení je příbuzné ke slovu bydlet → píšeme y."
+   },
+
+   {
+      "text": "b___k",
+     "answer": "i",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bik není vyjmenované slovo → píšeme i."
+   },
+   {
+     "text": "b___lý",
+     "answer": "i",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bilý neexistuje, správně je bílý → píšeme í."
+   },
+    {
+      "text": "b___lý",
+     "answer": "í",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bílý není vyjmenované slovo → píšeme í."
+   },
+    {
+      "text": "b___linka (autobus)",
+     "answer": "i",
+     "options": ["i","y","í","ý"],
+     "explanation": "Linka jako autobusová není od slova bylina → píšeme i."
+   },
+   {
+     "text": "b___tka",
+     "answer": "i",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bitka není vyjmenované → píšeme i."
+    },
+
+    {
+     "text": "b___tí",
+     "answer": "i",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bití je od slovesa bít → píšeme i."
+    },
+    {
+     "text": "b___č",
+     "answer": "i",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bič není vyjmenované → píšeme i."
+    },
+    {
+     "text": "b___čina",
+      "answer": "y",
+      "options": ["i","y","í","ý"],
+      "explanation": "Slovo byčina je příbuzné ke slovu býk → píšeme y."
+   },
+   {
+     "text": "b___ček",
+     "answer": "i",
+      "options": ["i","y","í","ý"],
+      "explanation": "Slovo biček není vyjmenované → píšeme i."
+   },
+   {
+     "text": "b___l",
+     "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo byl je tvar slovesa být → píšeme y."
+   },
+
+    {
+     "text": "b___la",
+      "answer": "y",
+     "options": ["i","y","í","ý"],
+      "explanation": "Slovo byla je tvar slovesa být → píšeme y."
+    } ,
+    {
+     "text": "b___li",
+     "answer": "y",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo byli je tvar slovesa být → píšeme y."
+    },
+    {
+     "text": "b___lo",
+      "answer": "y",
+      "options": ["i","y","í","ý"],
+      "explanation": "Slovo bylo je tvar slovesa být → píšeme y."
+   },
+    {
+     "text": "b___vat se",
+     "answer": "ý",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo bývat je vyjmenované → píšeme ý."
+   },
+   {
+     "text": "neb___t",
+     "answer": "ý",
+     "options": ["i","y","í","ý"],
+     "explanation": "Slovo nebýt je příbuzné ke slovu být → píšeme ý."
+    },
+
+    {
+     "text": "zb___t",
+      "answer": "ý",
+      "options": ["i","y","í","ý"],
+      "explanation": "Slovo zbýt je příbuzné ke slovu být → píšeme ý."
+   },
+    {
+      "text": "b___valý",
+      "answer": "ý",
+      "options": ["i","y","í","ý"],
+      "explanation": "Slovo bývalý je příbuzné ke slovu bývat → píšeme ý."
+    },
+    {
+     "text": "b___val",
+     "answer": "ý",
+      "options": ["i","y","í","ý"],
+     "explanation": "Slovo býval je od slovesa bývat → píšeme ý."
+   },
+    {
+     "text": "b___tost (chyba)",
+     "answer": "y",
+      "options": ["i","y","í","ý"],
+      "explanation": "Správně bystrost – vyjmenované slovo → píšeme y."
+    },
+    {
+     "text": "b___dlím",
+     "answer": "y",
+      "options": ["i","y","í","ý"],
+      "explanation": "Slovo bydlím je od slovesa bydlet → píšeme y."
+    }
+  ],
+    "difficulty": 1,
+   "points": 10,
+   "is_test": false,
+   "order": 2,
+   "id": "vyjm3_b_cloze_01",
+   "created_date": "2026-01-22T00:00:00.000000",
+   "updated_date": "2026-01-22T00:00:00.000000",
+   "created_by_id": "local",
+   "created_by": "local",
+   "is_sample": false,
+   "grade": null
+  },
+  {
+   "topic_id": "696be95cc75e09382bc70770",
+    "category_id": null,
+    "type": "match",
+    "title": "Spoj písmeno se slovem",
+    "instructions": "Klikni na písmeno vlevo a potom na správné slovo vpravo.",
+   "questions": [
+    {
+      "question": "Spoj písmeno se slovem",
+      "answer": null,
+      "options": [],
+      "pairs": [
+        { "left": "A", "right": "AUTO" },
+        { "left": "B", "right": "BOTA" },
+        { "left": "C", "right": "CITRÓN" },
+        { "left": "D", "right": "DŮM" },
+        { "left": "E", "right": "EŠUS" },
+        { "left": "K", "right": "KOČKA" },
+        { "left": "M", "right": "MÁMA" },
+        { "left": "S", "right": "SLUNCE" }
+      ],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": null,
+      "audio_url": null,
+      "image_url": null
+    }
+  ],
+    "difficulty": 1,
+   "points": 10,
+   "is_test": false,
+   "id": "EX_MATCH_ABCD_001",
+   "created_date": "2026-01-24T00:00:00.000000",
+   "updated_date": "2026-01-24T00:00:00.000000",
+   "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "local",
+   "is_sample": false,
+    "order": null,
+   "grade": 1
+  },
+  {
+   "topic_id": "696be95cc75e09382bc70770",
+   "category_id": null,
+    "type": "match",
+    "title": "Spoj písmeno se slovem",
+   "instructions": "Klikni na písmeno vlevo a spoj ho se správným slovem vpravo.",
+    "questions": [
+    {
+      "question": null,
+      "answer": null,
+      "options": [],
+      "pairs": [
+        { "left": "A", "right": "AUTO" },
+        { "left": "B", "right": "BOTA" },
+        { "left": "C", "right": "CITRÓN" },
+        { "left": "D", "right": "DŮM" },
+        { "left": "E", "right": "EŽEK" },
+        { "left": "F", "right": "FÓLIE" }
+      ],
+      "categories": [],
+      "words": [],
+      "audio_url": null,
+      "image_url": null,
+      "type": null,
+      "text": null
+    }
+  ],
+   "difficulty": 1,
+   "points": 10,
+    "is_test": false,
+    "is_sample": false,
+    "order": null,
+   "grade": null
+  },
+  {
+    "topic_id": "6972c3f0a1b2c3d4e5f60731",
+    "category_id": "6972c420a1b2c3d4e5f60741",
+    "type": "match",
+    "title": "Vyjmenovaná slova po B – spoj význam",
+    "instructions": "Spoj vyjmenované slovo s jeho významem.",
+    "questions": [
+    {
+      "question": null,
+      "answer": null,
+      "options": [],
+      "pairs": [
+        { "left": "být", "right": "existovat" },
+        { "left": "bydlet", "right": "mít domov" },
+        { "left": "obyvatel", "right": "člověk, který někde žije" },
+        { "left": "byt", "right": "místo, kde bydlíme" },
+        { "left": "příbytek", "right": "obydlí" },
+        { "left": "nábytek", "right": "stůl, židle, skříň…" },
+        { "left": "dobytek", "right": "krávy, ovce apod." },
+        { "left": "bylina", "right": "rostlina, tráva" }
+      ],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": null,
+      "audio_url": null,
+      "image_url": null
+    }
+  ],
+    "difficulty": 1,
+    "points": 10,
+   "is_test": false,
+    "id": "vyjm3_b_match_01",
+    "created_date": "2026-01-24T00:00:00.000000",
+   "updated_date": "2026-01-24T00:00:00.000000",
+    "created_by_id": "local",
+    "created_by": "local",
+    "is_sample": false,
+    "order": 1,
+    "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60741",
+  "type": "analysis",
+  "title": "Vyjmenovaná slova po B – obarvi i/y",
+  "instructions": "Klikni na písmeno a obarvi ho podle legendy.",
+  "legend": {
+    "blue": "I/Í ",
+    "red": "Y/Ý "
+  },
+  "questions": [
+    {
+      "question": "Obarvi doplněné písmeno ve slově: b__t (být)",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": "b ý t",
+      "words": [
+        { "word": "ý", "color": "red" }
+      ],
+      "type": null,
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Být je vyjmenované slovo po B → píšeme Ý."
+    },
+    {
+      "question": "Obarvi doplněné písmeno ve slově: b__dlit (bydlit)",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": "b y d l i t",
+      "words": [
+        { "word": "y", "color": "red" }
+      ],
+      "type": null,
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Bydlit je vyjmenované slovo po B → píšeme Y."
+    },
+    {
+      "question": "Obarvi doplněné písmeno ve slově: náb__tek (nábytek)",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": "n á b y t e k",
+      "words": [
+        { "word": "y", "color": "red" }
+      ],
+      "type": null,
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Nábytek patří k vyjmenovaným slovům po B → píšeme Y."
+    },
+    {
+      "question": "Obarvi doplněné písmeno ve slově: dob__tek (dobytek)",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": "d o b y t e k",
+      "words": [
+        { "word": "y", "color": "red" }
+      ],
+      "type": null,
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Dobytek patří k vyjmenovaným slovům po B → píšeme Y."
+    },
+    {
+      "question": "Obarvi doplněné písmeno ve slově: l__ska (líska)",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": "l í s k a",
+      "words": [
+        { "word": "í", "color": "blue" }
+      ],
+      "type": null,
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Líska není vyjmenované slovo po B → píšeme Í (měkké)."
+    },
+    {
+      "question": "Obarvi doplněné písmeno ve slově: m__t (mít)",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": "m í t",
+      "words": [
+        { "word": "í", "color": "blue" }
+      ],
+      "type": null,
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Mít není vyjmenované slovo po B → píšeme Í."
+    }
+  ],
+  "difficulty": 1,
+  "points": 10,
+  "is_test": false,
+  "id": "vyjm3_b_analysis_01",
+  "created_date": "2026-01-24T00:00:00.000000",
+  "updated_date": "2026-01-24T00:00:00.000000",
+  "created_by_id": "local",
+  "created_by": "local",
+  "is_sample": false,
+  "order": 2,
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60742",
+  "type": "sort",
+  "title": "Rozřazovačka – Lehká",
+  "instructions": "Zařaď slova do správných kategorií",
+  "legend": null,
+
+  "categories": [
+    {
+      "name": "Vyjmenovaná slova",
+      "items": ["Fyzika", "F"]
+    },
+    {
+      "name": "NEVyjmenovaná slova",
+      "items": ["Filip"]
+    }
+  ],
+
+  "questions": [
+    {
+      "question": "Zařaď slova do správných kategorií.",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [
+        {
+          "name": "Vyjmenovaná slova",
+          "items": ["Fyzika", "F"]
+        },
+        {
+          "name": "NEVyjmenovaná slova",
+          "items": ["Filip"]
+        }
+      ],
+      "text": null,
+      "words": [],
+      "type": "sort",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "ncie"
+    }
+  ],
+
+  "difficulty": 1,
+  "points": 25,
+  "is_test": false,
+  "id": "vyjm3_sort_01",
+  "created_date": "2026-01-26T00:00:00.000000",
+  "updated_date": "2026-01-26T00:00:00.000000",
+  "created_by_id": "local",
+  "created_by": "local",
+  "is_sample": false,
+  "order": 1,
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "sort",
+  "title": "Rozřazovačka – Lehká",
+  "instructions": "Zařaď slova do správných kategorií",
+  "legend": null,
+
+  "questions": [
+    {
+      "question": "Zařaď slova do správných kategorií.",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [
+        {
+          "name": "Vyjmenovaná slova",
+          "items": ["Fyzika", "F"]
+        },
+        {
+          "name": "NEVyjmenovaná slova",
+          "items": ["Filip"]
+        }
+      ],
+      "text": null,
+      "words": [],
+      "type": "sort",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "verynice"
+    }
+  ],
+
+  "difficulty": 2,
+  "points": 25,
+  "is_test": false,
+  "id": "cj3sd1",
+  "created_date": "2026-01-26T00:00:00.000000",
+  "updated_date": "2026-01-26T00:00:00.000000",
+  "created_by_id": "local",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": 1,
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "quiz",
+  "title": "Otázky - Střední",
+  "instructions": "Odpovídej na otázky",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Kolik slabik má slovo AUTO?",
+      "answer": "2",
+      "options": ["1", "2", "3"],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "quiz",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Slovo AUTO má dvě slabiky: AU-to."
+    },
+    {
+      "question": "Které písmeno je samohláska?",
+      "answer": "U",
+      "options": ["T", "U", "K"],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "quiz",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "U je samohláska. T a K jsou souhlásky."
+    }
+  ],
+  "difficulty": 2,
+  "points": 20,
+  "is_test": false,
+  "id": "cj3sd2",
+  "created_date": "2026-01-18T12:40:25.501000",
+  "updated_date": "2026-01-18T12:40:25.501000",
+  "created_by_id": "696aa9031255ba6e2495e926",
+  "created_by": "fukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "fill",
+  "title": "Vpisování – tvary slovesa být",
+  "instructions": "Napiš jeden nebo více tvarů slovesa „být“ (odděluj čárkou).",
+  "legend": null,
+
+  "questions": [
+    {
+      "question": "Napiš jeden nebo více tvarů slovesa „být“ v tomto formátu: byl, byli",
+      "answer": {
+        "mode": "subset",
+        "items": ["být", "byl", "byla", "byli", "bychom", "bys"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Stačí napsat alespoň jeden správný tvar slovesa „být“. Pokud napíšeš více slov, všechna musí být správná."
+    }
+  ],
+
+  "difficulty": 2,
+  "points": 15,
+  "is_test": false,
+  "id": "cj3sd3",
+  "created_date": "2026-01-26T00:00:00.000000",
+  "updated_date": "2026-01-26T00:00:00.000000",
+  "created_by_id": "local",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "match",
+  "title": "Spoj čísla",
+  "instructions": "Spoj čísla s jejich názvy",
+  "legend": null,
+
+  "questions": [
+    {
+      "question": "Spoj čísla s jejich názvy.",
+      "answer": null,
+      "options": [],
+      "pairs": [
+        { "left": "11", "right": "jedenáct" },
+        { "left": "12", "right": "dvanáct" },
+        { "left": "13", "right": "třináct" },
+        { "left": "14", "right": "čtrnáct" }
+      ],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "match",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Správné dvojice jsou: 11–jedenáct, 12–dvanáct, 13–třináct, 14–čtrnáct."
+    }
+  ],
+
+  "difficulty": 2,
+  "points": 10,
+  "is_test": false,
+  "id": "cj3sd4",
+  "created_date": "2026-01-16T21:49:00.431000",
+  "updated_date": "2026-01-16T21:49:00.431000",
+  "created_by_id": "696aa9031255ba6e2495e926",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "decision",
+  "title": "Rozhodovačka - Střední",
+  "instructions": "Vyber správnou odpověď",
+  "legend": null,
+
+  "questions": [
+    {
+      "question": "Je písmeno O samohláska?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "decision",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Ano. O je samohláska."
+    },
+    {
+      "question": "Je písmeno K souhláska?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "decision",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Ano. K je souhláska."
+    }
+  ],
+
+  "difficulty": 2,
+  "points": 15,
+  "is_test": false,
+  "id": "cj3sd5",
+  "created_date": "2026-01-18T12:40:25.501000",
+  "updated_date": "2026-01-18T12:40:25.501000",
+  "created_by_id": "696aa9031255ba6e2495e926",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "cloze",
+  "title": "Doplňování - TATA",
+  "instructions": "Doplň chybějící písmena kliknutím na správnou variantu",
+  "legend": null,
+  "questions": [
+    {
+      "question": null,
+      "text": "B___t doma",
+      "answer": "pes",
+      "options": ["pes", "Í", "Y", "Ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'být' patří mezi vyjmenovaná slova po B, proto tvrdé y.",
+      "pairs": [],
+      "categories": [],
+      "words": [],
+      "audio_url": null,
+      "image_url": null
+    }
+  ],
+  "difficulty": 2,
+  "points": 15,
+  "is_test": false,
+  "id": "cj3sd6",
+  "created_date": "2026-01-18T13:20:37.215000",
+  "updated_date": "2026-01-18T13:20:37.215000",
+  "created_by_id": "696aa9031255ba6e2495e926",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "analysis",
+  "title": "Rozbory - AUTO",
+  "instructions": "Klikni na písmeno a obarvi ho podle legendy.",
+  "legend": {
+    "red": "Samohlásky",
+    "blue": "Souhlásky"
+  },
+  "questions": [
+    {
+      "question": "Označ písmena ve slově AUTO",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": "Au U T O",
+      "words": [
+        { "word": "Au", "color": "red" },
+        { "word": "U", "color": "red" },
+        { "word": "T", "color": "blue" },
+        { "word": "O", "color": "red" }
+      ],
+      "type": "analysis",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "A, U a O jsou samohlásky (červeně). T je souhláska (modře)."
+    }
+  ],
+  "difficulty": 2,
+  "points": null,
+  "is_test": false,
+  "id": "cj3sd7",
+  "created_date": "2026-01-18T13:20:37.215000",
+  "updated_date": "2026-01-18T13:20:37.215000",
+  "created_by_id": "696aa9031255ba6e2495e926",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "memory",
+  "title": "Pexeso - Střední",
+  "instructions": "Najdi páry stejných písmen",
+  "legend": null,
+  "questions": [
+    {
+      "question": null,
+      "answer": null,
+      "options": [],
+      "pairs": [
+        { "left": "E", "right": "e" },
+        { "left": "F", "right": "f" },
+        { "left": "G", "right": "g" },
+        { "left": "H", "right": "h" },
+        { "left": "I", "right": "i" }
+      ],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "memory",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Jde ti to",
+      "cards": []
+    }
+  ],
+  "difficulty": 2,
+  "points": 25,
+  "is_test": false,
+  "id": "cj3sd8",
+  "created_date": "2026-01-18T12:40:25.501000",
+  "updated_date": "2026-01-18T12:40:25.501000",
+  "created_by_id": "696aa9031255ba6e2495e926",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "listening",
+  "title": "Poslech a psaní - Lehké",
+  "instructions": "Poslechni si slovo a napiš ho",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Napiš, co slyšíš",
+      "answer": "PES",
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "listening",
+      "audio_url": "/audio/pes.mp3",
+      "image_url": null,
+      "explanation": "blabla",
+      "cards": []
+    }
+  ],
+  "difficulty": 2,
+  "points": 10,
+  "is_test": false,
+  "id": "cj3sd9",
+  "created_date": "2026-01-18T12:40:25.501000",
+  "updated_date": "2026-01-18T12:40:25.501000",
+  "created_by_id": "696aa9031255ba6e2495e926",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60732",
+  "category_id": null,
+  "type": "image",
+  "title": "Obrázek a psaní - Lehké",
+  "instructions": "Podívej se na obrázek a napiš, co vidíš",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Co je na obrázku?",
+      "answer": "PES",
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "image",
+      "audio_url": null,
+      "image_url": null,
+      "video_url": "/videos/bla.mp4",
+      "explanation": "je to pes",
+      "cards": []
+    }
+  ],
+  "difficulty": 2,
+  "points": 10,
+  "is_test": false,
+  "id": "cj3sd10",
+  "created_date": "2026-01-18T12:40:25.501000",
+  "updated_date": "2026-01-18T12:40:25.501000",
+  "created_by_id": "696aa9031255ba6e2495e926",
+  "created_by": "ukazka",
+  "is_sample": false,
+  "order": null,
+  "grade": null
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60743",
+  "type": "cloze",
+  "title": "Doplňování - Vyjmenovaná slova po L",
+  "instructions": "Doplň chybějící písmena kliknutím na správnou variantu",
+  "legend": null,
+  "questions": [
+    {
+      "text": "V dálce stál starý ml___n.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'mlýn' patří mezi základní vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "Děti si v zimě hrají s l___žemi.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lyže' je vyjmenované slovo po L.",
+      "image_url": null
+    },
+    {
+      "text": "Už jsi sl___šel tu novinu?",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'slyšet' je vyjmenované slovo po L.",
+      "image_url": null
+    },
+    {
+      "text": "Z komína stoupá hustý pl___n.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'plyn' je příbuzné k vyjmenovanému slovu plynout.",
+      "image_url": null
+    },
+    {
+      "text": "Mám pl___šového medvídka.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'plyš' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "L___tko mě po běhu bolí.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lýtko' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "Hlasitě pol___kej prášek.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'polykat' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "Voda v řece pomalu pl___ne.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'plynout' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "L___ška utíkala k lesu.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'liška' není vyjmenované slovo, píšeme měkké i.",
+      "image_url": null
+    },
+    {
+      "text": "Nesmíš pl___tvat jídlem.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'plýtvat' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "Pavel je l___sý na temeni hlavy.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lysý' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "Na louce roste hořký pel___něk.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'pelyněk' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "V mrazu mu l___ce zčervenaly.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'líce' (tváře) není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Na obloze se bl___skalo.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'blýskat se' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "L___dé se na sebe usmívali.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lidé' není vyjmenované slovo, píšeme vždy měkké i.",
+      "image_url": null
+    },
+    {
+      "text": "Vyl___l jsem čaj do dřezu.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'vylít' (vylil) není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Mlynářka upekla l___vance.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lívanec' není vyjmenované ani příbuzné.",
+      "image_url": null
+    },
+    {
+      "text": "L___stonoš přinesl dopis.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'listonoš' je odvozeno od slova list, které není vyjmenované.",
+      "image_url": null
+    },
+    {
+      "text": "Malý pejsek smutně vzl___kal.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'vzlykat' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "Nebuď tak l___ný.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'líný' není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Rozbila se ml___nka na kávu.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'mlýnek' je příbuzné k vyjmenovanému slovu mlýn.",
+      "image_url": null
+    },
+    {
+      "text": "Kůra stromů se nazývá l___ko.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lýko' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "V l___stí se něco pohnulo.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'listí' není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Maminka v kuchyni l___suje citrony.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'lisovat' není vyjmenované ani příbuzné.",
+      "image_url": null
+    },
+    {
+      "text": "V dálce se bl___štila hladina.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'blyštět se' je příbuzné k vyjmenovanému slovu blýskat se.",
+      "image_url": null
+    },
+    {
+      "text": "Na hlavě mu zbyla jen l___sina.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lysina' je příbuzné k vyjmenovanému slovu lysý.",
+      "image_url": null
+    },
+    {
+      "text": "Sluníčko pěkně l___že chodník.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'lízat' není vyjmenované slovo, píšeme měkké í.",
+      "image_url": null
+    },
+    {
+      "text": "L___kožrout napadl les.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lýkožrout' obsahuje vyjmenované slovo lýko.",
+      "image_url": null
+    },
+    {
+      "text": "Mlynář mlel l___skové ořechy.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lískový' (od keře líska) není vyjmenované.",
+      "image_url": null
+    },
+    {
+      "text": "Pavel l___žuje v Krkonoších.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'lyžovat' je příbuzné k vyjmenovanému slovu lyže.",
+      "image_url": null
+    }
+  ],
+  "difficulty": 1,
+  "points": 10,
+  "is_test": false,
+  "id": "cj3vslcloze1",
+  "created_date": "2026-01-29T10:00:00.000000"
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60743",
+  "type": "cloze",
+  "title": "Doplňování - Vyjmenovaná slova po L",
+  "instructions": "Doplň chybějící písmena kliknutím na správnou variantu",
+  "legend": null,
+  "questions": [
+    {
+      "text": "Slyšela jsem hlasitý vzl___kot.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'vzlýkot' je příbuzné k vyjmenovanému slovu vzlykat.",
+      "image_url": null
+    },
+    {
+      "text": "Dívka má střevíce z l___čí.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lýčí' je odvozeno od vyjmenovaného slova lýko.",
+      "image_url": null
+    },
+    {
+      "text": "To je velmi nepl___nulý projev.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'neplynulý' je příbuzné k vyjmenovanému slovu plynout.",
+      "image_url": null
+    },
+    {
+      "text": "L___kožrout zničil staré smrky.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lýkožrout' je složenina obsahující vyjmenované slovo lýko.",
+      "image_url": null
+    },
+    {
+      "text": "Pojď bl___ž k ohni, ať nezmrzneš.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'blíž' je příbuzné k blízko, což není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Zraněná srna smutně vzl___kala.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'vzlykat' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "Myslivec pol___čil na škodnou.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'líčit' (pasti) není vyjmenované ani příbuzné.",
+      "image_url": null
+    },
+    {
+      "text": "V dálce l___malo světlo v mracích.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'límat' (ve smyslu lámat/pobolívat) není vyjmenované.",
+      "image_url": null
+    },
+    {
+      "text": "Na rybníku pl___la bílá l___ska.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Vodní pták 'lyska' má bílou lysinu na čele, je tedy příbuzná k lysý.",
+      "image_url": null
+    },
+    {
+      "text": "Mlynář mlel l___skové ořechy.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lískový' je od keře líska, není to vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "To je velmi l___tostivý příběh.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lítost' není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "U stolu seděl l___sý pán.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lysý' patří mezi základní vyjmenovaná slova.",
+      "image_url": null
+    },
+    {
+      "text": "Vyl___tý čaj nešel utřít.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'vylitý' je od slovesa lít, není vyjmenované.",
+      "image_url": null
+    },
+    {
+      "text": "Loďka spl___vá po proudu řeky.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'splývat' je příbuzné k vyjmenovanému slovu plynout.",
+      "image_url": null
+    },
+    {
+      "text": "Mlynářka upekla l___vance.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lívanec' není vyjmenované ani příbuzné.",
+      "image_url": null
+    },
+    {
+      "text": "Pes má na noze nepříjemný l___šej.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lišej' není vyjmenované slovo (pozor na lyže).",
+      "image_url": null
+    },
+    {
+      "text": "L___bezná hudba se linula z pokoje.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'líbezný' píšeme s měkkým í.",
+      "image_url": null
+    },
+    {
+      "text": "Včely sbírají květinový pel___.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'pel' není vyjmenované (pozor na pelyněk).",
+      "image_url": null
+    },
+    {
+      "text": "Neslyšně se pl___žili k táboru.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'plížit se' není vyjmenované.",
+      "image_url": null
+    },
+    {
+      "text": "Prášek se musí pořádně pol___kat.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'polykat' je vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Byl to velice l___navý člověk.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'líný' a odvozeniny píšeme s měkkým í.",
+      "image_url": null
+    },
+    {
+      "text": "Na skále roste zelený l___šejník.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lišejník' je odvozeno od slova lišej (není vyjmenované).",
+      "image_url": null
+    },
+    {
+      "text": "Pl___tvání jídlem je zlozvyk.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'plýtvat' je vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Na obličeji se mu objevila l___sina.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'lysina' je příbuzné k vyjmenovanému slovu lysý.",
+      "image_url": null
+    },
+    {
+      "text": "L___ska je také název pro koně s hvězdou.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Znak na čele zvířat (lyska) je příbuzný ke slovu lysý.",
+      "image_url": null
+    },
+    {
+      "text": "V polévce pl___vala mastná oka.",
+      "answer": "a",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'plavat' není vyjmenované (pozor na plynout).",
+      "image_url": null
+    },
+    {
+      "text": "Děti si oblékly pl___šové kabáty.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'plyš' patří mezi vyjmenovaná slova po L.",
+      "image_url": null
+    },
+    {
+      "text": "Na louce roste pel___něk.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'pelyněk' je vyjmenované slovo po L.",
+      "image_url": null
+    },
+    {
+      "text": "Babička si l___čí obličej pudrem.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso 'líčit' (vymalovat se) není vyjmenované.",
+      "image_url": null
+    },
+    {
+      "text": "V dálce stál starý větrný ml___n.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slovo 'mlýn' je základní vyjmenované slovo.",
+      "image_url": null
+    }
+    ],
+  "difficulty": 2,
+  "points": 20,
+  "is_test": false,
+  "id": "cj3vslcloze2",
+  "created_date": "2026-01-29T10:00:00.000000"
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60743",
+  "type": "cloze",
+  "title": "Doplňování - Vyjmenovaná slova po L",
+  "instructions": "Doplň chybějící písmena kliknutím na správnou variantu",
+  "legend": null,
+  "questions": [
+    {
+      "text": "Stěny sálu zdobil antický vl___s.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Vlys (ozdobný pás na stěně) se píše s tvrdým y. Pozor na lis (stroj).",
+      "image_url": null
+    },
+    {
+      "text": "Dědeček v dílně l___suje mošt.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Sloveso lisovat (stlačovat) není vyjmenované. Pozor na vlys.",
+      "image_url": null
+    },
+    {
+      "text": "Staré provazy se vyráběly z l___čí.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lýčí je materiál vyrobený z lýka, proto píšeme tvrdé ý.",
+      "image_url": null
+    },
+    {
+      "text": "Herečka se před představením l___čí.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Líčit se (malovat se) není vyjmenované slovo. Pozor na lýčí.",
+      "image_url": null
+    },
+    {
+      "text": "L___ska je vodní pták s bílým čelem.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lyska (pták i lysý pruh na čele zvířat) je příbuzná k lysý.",
+      "image_url": null
+    },
+    {
+      "text": "L___ska obecná je keř s oříšky.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Líska (keř) není vyjmenované slovo. Pozor na lysku.",
+      "image_url": null
+    },
+    {
+      "text": "Mlynář mlel v ml___nici obilí.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Mlýnice je místnost v mlýně, slovo příbuzné k mlýn.",
+      "image_url": null
+    },
+    {
+      "text": "Včelí pel___ ulpěl na květu.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Pel (jemný prášek) není vyjmenované slovo. Pozor na pelyněk.",
+      "image_url": null
+    },
+    {
+      "text": "Nábytek byl potažen l___tkovou látkou.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lítková (látka) není vyjmenované slovo. Pozor na lýtko (sval).",
+      "image_url": null
+    },
+    {
+      "text": "Byl to sl___s, tedy vjem sluchem.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Slys (sluchový vjem) je slovo příbuzné k vyjmenovanému slyšet.",
+      "image_url": null
+    },
+    {
+      "text": "Pes se l___sal k mé noze.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lísat se (lichotit) není vyjmenované slovo. Pozor na lysý.",
+      "image_url": null
+    },
+    {
+      "text": "Země je obklopena plynulým l___pánem.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lípán (druh ryby nebo název) není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Klouby mě l___maly únavou.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Límat (lámat, bolet) není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Voda v hrnci l___kotala.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Likotat (vydávat zvuk) není vyjmenované. Pozor na vzlykat.",
+      "image_url": null
+    },
+    {
+      "text": "Můj strýc pochází z Vol___ně.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Volyně (město) se tradičně píše s tvrdým y.",
+      "image_url": null
+    },
+    {
+      "text": "Provaz se začal l___nat.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Línat (třepit se, pouštět chlupy) není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Slyšeli jsme tlukot l___dařských kladiv.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lidi, lidařský – vždy měkké i.",
+      "image_url": null
+    },
+    {
+      "text": "Dívka pol___la květiny.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Polila (od polít/lít) není vyjmenované slovo. Pozor na polykat.",
+      "image_url": null
+    },
+    {
+      "text": "Na obličeji se mu vytvořil l___šej.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lišej (kožní vyrážka) není vyjmenované slovo. Pozor na lyže.",
+      "image_url": null
+    },
+    {
+      "text": "Mlynář mlel l___vancové těsto.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lívanec není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "To je ale nehorázné pl___tvání.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Plýtvání je příbuzné k vyjmenovanému slovu plýtvat.",
+      "image_url": null
+    },
+    {
+      "text": "Změřil si mě nel___bým pohledem.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Nelibý (nepříjemný) není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Voda v potoce spl___vá s řekou.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Splývat je příbuzné k plynout.",
+      "image_url": null
+    },
+    {
+      "text": "Byl to l___tý boj.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lítý (krutý) není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "L___kožrout zničil lán lesa.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lýkožrout obsahuje vyjmenované slovo lýko.",
+      "image_url": null
+    },
+    {
+      "text": "Bl___zko našeho domu je park.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Blízko není vyjmenované slovo. Pozor na blýskat se.",
+      "image_url": null
+    },
+    {
+      "text": "Zraněné zvíře vydalo vzl___kot.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Vzlýkot je příbuzné k vzlykat.",
+      "image_url": null
+    },
+    {
+      "text": "Sluníčko pěkně l___že rány.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lízat není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "L___tko je část nohy.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lýtko patří mezi vyjmenovaná slova.",
+      "image_url": null
+    },
+    {
+      "text": "Hlasatel mluvil pl___nně.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Plynule je příbuzné k plynout.",
+      "image_url": null
+    },
+    {
+      "text": "Mám rád l___skové ořechy.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lískové (od líska) – není vyjmenované.",
+      "image_url": null
+    },
+    {
+      "text": "Auto dostalo na ledu sm___k.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Smyk je vyjmenované slovo po M. (Chyták v testu na L).",
+      "image_url": null
+    },
+    {
+      "text": "Byl to l___sý kopec.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lysý (bez porostu) je vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "V dálce se bl___skalo na časy.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Blýskat se je vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "L___šejník roste na kmeni.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lišejník není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Neslyšně se pl___žili tichou nocí.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Plížit se není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "V hrnci se vařil pel___něk.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Pelyněk je vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Změřil si mě l___tostivým pohledem.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lítostivý není vyjmenované slovo.",
+      "image_url": null
+    },
+    {
+      "text": "Plyn l___nul z trubky.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Lynul (plynul) – archaický nebo poetický tvar pro plynout.",
+      "image_url": null
+    },
+    {
+      "text": "Na hladině pl___vala mastnota.",
+      "answer": "a",
+      "options": ["i", "í", "y", "ý"],
+      "type": "cloze",
+      "explanation": "Plavat (plavala) – není vyjmenované po L.",
+      "image_url": null
+    }
+    ],
+  "difficulty": 3,
+  "points": 30,
+  "is_test": false,
+  "id": "cj3vslcloze3",
+  "created_date": "2026-01-29T10:00:00.000000"
   }
+
 ]

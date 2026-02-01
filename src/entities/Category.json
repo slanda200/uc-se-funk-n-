@@ -4,19 +4,28 @@
   "properties": {
     "topic_id": {
       "type": "string",
-      "description": "ID t\u00e9matu"
+      "description": "ID tématu (např. čeština – 3. třída)"
     },
     "name": {
       "type": "string",
-      "description": "N\u00e1zev kategorie (nap\u0159. 'Slova po B', 'Slova po L')"
+      "description": "Název kategorie (např. 'Vyjmenovaná slova', 'Abeceda A–Z')"
     },
     "description": {
       "type": "string",
-      "description": "Popis kategorie"
+      "description": "Krátký popis kategorie"
     },
     "order": {
       "type": "number",
-      "description": "Po\u0159ad\u00ed zobrazen\u00ed"
+      "description": "Pořadí zobrazení v rámci sekce"
+    },
+    "section": {
+      "type": "string",
+      "description": "Sekce předmětu",
+      "enum": [
+        "grammar",
+        "reading",
+        "writing"
+      ]
     }
   },
   "required": [

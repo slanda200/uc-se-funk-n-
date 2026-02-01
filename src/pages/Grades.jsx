@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
-import { ArrowLeft, Calculator, BookOpen, Globe, Keyboard, Star, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Calculator, BookOpen, Globe, Keyboard, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getProgressFor } from '@/lib/progressStore';
+import { supabase } from '@/lib/supabaseClient';
+import { fetchMyProgress } from '@/lib/progressApi';
 
 const icons = {
   Calculator: Calculator,
@@ -24,12 +27,17 @@ const subjectColors = {
 export default function Grades() {
   const urlParams = new URLSearchParams(window.location.search);
   const subject = urlParams.get('subject') || 'Matematika';
-  
+
   const colors = subjectColors[subject] || subjectColors['Matematika'];
-  
+
+  // ✅ Supabase user
   const { data: user } = useQuery({
-    queryKey: ['currentUser'],
-    queryFn: () => base44.auth.me(),
+    queryKey: ['sbUser'],
+    queryFn: async () => {
+      const { data, error } = await supabase.auth.getUser();
+      if (error) throw error;
+      return data?.user || null;
+    },
   });
 
   const { data: topics = [] } = useQuery({
@@ -37,11 +45,31 @@ export default function Grades() {
     queryFn: () => base44.entities.Topic.filter({ subject }),
   });
 
-  const { data: progress = [] } = useQuery({
-    queryKey: ['userProgress', user?.email],
-    queryFn: () => base44.entities.UserProgress.filter({ user_email: user?.email }),
-    enabled: !!user?.email,
+  // ✅ potřebujeme exercises, abychom spočítali progres za třídu
+  const { data: exercises = [] } = useQuery({
+    queryKey: ['exercises'],
+    queryFn: () => base44.entities.Exercise.list(),
   });
+
+  // ✅ Supabase progress rows
+  const { data: sbProgressRows = [] } = useQuery({
+    queryKey: ['sbUserProgress', user?.id],
+    queryFn: async () => {
+      const rows = await fetchMyProgress();
+      return rows || [];
+    },
+    enabled: !!user?.id,
+  });
+
+  const sbProgressMap = React.useMemo(() => {
+    const m = new Map();
+    for (const r of sbProgressRows || []) {
+      m.set(String(r.exercise_id), r);
+    }
+    return m;
+  }, [sbProgressRows]);
+
+  const hasSbProgress = !!user?.id && (sbProgressRows?.length || 0) > 0;
 
   // Group topics by grade
   const topicsByGrade = topics.reduce((acc, topic) => {
@@ -63,7 +91,7 @@ export default function Grades() {
               Zpět
             </Button>
           </Link>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,15 +100,15 @@ export default function Grades() {
             <div className={`inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-br ${colors.gradient} shadow-lg mb-6`}>
               <Keyboard className="w-10 h-10 text-white" />
             </div>
-            
+
             <h1 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
               Psaní na klávesnici
             </h1>
-            
+
             <p className="text-slate-600 mb-8 max-w-xl mx-auto">
               Nauč se psát všemi deseti prsty rychle a bez chyb!
             </p>
-            
+
             <Link to={createPageUrl('Typing')}>
               <Button className={`h-14 px-8 text-lg rounded-2xl bg-gradient-to-r ${colors.gradient}`}>
                 <Keyboard className="w-5 h-5 mr-2" />
@@ -93,6 +121,58 @@ export default function Grades() {
     );
   }
 
+  // ✅ Progres za třídu (souhrn)
+  const getGradeProgress = (grade) => {
+    const gradeTopics = topicsByGrade[grade] || [];
+    if (gradeTopics.length === 0) return { completed: 0, total: 0, stars: 0, maxStars: 0 };
+
+    const topicIds = new Set(gradeTopics.map(t => t.id));
+    const gradeExercises = exercises.filter(e => topicIds.has(e.topic_id) && !e.is_test);
+
+    if (gradeExercises.length === 0) return { completed: 0, total: 0, stars: 0, maxStars: 0 };
+
+    // Supabase-first
+    if (hasSbProgress) {
+      let completed = 0;
+      let stars = 0;
+
+      for (const ex of gradeExercises) {
+        const row = sbProgressMap.get(String(ex.id));
+        if (!row) continue;
+
+        if (row.completed) completed += 1;
+        stars += (row.best_stars ?? 0);
+      }
+
+      return {
+        completed,
+        total: gradeExercises.length,
+        stars,
+        maxStars: gradeExercises.length * 3
+      };
+    }
+
+    // local fallback
+    let completed = 0;
+    let stars = 0;
+
+    for (const ex of gradeExercises) {
+      const lp = getProgressFor(ex.id);
+      if (!lp) continue;
+
+      if (lp.completed) completed += 1;
+      const s = (lp.bestStars ?? lp.stars);
+      if (typeof s === 'number') stars += s;
+    }
+
+    return {
+      completed,
+      total: gradeExercises.length,
+      stars,
+      maxStars: gradeExercises.length * 3
+    };
+  };
+
   return (
     <div className={`min-h-screen bg-gradient-to-br from-slate-50 ${colors.bg} to-white`}>
       {/* Header */}
@@ -104,14 +184,17 @@ export default function Grades() {
               Zpět
             </Button>
           </Link>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-4"
           >
             <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-              {React.createElement(icons[subject === 'Matematika' ? 'Calculator' : subject === 'Čeština' ? 'BookOpen' : 'Globe'] || BookOpen, { className: "w-8 h-8 text-white" })}
+              {React.createElement(
+                icons[subject === 'Matematika' ? 'Calculator' : subject === 'Čeština' ? 'BookOpen' : 'Globe'] || BookOpen,
+                { className: "w-8 h-8 text-white" }
+              )}
             </div>
             <div>
               <h1 className="text-3xl md:text-4xl font-bold">{subject}</h1>
@@ -127,7 +210,10 @@ export default function Grades() {
           {grades.map((grade, index) => {
             const gradeTopics = topicsByGrade[grade] || [];
             const hasTopics = gradeTopics.length > 0;
-            
+
+            const gp = hasTopics ? getGradeProgress(grade) : { completed: 0, total: 0, stars: 0, maxStars: 0 };
+            const percent = gp.total > 0 ? Math.round((gp.completed / gp.total) * 100) : 0;
+
             return (
               <motion.div
                 key={grade}
@@ -135,14 +221,14 @@ export default function Grades() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.05 }}
               >
-                <Link 
+                <Link
                   to={hasTopics ? createPageUrl(`Topics?subject=${encodeURIComponent(subject)}&grade=${grade}`) : '#'}
                   className={!hasTopics ? 'pointer-events-none' : ''}
                 >
                   <div className={`
                     relative rounded-2xl md:rounded-3xl p-4 md:p-6 text-center transition-all
-                    ${hasTopics 
-                      ? `bg-white border-2 ${colors.border} shadow-md hover:shadow-xl hover:scale-105 cursor-pointer` 
+                    ${hasTopics
+                      ? `bg-white border-2 ${colors.border} shadow-md hover:shadow-xl hover:scale-105 cursor-pointer`
                       : 'bg-slate-100 border-2 border-slate-200 opacity-50'
                     }
                   `}>
@@ -152,21 +238,39 @@ export default function Grades() {
                     `}>
                       <span className="text-xl md:text-2xl font-bold text-white">{grade}</span>
                     </div>
-                    
+
                     <h3 className={`font-bold text-lg md:text-xl ${hasTopics ? colors.text : 'text-slate-400'}`}>
                       {grade}. třída
                     </h3>
-                    
-                    {hasTopics && (
-                      <p className="text-sm text-slate-500 mt-1">
-                        {gradeTopics.length} {gradeTopics.length === 1 ? 'téma' : gradeTopics.length < 5 ? 'témata' : 'témat'}
-                      </p>
-                    )}
-                    
-                    {!hasTopics && (
-                      <p className="text-xs text-slate-400 mt-1">
-                        Brzy
-                      </p>
+
+                    {hasTopics ? (
+                      <>
+                        <p className="text-sm text-slate-500 mt-1">
+                          {gradeTopics.length} {gradeTopics.length === 1 ? 'téma' : gradeTopics.length < 5 ? 'témata' : 'témat'}
+                        </p>
+
+                        {gp.total > 0 && (
+                          <div className="mt-3">
+                            <div className="flex items-center justify-center gap-2 text-xs text-slate-500 mb-2">
+                              <span>{gp.completed}/{gp.total}</span>
+                              <span className="text-slate-300">•</span>
+                              <div className="flex items-center gap-1">
+                                <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+                                <span>{gp.stars}/{gp.maxStars}</span>
+                              </div>
+                            </div>
+
+                            <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                              <div
+                                className={`h-full bg-gradient-to-r ${colors.gradient} rounded-full transition-all`}
+                                style={{ width: `${percent}%` }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <p className="text-xs text-slate-400 mt-1">Brzy</p>
                     )}
                   </div>
                 </Link>

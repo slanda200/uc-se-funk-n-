@@ -14,7 +14,9 @@ function filterItems(items, filterObj) {
   return items.filter((item) => {
     return Object.entries(filterObj).every(([k, v]) => {
       if (v === undefined || v === null || v === '') return true;
-      return item?.[k] === v;
+      const iv = item?.[k];
+      return String(iv) === String(v);
+
     });
   });
 }

@@ -4,38 +4,69 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 import confetti from '@/components/exercises/confetti';
 
-export default function QuizExercise({ exercise, onComplete }) {
+export default function QuizExercise({
+  exercise,
+  onComplete,
+  onStreak,
+  onAnswerResult, // fallback
+  onAttemptItem,  // ✅ REVIEW
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showResult, setShowResult] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
-  
+
   const questions = exercise.questions || [];
   const currentQuestion = questions[currentIndex];
-  
+
+  const reportStreak = (correct) => {
+    onStreak?.(correct);
+    onAnswerResult?.(correct);
+  };
+
   const checkAnswer = (answer) => {
+    if (!currentQuestion || showResult) return;
+
+    const correct = answer === currentQuestion.answer;
+
     setSelectedAnswer(answer);
     setShowResult(true);
-    
-    if (answer === currentQuestion.answer) {
-      setCorrectCount(correctCount + 1);
+
+    // ✅ streak
+    reportStreak(correct);
+
+    if (correct) {
+      setCorrectCount((c) => c + 1);
       confetti();
     }
+
+    // ✅ REVIEW ITEM (tohle je to, co ti chybělo)
+    onAttemptItem?.({
+      index: currentIndex,
+      type: "quiz",
+      prompt: currentQuestion.question || "",
+      userAnswer: answer,
+      correctAnswer: currentQuestion.answer ?? "",
+      correct,
+      explanation:
+        currentQuestion.explanation ||
+        (correct ? "Správně ✅" : "Špatně ❌"),
+    });
   };
-  
+
   const nextQuestion = () => {
-    const isCurrentCorrect = selectedAnswer === currentQuestion.answer;
-    const totalCorrect = correctCount + (isCurrentCorrect ? 1 : 0);
-    
+    if (!currentQuestion) return;
+
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((i) => i + 1);
       setSelectedAnswer(null);
       setShowResult(false);
-    } else {
-      const score = Math.round((totalCorrect / questions.length) * 100);
-      const stars = score >= 80 ? 3 : score >= 60 ? 2 : 1;
-      onComplete({ score, stars });
+      return;
     }
+
+    const score = Math.round((correctCount / questions.length) * 100);
+    const stars = score >= 80 ? 3 : score >= 60 ? 2 : 1;
+    onComplete?.({ score, stars });
   };
 
   if (!currentQuestion) {
@@ -53,14 +84,13 @@ export default function QuizExercise({ exercise, onComplete }) {
           <span>{correctCount} správně</span>
         </div>
         <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-          <motion.div 
+          <motion.div
             className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-            animate={{ width: `${((currentIndex) / questions.length) * 100}%` }}
+            animate={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
           />
         </div>
       </div>
 
-      {/* Question */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -72,15 +102,14 @@ export default function QuizExercise({ exercise, onComplete }) {
           <h3 className="text-xl md:text-2xl font-semibold text-slate-800 mb-6">
             {currentQuestion.question}
           </h3>
-          
-          {/* Options */}
+
           <div className="grid gap-3">
             {options.map((option, index) => {
               const isSelected = selectedAnswer === option;
               const isCorrect = option === currentQuestion.answer;
               const showCorrectHighlight = showResult && isCorrect;
               const showWrongHighlight = showResult && isSelected && !isCorrect;
-              
+
               return (
                 <motion.button
                   key={index}
@@ -91,7 +120,7 @@ export default function QuizExercise({ exercise, onComplete }) {
                   className={`
                     w-full p-4 md:p-5 rounded-2xl text-left font-medium transition-all
                     flex items-center justify-between
-                    ${showCorrectHighlight 
+                    ${showCorrectHighlight
                       ? 'bg-emerald-100 text-emerald-700 border-2 border-emerald-400'
                       : showWrongHighlight
                         ? 'bg-red-100 text-red-700 border-2 border-red-400'
@@ -102,28 +131,29 @@ export default function QuizExercise({ exercise, onComplete }) {
                   `}
                 >
                   <span className="flex items-center gap-3">
-                    <span className={`
-                      w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
-                      ${showCorrectHighlight 
-                        ? 'bg-emerald-200 text-emerald-700'
-                        : showWrongHighlight
-                          ? 'bg-red-200 text-red-700'
-                          : 'bg-slate-200 text-slate-600'
-                      }
-                    `}>
+                    <span
+                      className={`
+                        w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
+                        ${showCorrectHighlight
+                          ? 'bg-emerald-200 text-emerald-700'
+                          : showWrongHighlight
+                            ? 'bg-red-200 text-red-700'
+                            : 'bg-slate-200 text-slate-600'
+                        }
+                      `}
+                    >
                       {String.fromCharCode(65 + index)}
                     </span>
                     {option}
                   </span>
-                  
+
                   {showCorrectHighlight && <CheckCircle2 className="w-6 h-6 text-emerald-500" />}
                   {showWrongHighlight && <XCircle className="w-6 h-6 text-red-500" />}
                 </motion.button>
               );
             })}
           </div>
-          
-          {/* Next button */}
+
           {showResult && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}

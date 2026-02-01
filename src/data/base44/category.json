@@ -110,5 +110,52 @@
     "points": null,
     "difficulty": null,
     "is_test": false
+  },
+  { 
+    "topic_id": "6972c3f0a1b2c3d4e5f60731", 
+    "name": "B", 
+    "description": "Vyjmenovaná slova po B", 
+    "order": 1, 
+    "id": "6972c420a1b2c3d4e5f60741", 
+    "created_date": "2026-01-21T00:00:00.000000", 
+    "updated_date": "2026-01-21T00:00:00.000000", 
+    "created_by_id": "696aa9031255ba6e2495e926",
+    "created_by": "local", 
+    "is_sample": "false", 
+    "grade": null, 
+    "points": null, 
+    "difficulty": null, 
+    "is_test": false 
+  },
+  { "topic_id": "6972c3f0a1b2c3d4e5f60731", "name": "F", "description": "Vyjmenovaná slova po F", "order": 2, "id": "6972c420a1b2c3d4e5f60742", "created_date": "2026-01-21T00:00:00.000000", "updated_date": "2026-01-21T00:00:00.000000", "created_by_id": "696aa9031255ba6e2495e926", "created_by": "local", "is_sample": "false", "grade": null, "points": null, "difficulty": null, "is_test": false },
+  { "topic_id": "6972c3f0a1b2c3d4e5f60731", "name": "L", "description": "Vyjmenovaná slova po L", "order": 3, "id": "6972c420a1b2c3d4e5f60743", "created_date": "2026-01-21T00:00:00.000000", "updated_date": "2026-01-21T00:00:00.000000", "created_by_id": "696aa9031255ba6e2495e926", "created_by": "local", "is_sample": "false", "grade": null, "points": null, "difficulty": null, "is_test": false },
+  { "topic_id": "6972c3f0a1b2c3d4e5f60731", "name": "M", "description": "Vyjmenovaná slova po M", "order": 4, "id": "6972c420a1b2c3d4e5f60744", "created_date": "2026-01-21T00:00:00.000000", "updated_date": "2026-01-21T00:00:00.000000", "created_by_id": "696aa9031255ba6e2495e926", "created_by": "local", "is_sample": "false", "grade": null, "points": null, "difficulty": null, "is_test": false },
+  { "topic_id": "6972c3f0a1b2c3d4e5f60731", "name": "P", "description": "Vyjmenovaná slova po P", "order": 5, "id": "6972c420a1b2c3d4e5f60745", "created_date": "2026-01-21T00:00:00.000000", "updated_date": "2026-01-21T00:00:00.000000", "created_by_id": "696aa9031255ba6e2495e926", "created_by": "local", "is_sample": "false", "grade": null, "points": null, "difficulty": null, "is_test": false },
+  { "topic_id": "6972c3f0a1b2c3d4e5f60731", "name": "S", "description": "Vyjmenovaná slova po S", "order": 6, "id": "6972c420a1b2c3d4e5f60746", "created_date": "2026-01-21T00:00:00.000000", "updated_date": "2026-01-21T00:00:00.000000", "created_by_id": "696aa9031255ba6e2495e926", "created_by": "local", "is_sample": "false", "grade": null, "points": null, "difficulty": null, "is_test": false },
+  { "topic_id": "6972c3f0a1b2c3d4e5f60731", "name": "V", "description": "Vyjmenovaná slova po V", "order": 7, "id": "6972c420a1b2c3d4e5f60747", "created_date": "2026-01-21T00:00:00.000000", "updated_date": "2026-01-21T00:00:00.000000", "created_by_id": "696aa9031255ba6e2495e926", "created_by": "local", "is_sample": "false", "grade": null, "points": null, "difficulty": null, "is_test": false },
+  { "topic_id": "6972c3f0a1b2c3d4e5f60731", "name": "Z", "description": "Vyjmenovaná slova po Z", "order": 8, "id": "6972c420a1b2c3d4e5f60748", "created_date": "2026-01-21T00:00:00.000000", "updated_date": "2026-01-21T00:00:00.000000", "created_by_id": "696aa9031255ba6e2495e926", "created_by": "local", "is_sample": "false", "grade": null, "points": null, "difficulty": null, "is_test": false },
+  { "topic_id": "6972c3f0a1b2c3d4e5f60731", "name": "Mix", "description": "Mix vyjmenovaných slov (B/F/L/M/P/S/V/Z)", "order": 9, "id": "6972c420a1b2c3d4e5f60749", "created_date": "2026-01-21T00:00:00.000000", "updated_date": "2026-01-21T00:00:00.000000", "created_by_id": "696aa9031255ba6e2495e926", "created_by": "local", "is_sample": "false", "grade": null, "points": null, "difficulty": null, "is_test": false },
+  {
+  "topic_id": "topic_exam_pr_cz",
+  "subject": "Gramatika",
+  "grade": null,
+  "name": "Gramatika",
+  "description": "Shrnutí gramatiky k přijímacím zkouškám (CERMAT styl)",
+  "order": 1,
+  "icon": "",
+  "section": "grammar",
+  "explanation": "✍️ GRAMATIKA – PŘIJÍMAČKY\n\nTady budeš trénovat nejčastější gramatické jevy, které se objevují v přijímačkových testech.\n\n• věta a souvětí\n• interpunkce (čárka, tečka, otazník, vykřičník)\n• shoda přísudku s podmětem\n• i/y, vyjmenovaná slova\n• předložky s/z, mě/mně\n\nCíl: rychle poznat pravidlo a správně ho použít v úloze.",
+  "id": "exam_pr_cz_grammar",
+  "created_date": "2026-01-28T00:00:00.000000",
+  "updated_date": "2026-01-28T00:00:00.000000",
+  "created_by_id": "local",
+  "created_by": "local",
+  "is_sample": "false",
+  "points": null,
+  "difficulty": null,
+  "is_test": false
   }
+
+
+  
 ]

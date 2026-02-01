@@ -19,39 +19,30 @@ export function getProgressFor(exerciseId) {
   return map[exerciseId] || null;
 }
 
-/**
- * Save best result per exercise.
- * @param {string} exerciseId
- * @param {{score?: number, stars?: number, completed?: boolean}} payload
- */
 export function saveProgress(exerciseId, payload) {
   if (!exerciseId) return;
 
   const map = getProgressMap();
-  const prev = map[exerciseId] || null;
+  const prev = map[exerciseId] || {};
 
   const next = {
     exerciseId,
     completed: payload?.completed ?? true,
-    score: typeof payload?.score === "number" ? payload.score : (prev?.score ?? null),
-    stars: typeof payload?.stars === "number" ? payload.stars : (prev?.stars ?? null),
-    // “best” logika – aby se ti nezhoršovalo skóre, když to někdo zkusí znovu
-    bestScore:
-      typeof payload?.score === "number"
-        ? Math.max(prev?.bestScore ?? 0, payload.score)
-        : (prev?.bestScore ?? null),
-    bestStars:
-      typeof payload?.stars === "number"
-        ? Math.max(prev?.bestStars ?? 0, payload.stars)
-        : (prev?.bestStars ?? null),
+    score: payload?.score ?? prev.score ?? null,
+    stars: payload?.stars ?? prev.stars ?? null,
+    bestScore: Math.max(prev.bestScore ?? 0, payload?.score ?? 0),
+    bestStars: Math.max(prev.bestStars ?? 0, payload?.stars ?? 0),
+    attempts: (prev.attempts ?? 0) + 1,
     lastPlayedAt: new Date().toISOString(),
-    attempts: (prev?.attempts ?? 0) + 1,
   };
 
   map[exerciseId] = next;
   localStorage.setItem(KEY, JSON.stringify(map));
+
+  window.dispatchEvent(new Event("edu-progress"));
 }
 
 export function clearAllProgress() {
   localStorage.removeItem(KEY);
+  window.dispatchEvent(new Event("edu-progress"));
 }

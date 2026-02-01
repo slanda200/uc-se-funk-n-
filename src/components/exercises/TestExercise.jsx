@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { CheckCircle2, XCircle, ArrowRight, Star } from 'lucide-react';
 import confetti from './confetti';
 
-export default function TestExercise({ exercise, onComplete }) {
+export default function TestExercise({
+  exercise,
+  onComplete,
+
+  // ✅ NOVĚ – kompatibilita s Play (review log + případně streak)
+  onStreak,
+  onAnswerResult, // fallback
+  onAttemptItem,
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [showResult, setShowResult] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [finalScore, setFinalScore] = useState(0);
   const [finalStars, setFinalStars] = useState(0);
@@ -15,36 +22,72 @@ export default function TestExercise({ exercise, onComplete }) {
   const current = exercise.questions[currentIndex];
   const totalQuestions = exercise.questions.length;
 
+  // ✅ aby se attempt log neposlal víckrát
+  const didLogRef = useRef(false);
+
+  const normalize = (s) => (s ?? '').toString().trim().toLowerCase();
+
+  // ⚠️ NOTE: Streak v testu nedává “live” smysl (uživatel může měnit odpovědi).
+  // Proto tady streak NEPOSÍLÁME po každém kliknutí.
+  // Kdybys chtěl streak i v testu, musel by test odpovědi “zamykat” po otázce.
+
   const handleAnswer = (answer) => {
-    setAnswers(prev => ({
+    setAnswers((prev) => ({
       ...prev,
-      [currentIndex]: answer
+      [currentIndex]: answer,
     }));
+  };
+
+  const buildPrompt = (q) => {
+    if (q.type === 'fill') return `Doplň: ${q.question}`;
+    return q.question;
+  };
+
+  const logAttemptsOnce = () => {
+    if (didLogRef.current) return;
+    didLogRef.current = true;
+
+    exercise.questions.forEach((q, idx) => {
+      const userAnswer = answers[idx];
+      const correct = normalize(userAnswer) === normalize(q.answer);
+
+      onAttemptItem?.({
+        index: idx,
+        type: `test:${q.type || 'unknown'}`,
+        prompt: buildPrompt(q),
+        userAnswer: userAnswer ?? '(neodpovězeno)',
+        correctAnswer: q.answer ?? '(není definováno)',
+        correct,
+        explanation: q.explanation || (correct ? 'Správně.' : 'Špatně.'),
+        options: q.options || undefined,
+      });
+    });
   };
 
   const handleNext = () => {
     if (currentIndex < totalQuestions - 1) {
       setCurrentIndex(currentIndex + 1);
-    } else {
-      // Calculate final score
-      let correct = 0;
-      exercise.questions.forEach((q, idx) => {
-        if (answers[idx] === q.answer) {
-          correct++;
-        }
-      });
-      
-      const score = Math.round((correct / totalQuestions) * 100);
-      const stars = score >= 80 ? 3 : score >= 60 ? 2 : 1;
-      
-      setFinalScore(score);
-      setFinalStars(stars);
-      setShowReview(true);
-      
-      if (score >= 70) {
-        confetti();
-      }
+      return;
     }
+
+    // ✅ Calculate final score
+    let correctCount = 0;
+    exercise.questions.forEach((q, idx) => {
+      const ua = answers[idx];
+      if (normalize(ua) === normalize(q.answer)) correctCount++;
+    });
+
+    const score = Math.round((correctCount / totalQuestions) * 100);
+    const stars = score >= 80 ? 3 : score >= 60 ? 2 : 1;
+
+    setFinalScore(score);
+    setFinalStars(stars);
+    setShowReview(true);
+
+    // ✅ uložíme všechny otázky do AttemptReview (jednou)
+    logAttemptsOnce();
+
+    if (score >= 70) confetti();
   };
 
   const handleFinish = () => {
@@ -53,7 +96,7 @@ export default function TestExercise({ exercise, onComplete }) {
 
   const renderQuestion = () => {
     const userAnswer = answers[currentIndex];
-    
+
     if (current.type === 'decision' || current.type === 'quiz') {
       return (
         <div className="space-y-4">
@@ -67,9 +110,7 @@ export default function TestExercise({ exercise, onComplete }) {
                 onClick={() => handleAnswer(option)}
                 variant={userAnswer === option ? 'default' : 'outline'}
                 className={`h-14 text-lg ${
-                  userAnswer === option 
-                    ? 'bg-blue-500 hover:bg-blue-600 text-white' 
-                    : ''
+                  userAnswer === option ? 'bg-blue-500 hover:bg-blue-600 text-white' : ''
                 }`}
               >
                 {option}
@@ -79,7 +120,7 @@ export default function TestExercise({ exercise, onComplete }) {
         </div>
       );
     }
-    
+
     if (current.type === 'fill') {
       return (
         <div className="space-y-4">
@@ -97,7 +138,7 @@ export default function TestExercise({ exercise, onComplete }) {
         </div>
       );
     }
-    
+
     return null;
   };
 
@@ -107,7 +148,7 @@ export default function TestExercise({ exercise, onComplete }) {
       <div className="max-w-3xl mx-auto">
         <div className="bg-white rounded-2xl p-6 shadow-lg mb-6">
           <h2 className="text-2xl font-bold text-slate-800 mb-4">Výsledky testu</h2>
-          
+
           <div className="flex items-center justify-between mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
             <div>
               <p className="text-sm text-slate-600">Tvoje úspěšnost</p>
@@ -123,9 +164,7 @@ export default function TestExercise({ exercise, onComplete }) {
                 >
                   <Star
                     className={`w-8 h-8 ${
-                      star <= finalStars 
-                        ? 'text-yellow-400 fill-yellow-400' 
-                        : 'text-slate-200'
+                      star <= finalStars ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'
                     }`}
                   />
                 </motion.div>
@@ -134,12 +173,12 @@ export default function TestExercise({ exercise, onComplete }) {
           </div>
 
           <h3 className="text-lg font-bold text-slate-700 mb-4">Přehled odpovědí</h3>
-          
+
           <div className="space-y-4">
             {exercise.questions.map((q, idx) => {
               const userAnswer = answers[idx];
-              const isCorrect = userAnswer === q.answer;
-              
+              const isCorrect = normalize(userAnswer) === normalize(q.answer);
+
               return (
                 <motion.div
                   key={idx}
@@ -147,9 +186,7 @@ export default function TestExercise({ exercise, onComplete }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   className={`p-4 rounded-xl border-2 ${
-                    isCorrect 
-                      ? 'border-emerald-300 bg-emerald-50' 
-                      : 'border-red-300 bg-red-50'
+                    isCorrect ? 'border-emerald-300 bg-emerald-50' : 'border-red-300 bg-red-50'
                   }`}
                 >
                   <div className="flex items-start gap-3">
@@ -174,6 +211,12 @@ export default function TestExercise({ exercise, onComplete }) {
                         {!isCorrect && (
                           <p className="text-emerald-700">
                             <span className="font-medium">Správná odpověď:</span> {q.answer}
+                          </p>
+                        )}
+                        {/* ✅ vysvětlivka */}
+                        {(q.explanation || '') && (
+                          <p className="text-slate-500">
+                            <span className="font-medium">Vysvětlení:</span> {q.explanation}
                           </p>
                         )}
                       </div>
@@ -226,11 +269,7 @@ export default function TestExercise({ exercise, onComplete }) {
 
       <div className="flex gap-3">
         {currentIndex > 0 && (
-          <Button
-            onClick={() => setCurrentIndex(currentIndex - 1)}
-            variant="outline"
-            className="flex-1"
-          >
+          <Button onClick={() => setCurrentIndex(currentIndex - 1)} variant="outline" className="flex-1">
             Zpět
           </Button>
         )}
