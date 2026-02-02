@@ -1,291 +1,379 @@
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { CheckCircle2, XCircle, ArrowRight, Star } from 'lucide-react';
-import confetti from './confetti';
+import React from "react";
+import { motion } from "framer-motion";
+import { base44 } from "@/api/base44Client";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { CheckCircle, XCircle, ArrowRight, RotateCcw } from "lucide-react";
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function norm(s) {
+  return String(s ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+function isAnswerCorrect(expected, user) {
+  // expected: string | { mode:'subset', items:[...] }
+  if (expected && typeof expected === "object" && expected.mode === "subset" && Array.isArray(expected.items)) {
+    const u = norm(user);
+    return expected.items.some((it) => norm(it) === u);
+  }
+  return norm(expected) === norm(user);
+}
+
+/**
+ * TestExercise
+ * - pokud exercise.questions je prázdné, namixuje otázky z ostatních úloh
+ * - míchání je podle priority: category_id (pokud existuje) → jinak topic_id
+ * - drží se exercise.difficulty a bere max exercise.test_question_limit
+ */
 export default function TestExercise({
   exercise,
   onComplete,
-
-  // ✅ NOVĚ – kompatibilita s Play (review log + případně streak)
-  onStreak,
-  onAnswerResult, // fallback
   onAttemptItem,
+  onTestStats,
 }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [showReview, setShowReview] = useState(false);
-  const [finalScore, setFinalScore] = useState(0);
-  const [finalStars, setFinalStars] = useState(0);
+  const limit = Number(exercise?.test_question_limit ?? 15);
 
-  const current = exercise.questions[currentIndex];
-  const totalQuestions = exercise.questions.length;
+  const [mixed, setMixed] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
-  // ✅ aby se attempt log neposlal víckrát
-  const didLogRef = useRef(false);
+  const [index, setIndex] = React.useState(0);
+  const [selected, setSelected] = React.useState(null); // for MCQ
+  const [typed, setTyped] = React.useState(""); // for fill
+  const [submitted, setSubmitted] = React.useState(false);
+  const [isCorrect, setIsCorrect] = React.useState(null);
+  const [correctCount, setCorrectCount] = React.useState(0);
 
-  const normalize = (s) => (s ?? '').toString().trim().toLowerCase();
+  const current = mixed[index] ?? null;
+  const total = mixed.length;
 
-  // ⚠️ NOTE: Streak v testu nedává “live” smysl (uživatel může měnit odpovědi).
-  // Proto tady streak NEPOSÍLÁME po každém kliknutí.
-  // Kdybys chtěl streak i v testu, musel by test odpovědi “zamykat” po otázce.
+  // keep parent header in sync
+  React.useEffect(() => {
+    if (typeof onTestStats === "function") {
+      onTestStats({ correct: correctCount, total, current: Math.min(index + 1, total) });
+    }
+  }, [correctCount, total, index, onTestStats]);
 
-  const handleAnswer = (answer) => {
-    setAnswers((prev) => ({
-      ...prev,
-      [currentIndex]: answer,
-    }));
-  };
+  React.useEffect(() => {
+    let alive = true;
 
-  const buildPrompt = (q) => {
-    if (q.type === 'fill') return `Doplň: ${q.question}`;
-    return q.question;
-  };
+    async function load() {
+      setLoading(true);
+      try {
+        // 1) pokud už test obsahuje otázky, použijeme je (ale očekáváme už normalizovaný tvar)
+        if (Array.isArray(exercise?.questions) && exercise.questions.length > 0) {
+          const direct = exercise.questions
+            .map((q, i) => ({
+              id: q.id ?? `direct_${i}`,
+              srcType: q.type ?? exercise.type,
+              prompt: q.text ?? q.question ?? "",
+              options: Array.isArray(q.options) ? q.options : [],
+              answer: q.answer,
+              explanation: q.explanation ?? "",
+            }))
+            .slice(0, limit);
+          if (alive) {
+            setMixed(direct);
+            setIndex(0);
+            setSelected(null);
+            setTyped("");
+            setSubmitted(false);
+            setIsCorrect(null);
+            setCorrectCount(0);
+          }
+          return;
+        }
 
-  const logAttemptsOnce = () => {
-    if (didLogRef.current) return;
-    didLogRef.current = true;
+        // 2) jinak namixujeme z poolu
+        const topicId = exercise?.topic_id;
+        if (!topicId) {
+          if (alive) setMixed([]);
+          return;
+        }
 
-    exercise.questions.forEach((q, idx) => {
-      const userAnswer = answers[idx];
-      const correct = normalize(userAnswer) === normalize(q.answer);
+        const all = await base44.entities.Exercise.filter({ topic_id: topicId });
 
-      onAttemptItem?.({
-        index: idx,
-        type: `test:${q.type || 'unknown'}`,
-        prompt: buildPrompt(q),
-        userAnswer: userAnswer ?? '(neodpovězeno)',
-        correctAnswer: q.answer ?? '(není definováno)',
-        correct,
-        explanation: q.explanation || (correct ? 'Správně.' : 'Špatně.'),
-        options: q.options || undefined,
-      });
-    });
-  };
+        const sameCategory = (ex2) => {
+          const a = exercise?.category_id;
+          const b = ex2?.category_id;
+          if (a === null || typeof a === "undefined") {
+            return b === null || typeof b === "undefined";
+          }
+          return String(a) === String(b);
+        };
 
-  const handleNext = () => {
-    if (currentIndex < totalQuestions - 1) {
-      setCurrentIndex(currentIndex + 1);
+        const allowedTypes = new Set(["decision", "quiz", "cloze", "fill"]);
+
+        const pool = (all || [])
+          .filter((ex2) => !ex2?.is_test)
+          .filter((ex2) => ex2?.type !== "test")
+          .filter((ex2) => ex2?.difficulty === exercise?.difficulty)
+          .filter((ex2) => sameCategory(ex2))
+          .filter((ex2) => allowedTypes.has(ex2?.type))
+          .filter((ex2) => Array.isArray(ex2?.questions) && ex2.questions.length > 0);
+
+        const flat = [];
+        for (const ex2 of pool) {
+          for (let i = 0; i < ex2.questions.length; i++) {
+            const q = ex2.questions[i];
+            const prompt = q?.text ?? q?.question ?? "";
+            const options = Array.isArray(q?.options) ? q.options : [];
+            flat.push({
+              id: `${ex2.id || ex2.title || "ex"}_${i}`,
+              srcType: ex2.type,
+              prompt,
+              options,
+              answer: q?.answer,
+              explanation: q?.explanation ?? "",
+            });
+          }
+        }
+
+        const picked = shuffle(flat).slice(0, limit);
+
+        if (alive) {
+          setMixed(picked);
+          setIndex(0);
+          setSelected(null);
+          setTyped("");
+          setSubmitted(false);
+          setIsCorrect(null);
+          setCorrectCount(0);
+        }
+      } finally {
+        if (alive) setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      alive = false;
+    };
+  }, [exercise?.id]);
+
+  const progressPct = total > 0 ? Math.round((index / total) * 100) : 0;
+
+  const canSubmit = React.useMemo(() => {
+    if (!current) return false;
+    if (submitted) return false;
+    if (current.srcType === "fill") {
+      return norm(typed).length > 0;
+    }
+    // mcq
+    return selected !== null;
+  }, [current, submitted, selected, typed]);
+
+  const submit = React.useCallback(() => {
+    if (!current || submitted) return;
+
+    const userAnswer = current.srcType === "fill" ? typed : selected;
+    const ok = isAnswerCorrect(current.answer, userAnswer);
+
+    setSubmitted(true);
+    setIsCorrect(ok);
+    if (ok) setCorrectCount((c) => c + 1);
+
+    // push to review (pokud chceš)
+    if (typeof onAttemptItem === "function") {
+      try {
+        onAttemptItem({
+          question: current.prompt,
+          userAnswer,
+          correctAnswer: current.answer,
+          isCorrect: ok,
+          explanation: current.explanation,
+          type: current.srcType,
+        });
+      } catch {
+        // noop
+      }
+    }
+  }, [current, submitted, typed, selected, onAttemptItem]);
+
+  const next = React.useCallback(() => {
+    if (!submitted) return;
+
+    const isLast = index >= total - 1;
+    if (isLast) {
+      const scorePct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+      if (typeof onComplete === "function") {
+        onComplete({
+          score: scorePct,
+          correct: correctCount,
+          total,
+          passed: total > 0 ? correctCount >= Math.ceil(total * 0.6) : false,
+        });
+      }
       return;
     }
 
-    // ✅ Calculate final score
-    let correctCount = 0;
-    exercise.questions.forEach((q, idx) => {
-      const ua = answers[idx];
-      if (normalize(ua) === normalize(q.answer)) correctCount++;
-    });
+    setIndex((i) => i + 1);
+    setSelected(null);
+    setTyped("");
+    setSubmitted(false);
+    setIsCorrect(null);
+  }, [submitted, index, total, correctCount, onComplete]);
 
-    const score = Math.round((correctCount / totalQuestions) * 100);
-    const stars = score >= 80 ? 3 : score >= 60 ? 2 : 1;
+  const restart = React.useCallback(() => {
+    setIndex(0);
+    setSelected(null);
+    setTyped("");
+    setSubmitted(false);
+    setIsCorrect(null);
+    setCorrectCount(0);
+  }, []);
 
-    setFinalScore(score);
-    setFinalStars(stars);
-    setShowReview(true);
+  if (!exercise) {
+    return <div className="text-sm text-gray-600">Načítám…</div>;
+  }
 
-    // ✅ uložíme všechny otázky do AttemptReview (jednou)
-    logAttemptsOnce();
+  if (loading) {
+    return <div className="text-sm text-gray-600">Připravuju test…</div>;
+  }
 
-    if (score >= 70) confetti();
-  };
-
-  const handleFinish = () => {
-    onComplete(finalScore, finalStars);
-  };
-
-  const renderQuestion = () => {
-    const userAnswer = answers[currentIndex];
-
-    if (current.type === 'decision' || current.type === 'quiz') {
-      return (
-        <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">
-            {current.question}
-          </h3>
-          <div className="grid grid-cols-1 gap-3">
-            {current.options?.map((option, idx) => (
-              <Button
-                key={idx}
-                onClick={() => handleAnswer(option)}
-                variant={userAnswer === option ? 'default' : 'outline'}
-                className={`h-14 text-lg ${
-                  userAnswer === option ? 'bg-blue-500 hover:bg-blue-600 text-white' : ''
-                }`}
-              >
-                {option}
-              </Button>
-            ))}
-          </div>
-        </div>
-      );
-    }
-
-    if (current.type === 'fill') {
-      return (
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">
-            Doplň chybějící písmeno/slovo:
-          </h3>
-          <p className="text-2xl text-center mb-6 font-mono">{current.question}</p>
-          <input
-            type="text"
-            value={userAnswer || ''}
-            onChange={(e) => handleAnswer(e.target.value.toUpperCase())}
-            className="w-full text-center text-2xl p-4 border-2 border-slate-300 rounded-xl focus:border-blue-500 focus:outline-none"
-            placeholder="Tvoje odpověď..."
-          />
-        </div>
-      );
-    }
-
-    return null;
-  };
-
-  // Review screen
-  if (showReview) {
+  if (total === 0) {
     return (
-      <div className="max-w-3xl mx-auto">
-        <div className="bg-white rounded-2xl p-6 shadow-lg mb-6">
-          <h2 className="text-2xl font-bold text-slate-800 mb-4">Výsledky testu</h2>
-
-          <div className="flex items-center justify-between mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
-            <div>
-              <p className="text-sm text-slate-600">Tvoje úspěšnost</p>
-              <p className="text-3xl font-bold text-slate-800">{finalScore}%</p>
-            </div>
-            <div className="flex gap-1">
-              {[1, 2, 3].map((star) => (
-                <motion.div
-                  key={star}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: star * 0.1 }}
-                >
-                  <Star
-                    className={`w-8 h-8 ${
-                      star <= finalStars ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'
-                    }`}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          <h3 className="text-lg font-bold text-slate-700 mb-4">Přehled odpovědí</h3>
-
-          <div className="space-y-4">
-            {exercise.questions.map((q, idx) => {
-              const userAnswer = answers[idx];
-              const isCorrect = normalize(userAnswer) === normalize(q.answer);
-
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                  className={`p-4 rounded-xl border-2 ${
-                    isCorrect ? 'border-emerald-300 bg-emerald-50' : 'border-red-300 bg-red-50'
-                  }`}
-                >
-                  <div className="flex items-start gap-3">
-                    <div className={`mt-1 ${isCorrect ? 'text-emerald-600' : 'text-red-600'}`}>
-                      {isCorrect ? (
-                        <CheckCircle2 className="w-5 h-5" />
-                      ) : (
-                        <XCircle className="w-5 h-5" />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-medium text-slate-800 mb-2">
-                        {idx + 1}. {q.question}
-                      </p>
-                      <div className="text-sm space-y-1">
-                        <p className="text-slate-600">
-                          <span className="font-medium">Tvoje odpověď:</span>{' '}
-                          <span className={isCorrect ? 'text-emerald-700' : 'text-red-700'}>
-                            {userAnswer || '(neodpovězeno)'}
-                          </span>
-                        </p>
-                        {!isCorrect && (
-                          <p className="text-emerald-700">
-                            <span className="font-medium">Správná odpověď:</span> {q.answer}
-                          </p>
-                        )}
-                        {/* ✅ vysvětlivka */}
-                        {(q.explanation || '') && (
-                          <p className="text-slate-500">
-                            <span className="font-medium">Vysvětlení:</span> {q.explanation}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          <Button
-            onClick={handleFinish}
-            className="w-full mt-6 h-14 text-lg bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
-          >
-            Dokončit test
-          </Button>
+      <div className="p-4 rounded-xl border bg-white">
+        <div className="font-semibold">V tomhle testu nejsou žádné otázky.</div>
+        <div className="text-sm text-gray-600 mt-1">
+          Zkontroluj, že v tématu/kategorii existují úlohy se stejnou obtížností a že nejsou označené jako test.
         </div>
       </div>
     );
   }
 
+  const showMCQ = current && current.srcType !== "fill" && Array.isArray(current.options) && current.options.length > 0;
+
   return (
-    <div className="max-w-2xl mx-auto">
-      {/* Progress */}
-      <div className="mb-6">
-        <div className="flex justify-between text-sm text-slate-600 mb-2">
-          <span>Otázka {currentIndex + 1} z {totalQuestions}</span>
-          <span>Odpovězeno: {Object.keys(answers).length}/{totalQuestions}</span>
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <div className="text-sm text-gray-600 whitespace-nowrap">
+          Otázka <span className="font-semibold">{index + 1}</span> / {total}
         </div>
-        <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
-          <motion.div
-            className="h-full bg-gradient-to-r from-yellow-500 to-orange-500"
-            initial={{ width: 0 }}
-            animate={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
-          />
+        <div className="flex-1">
+          <Progress value={progressPct} />
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          className="bg-white rounded-2xl p-8 shadow-lg mb-6"
-        >
-          {renderQuestion()}
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        key={current.id}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2 }}
+        className="rounded-2xl border bg-white p-5 shadow-sm"
+      >
+        <div className="text-lg font-semibold leading-snug">{current.prompt}</div>
 
-      <div className="flex gap-3">
-        {currentIndex > 0 && (
-          <Button onClick={() => setCurrentIndex(currentIndex - 1)} variant="outline" className="flex-1">
-            Zpět
-          </Button>
-        )}
-        <Button
-          onClick={handleNext}
-          disabled={!answers[currentIndex]}
-          className="flex-1 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
-        >
-          {currentIndex < totalQuestions - 1 ? (
-            <>
-              Další <ArrowRight className="w-5 h-5 ml-2" />
-            </>
+        <div className="mt-4 space-y-2">
+          {showMCQ ? (
+            current.options.map((opt) => {
+              const active = selected === opt;
+              return (
+                <button
+                  key={opt}
+                  type="button"
+                  onClick={() => !submitted && setSelected(opt)}
+                  disabled={submitted}
+                  className={
+                    "w-full text-left px-4 py-3 rounded-xl border transition " +
+                    (active ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:bg-gray-50") +
+                    (submitted ? " opacity-90 cursor-default" : "")
+                  }
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-medium">{opt}</span>
+                    {submitted && opt === current.answer ? (
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                    ) : null}
+                  </div>
+                </button>
+              );
+            })
           ) : (
-            'Dokončit test'
+            <div className="space-y-2">
+              <div className="text-sm text-gray-600">
+                Napiš odpověď:
+              </div>
+              <input
+                value={typed}
+                onChange={(e) => setTyped(e.target.value)}
+                disabled={submitted}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                placeholder="Tvoje odpověď…"
+              />
+            </div>
           )}
-        </Button>
+        </div>
+
+        {!submitted ? (
+          <Button
+            className="w-full h-20 text-lg rounded-2xl mt-5"
+            onClick={submit}
+            disabled={!canSubmit}
+          >
+            Odeslat odpověď
+          </Button>
+        ) : (
+          <div className="mt-5 space-y-3">
+            <div
+              className={
+                "flex items-center gap-2 font-semibold " +
+                (isCorrect ? "text-green-700" : "text-red-700")
+              }
+            >
+              {isCorrect ? (
+                <CheckCircle className="w-5 h-5" />
+              ) : (
+                <XCircle className="w-5 h-5" />
+              )}
+              {isCorrect ? "Správně!" : "Špatně."}
+            </div>
+
+            {!isCorrect ? (
+              <div className="text-sm text-gray-700">
+                Správná odpověď: <span className="font-semibold">{String(current.answer)}</span>
+              </div>
+            ) : null}
+
+            {current.explanation ? (
+              <div className="text-sm text-gray-600">{current.explanation}</div>
+            ) : null}
+
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                className="flex-1 h-12 rounded-xl"
+                onClick={restart}
+                title="Začít znovu"
+              >
+                <RotateCcw className="w-4 h-4 mr-2" />
+                Znovu
+              </Button>
+
+              <Button
+                className="flex-1 h-12 rounded-xl"
+                onClick={next}
+              >
+                Pokračovat
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
+        )}
+      </motion.div>
+
+      <div className="text-sm text-gray-600">
+        Skóre: <span className="font-semibold">{correctCount}</span> / {total}
       </div>
     </div>
   );

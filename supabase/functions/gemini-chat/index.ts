@@ -1,23 +1,29 @@
-// upravený index.ts s podporou gemini-1.5-flash a ručním ověřením tokenu
+// index.ts (fix: robust body parsing + history default + model id + clearer errors)
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { GoogleGenerativeAI } from "npm:@google/generative-ai";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders } from "../_shared/cors.ts";
 
-const genAI = new GoogleGenerativeAI(Deno.env.get("GEMINI_API_KEY")!);
-const model = genAI.getGenerativeModel({ model: "models/gemini-1.5-flash" });
-const classifierModel = genAI.getGenerativeModel({ model: "models/gemini-1.5-flash" });
+const apiKey = Deno.env.get("GEMINI_API_KEY");
+const supabaseUrl = Deno.env.get("SUPABASE_URL");
+const supabaseAnon = Deno.env.get("SUPABASE_ANON_KEY");
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
 
-  const jsonResponse = (data: any, status = 200) =>
+  const jsonResponse = (data: unknown, status = 200) =>
     new Response(JSON.stringify(data), {
       status,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
+
+  // ✅ sanity check env
+  if (!apiKey) return jsonResponse({ error: "Server misconfigured: GEMINI_API_KEY missing" }, 500);
+  if (!supabaseUrl || !supabaseAnon) {
+    return jsonResponse({ error: "Server misconfigured: SUPABASE_URL/ANON_KEY missing" }, 500);
+  }
 
   // 🛡️ Ruční kontrola JWT
   const authHeader = req.headers.get("Authorization");
@@ -26,80 +32,88 @@ serve(async (req) => {
   }
 
   const token = authHeader.split(" ")[1];
-  const supabase = createClient(
-    Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_ANON_KEY")!
-  );
 
-  const {
-    data: { user },
-    error: authError,
-  } = await supabase.auth.getUser(token);
+  const supabase = createClient(supabaseUrl, supabaseAnon);
 
+  const { data: { user }, error: authError } = await supabase.auth.getUser(token);
   if (authError || !user) {
     return jsonResponse({ error: "Unauthorized: Invalid token" }, 401);
   }
 
+  // ✅ parse body safely
+  let body: any;
   try {
-    const { message, history } = await req.json();
+    body = await req.json();
+  } catch {
+    return jsonResponse({ error: "Invalid JSON body" }, 400);
+  }
 
-    if (!message || typeof message !== "string") {
-      return jsonResponse({ error: "Invalid message" }, 400);
-    }
+  const message = body?.message;
+  const historyRaw = body?.history;
 
-    const systemInstruction = `
+  if (!message || typeof message !== "string") {
+    return jsonResponse({ error: "Invalid message" }, 400);
+  }
+
+  const history = Array.isArray(historyRaw)
+    ? historyRaw
+        .slice(-30)
+        .map((m: any) => ({
+          role: m?.role === "assistant" ? "assistant" : "user",
+          content: String(m?.content ?? ""),
+        }))
+    : [];
+
+  const genAI = new GoogleGenerativeAI(apiKey);
+  // ✅ use model id without "models/"
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+  const systemInstruction = `
 Jsi AI školní učitel. Pomáhej se školní látkou (matematika, čeština, angličtina atd.).
 Neodpovídej na dotazy mimo školu. Pokud přijde takový dotaz, napiš: "Promiň, s tímto ti nemohu pomoci. Zeptej se mě raději na něco ze školy. 😊"
 Odpovídej česky.
 `;
 
-    const isOutOfScope = (input: string) => {
-      const keywords = ["ai", "umělá inteligence", "programování", "sex", "peníze", "politika", "deprese", "úzkost"];
-      return keywords.some((word) => input.toLowerCase().includes(word));
-    };
+  // ⚠️ méně agresivní filtr – ať to neblokuje školní IT dotazy jen kvůli slovu "ai"
+  const isOutOfScope = (input: string) => {
+    const keywords = ["sex", "peníze", "politika"];
+    return keywords.some((word) => input.toLowerCase().includes(word));
+  };
 
-    if (isOutOfScope(message)) {
-      return jsonResponse({
-        reply: "Promiň, s tímto ti nemohu pomoci. Zeptej se mě raději na něco ze školy. 😊",
-      });
-    }
+  if (isOutOfScope(message)) {
+    return jsonResponse({
+      reply: "Promiň, s tímto ti nemohu pomoci. Zeptej se mě raději na něco ze školy. 😊",
+    });
+  }
 
-    const classificationPrompt = `
-Dotaz: "${message}"
-Je tento dotaz vhodný pro školního AI učitele?
-Odpověz pouze objektem JSON:
-{ "allowed": true } nebo { "allowed": false }
-`;
+  try {
+    const transcript = history
+      .map((msg: any) => `${msg.role === "user" ? "Student" : "Učitel"}: ${msg.content}`)
+      .join("\n");
 
-    const classificationResult = await classifierModel.generateContent(classificationPrompt);
-    const classificationText = await classificationResult.response.text();
-    const isAllowed = classificationText.toLowerCase().includes('"allowed": true');
-
-    if (!isAllowed) {
-      return jsonResponse({
-        reply: "Promiň, s tímto ti nemohu pomoci. Zeptej se mě raději na něco ze školy. 😊",
-      });
-    }
-
-    const fullPrompt = [
+    const contents = [
       {
         role: "user",
         parts: [
           {
             text: `${systemInstruction}
-${history.map((msg: any) => `${msg.role === "user" ? "Student" : "Učitel"}: ${msg.content}`).join("\n")}
+${transcript}
 Student: ${message}`,
           },
         ],
       },
     ];
 
-    const result = await model.generateContent({ contents: fullPrompt });
+    const result = await model.generateContent({ contents });
     const text = result.response.text();
 
     return jsonResponse({ reply: text });
   } catch (e) {
     console.error("Chyba v AI odpovědi:", e);
-    return jsonResponse({ error: "Nepodařilo se zpracovat zprávu." }, 500);
+    // ✅ vrať i stručný detail do body (pomůže debug)
+    return jsonResponse(
+      { error: "Nepodařilo se zpracovat zprávu.", detail: String(e?.message ?? e) },
+      500,
+    );
   }
 });

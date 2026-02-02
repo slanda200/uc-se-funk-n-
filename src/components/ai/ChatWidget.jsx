@@ -45,6 +45,9 @@ export default function ChatWidget() {
   });
 
   const [isTyping, setIsTyping] = React.useState(false);
+  const [uiError, setUiError] = React.useState(null);
+  const lastErrorSigRef = React.useRef(null);
+  const lastErrorAtRef = React.useRef(0);
   const [session, setSession] = React.useState(null);
   const [sessionLoading, setSessionLoading] = React.useState(true);
 
@@ -109,6 +112,8 @@ export default function ChatWidget() {
     const text = input.trim();
     if (!text || isTyping) return;
 
+    if (uiError) setUiError(null);
+
     if (!isAuthed) {
       addMessage("assistant", "Pro psaní s učitelem se musíš přihlásit 🙂");
       return;
@@ -128,6 +133,30 @@ export default function ChatWidget() {
     setIsTyping(true);
 
     try {
+      // vždy vezmi čerstvou session (token se může mezitím obnovit)
+      let { data: sessData } = await supabase.auth.getSession();
+      let liveSession = sessData?.session ?? null;
+
+      // pokud je token těsně před expirací, zkus refresh
+      const exp = liveSession?.expires_at ? Number(liveSession.expires_at) : null;
+      const nowSec = Math.floor(Date.now() / 1000);
+      if (liveSession && exp && nowSec > exp - 60) {
+        const { data: refreshed } = await supabase.auth.refreshSession();
+        liveSession = refreshed?.session ?? liveSession;
+      }
+
+      const accessToken = liveSession?.access_token;
+      if (!accessToken) {
+        setUiError("Chat je dostupný jen pro přihlášené. Zkus se odhlásit a znovu přihlásit.");
+        return;
+      }
+
+      const apiKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+      const invokeHeaders = apiKey
+        ? { Authorization: `Bearer ${accessToken}`, apikey: apiKey }
+        : { Authorization: `Bearer ${accessToken}` };
+
+
       // vezmeme posledních N zpráv + tu novou (bez id/ts)
       const historyForApi = [...messages, { role: "user", content: text }]
         .slice(-20)
@@ -138,27 +167,38 @@ export default function ChatWidget() {
       // 2) nepřidávat vlastní Authorization header
       // supabase-js sám přidá apikey i Authorization (pokud je session)
       const payload = {
-       messages: historyForApi.map(m => ({
+       messages: historyForApi.map((m) => ({
          role: m.role === "assistant" ? "assistant" : "user",
-          content: String(m.content ?? ""),
+         content: String(m.content ?? ""),
        })),
       };
 
       const { data, error } = await supabase.functions.invoke("gemini-chat", {
         body: payload,
+        headers: invokeHeaders,
       });
 
 
       if (error) {
         const status = error?.context?.status ?? "?";
-        const body =
-          typeof error?.context?.body === "string"
-            ? error.context.body
-            : JSON.stringify(error?.context?.body ?? {});
-        addMessage(
-          "assistant",
-          `Chyba při volání AI: ${error.message}\nStatus: ${status}\nBody: ${body}`
-        );
+        const msg = String(error?.message ?? "Neznámá chyba");
+        const sig = `${status}:${msg}`;
+        const now = Date.now();
+        const recentlySame =
+          lastErrorSigRef.current === sig && now - lastErrorAtRef.current < 15000;
+
+        lastErrorSigRef.current = sig;
+        lastErrorAtRef.current = now;
+
+        if (!recentlySame) {
+          if (Number(status) === 401 || Number(status) === 403) {
+            setUiError(
+              "Chat je dostupný jen pro přihlášené. Zkus se odhlásit a znovu přihlásit."
+            );
+          } else {
+            setUiError(`Chyba při volání AI (${status}). Zkus to prosím znovu.`);
+          }
+        }
         return;
       }
 
@@ -312,8 +352,13 @@ export default function ChatWidget() {
                 title="Odeslat"
               >
                 <Send className="w-4 h-4" />
-              </Button>
-            </div>
+              </Button>            </div>
+
+            {uiError && (
+              <div className="mt-2 rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs text-red-700">
+                {uiError}
+              </div>
+            )}
 
             <div className="mt-2 text-[11px] text-slate-500">
               Tip: napiš ročník (např. 7. třída) + vlož zadání.

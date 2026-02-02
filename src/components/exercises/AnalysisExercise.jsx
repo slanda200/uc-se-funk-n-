@@ -25,27 +25,58 @@ export default function AnalysisExercise({
   // 2) old:  exercise.colorLegend / current.colorLegend -> { redLabel:"...", blueLabel:"..." }
   const legend = useMemo(() => {
     const l = current?.legend || exercise?.legend;
+    // Pokud autor vyplní legendu jen částečně (třeba jen blue),
+    // NEchceme automaticky doplňovat druhou barvu do popisku/UI.
+    // Druhá barva se použije jen pokud ji autor opravdu zadal.
     if (l && (l.red || l.blue)) {
       return {
-        redLabel: l.red || "Červená",
-        blueLabel: l.blue || "Modrá",
+        redLabel: l.red || "",
+        blueLabel: l.blue || "",
       };
     }
 
     const cl = current?.colorLegend || exercise?.colorLegend || {};
     return {
-      redLabel: cl.redLabel || "Červená",
-      blueLabel: cl.blueLabel || "Modrá",
+      redLabel: cl.redLabel || "Chyba",
+      blueLabel: cl.blueLabel || "Správně",
     };
   }, [exercise, current]);
 
-  const OPTIONS = useMemo(
-    () => [
-      { key: "red", label: legend.redLabel, dot: "🔴" },
-      { key: "blue", label: legend.blueLabel, dot: "🔵" },
-    ],
-    [legend]
-  );
+  // ✅ Které barvy jsou opravdu povolené?
+  // - když autor poslal legendu jen pro jednu barvu (např. blue), je to "single-mode"
+  // - když legenda není vůbec, jedeme klasicky obě barvy
+  const legendProvided = useMemo(() => {
+    const l = current?.legend || exercise?.legend;
+    // u starého formátu (colorLegend) bereme obě barvy jako dostupné
+    if (!l) return { blue: true, red: true };
+    const hasAny = !!(l.blue || l.red);
+    if (!hasAny) return { blue: true, red: true };
+    return {
+      blue: !!l.blue,
+      red: !!l.red,
+    };
+  }, [exercise, current]);
+
+  const enabledColors = useMemo(() => {
+    const list = [];
+    if (legendProvided.blue) list.push("blue");
+    if (legendProvided.red) list.push("red");
+    // fallback bezpečnost: kdyby obě false, tak povol obě
+    return list.length ? list : ["blue", "red"];
+  }, [legendProvided]);
+
+  const singleModeColor = enabledColors.length === 1 ? enabledColors[0] : null;
+
+  const OPTIONS = useMemo(() => {
+    const opts = [];
+    if (enabledColors.includes("blue")) {
+      opts.push({ key: "blue", label: legend.blueLabel || "Správně", dot: "🔵" });
+    }
+    if (enabledColors.includes("red")) {
+      opts.push({ key: "red", label: legend.redLabel || "Chyba", dot: "🔴" });
+    }
+    return opts;
+  }, [legend, enabledColors]);
 
   const reportStreak = (correct) => {
     if (onStreak) return onStreak(correct);
@@ -53,7 +84,11 @@ export default function AnalysisExercise({
   };
 
   const nextColor = (currentColor) => {
-    // click cycle: none -> blue -> red -> none
+    // ✅ single-mode (jen jedna barva): none <-> singleColor
+    if (singleModeColor) {
+      return currentColor ? null : singleModeColor;
+    }
+    // ✅ two-mode: none -> blue -> red -> none
     if (!currentColor) return "blue";
     if (currentColor === "blue") return "red";
     return null;
@@ -66,8 +101,8 @@ export default function AnalysisExercise({
   };
 
   const colorToLabel = (color) => {
-    if (color === "blue") return legend.blueLabel;
-    if (color === "red") return legend.redLabel;
+    if (color === "blue") return legend.blueLabel || "Správně";
+    if (color === "red") return legend.redLabel || "Chyba";
     return "Neoznačeno";
   };
 
@@ -112,24 +147,60 @@ export default function AnalysisExercise({
     }));
   }, [current]);
 
-  // ✅ Ready: musí být vybráno pro všechny tokeny
-  const isReady = tokens.length > 0 && Object.keys(selected).length === tokens.length;
+  // ✅ Validita expected hodnot
+  const expectedSane = tokens.every(
+    (t) => t.expected === null || t.expected === undefined || t.expected === "blue" || t.expected === "red"
+  );
 
-  const allExpectedReady = tokens.every((t) => t.expected === "blue" || t.expected === "red");
+  // ✅ "Two-mode" vyžaduje expected barvu pro každé slovo/token.
+  // "Single-mode" dovoluje nechávat expected = null u slov, která se nemají označovat.
+  const expectedCompleteForTwoMode = tokens.every((t) => t.expected === "blue" || t.expected === "red");
+
+  // ✅ Ready:
+  // - two-mode: uživatel musí označit všechny tokeny
+  // - single-mode: stačí označit jen to, co chce (může klidně nic, ale většinou aspoň 1)
+  const isReady = useMemo(() => {
+    if (tokens.length === 0) return false;
+    if (singleModeColor) return true;
+    return Object.keys(selected).length === tokens.length;
+  }, [tokens.length, selected, singleModeColor]);
 
   const handleCheck = () => {
     if (!current || tokens.length === 0) return;
 
-    let correctCount = 0;
     const total = tokens.length;
 
-    for (let i = 0; i < total; i++) {
-      const expected = tokens[i]?.expected ?? null;
-      const picked = selected[i] ?? null;
-      if (expected && picked === expected) correctCount++;
-    }
+    let allCorrect = false;
 
-    const allCorrect = allExpectedReady && total > 0 && correctCount === total;
+    if (singleModeColor) {
+      // ✅ single-mode: uživatel označí jen slova, která mají být označená tou jednou barvou
+      const expectedSet = new Set(
+        tokens
+          .map((t, i) => ({ t, i }))
+          .filter(({ t }) => (t.expected ?? null) === singleModeColor)
+          .map(({ i }) => i)
+      );
+      const pickedSet = new Set(
+        Object.entries(selected)
+          .filter(([, v]) => v === singleModeColor)
+          .map(([k]) => Number(k))
+      );
+
+      if (!expectedSane) {
+        allCorrect = false;
+      } else if (expectedSet.size !== pickedSet.size) {
+        allCorrect = false;
+      } else {
+        allCorrect = [...expectedSet].every((i) => pickedSet.has(i));
+      }
+    } else {
+      // ✅ two-mode: musí sedět barva u každého tokenu
+      if (!expectedCompleteForTwoMode) {
+        allCorrect = false;
+      } else {
+        allCorrect = tokens.every((t, i) => (selected[i] ?? null) === (t.expected ?? null));
+      }
+    }
 
     setShowResult(true);
     reportStreak(allCorrect);
@@ -161,8 +232,8 @@ export default function AnalysisExercise({
 
       // ✅ přidáme legend (aby review mohlo případně ukázat význam barev)
       legend: {
-        red: legend.redLabel,
-        blue: legend.blueLabel,
+        ...(enabledColors.includes("red") ? { red: legend.redLabel || "Chyba" } : {}),
+        ...(enabledColors.includes("blue") ? { blue: legend.blueLabel || "Správně" } : {}),
       },
 
       explanation: current.explanation || (allCorrect ? "Správně ✅" : "Špatně ❌"),
@@ -188,10 +259,26 @@ export default function AnalysisExercise({
 
   if (!current) return <div className="text-center p-8">Žádné otázky k dispozici</div>;
 
-  const isAllCorrectNow =
-    showResult &&
-    allExpectedReady &&
-    tokens.every((t, i) => (selected[i] ?? null) === (t.expected ?? null));
+  const isAllCorrectNow = useMemo(() => {
+    if (!showResult) return false;
+    if (singleModeColor) {
+      const expectedSet = new Set(
+        tokens
+          .map((t, i) => ({ t, i }))
+          .filter(({ t }) => (t.expected ?? null) === singleModeColor)
+          .map(({ i }) => i)
+      );
+      const pickedSet = new Set(
+        Object.entries(selected)
+          .filter(([, v]) => v === singleModeColor)
+          .map(([k]) => Number(k))
+      );
+      if (!expectedSane) return false;
+      if (expectedSet.size !== pickedSet.size) return false;
+      return [...expectedSet].every((i) => pickedSet.has(i));
+    }
+    return expectedCompleteForTwoMode && tokens.every((t, i) => (selected[i] ?? null) === (t.expected ?? null));
+  }, [showResult, singleModeColor, tokens, selected, expectedSane, expectedCompleteForTwoMode]);
 
   return (
     <div className="max-w-3xl mx-auto">
@@ -209,9 +296,23 @@ export default function AnalysisExercise({
 
         {/* ✅ legenda z JSONu */}
         <div className="bg-slate-50 rounded-xl p-4 mb-5 text-sm text-slate-700">
-          Klikni na každé pole a obarvi ho:
-          <span className="ml-2 font-semibold">{OPTIONS[1].dot} {OPTIONS[1].label}</span>,{" "}
-          <span className="font-semibold">{OPTIONS[0].dot} {OPTIONS[0].label}</span>
+          {singleModeColor ? (
+            <>
+              Klikni jen na slova, která patří do:
+              <span className="ml-2 font-semibold">
+                {OPTIONS[0]?.dot} {OPTIONS[0]?.label}
+              </span>
+            </>
+          ) : (
+            <>
+              Klikni na každé pole a obarvi ho:
+              {OPTIONS.map((o, idx) => (
+                <span key={o.key} className={`ml-2 font-semibold ${idx > 0 ? "" : ""}`}>
+                  {o.dot} {o.label}{idx < OPTIONS.length - 1 ? "," : ""}
+                </span>
+              ))}
+            </>
+          )}
         </div>
 
         {/* tokeny */}
@@ -227,7 +328,7 @@ export default function AnalysisExercise({
               <div key={i} className="flex flex-col items-center gap-2">
                 <button
                   onClick={() => handleTokenClick(i)}
-                  className={`w-14 h-14 rounded-xl border-2 text-xl font-bold transition-all ${getColorClass(picked)} ${
+                  className={`inline-flex items-center justify-center rounded-xl border-2 px-3 py-2 min-w-14 min-h-14 text-xl font-bold leading-none whitespace-nowrap transition-all ${getColorClass(picked)} ${
                     ok ? "ring-4 ring-emerald-400" : ""
                   } ${bad ? "ring-4 ring-red-400" : ""}`}
                   disabled={showResult}
@@ -257,7 +358,10 @@ export default function AnalysisExercise({
           })}
         </div>
 
-        {!allExpectedReady && (
+        {/* varování:
+           - když je expected hodnota mimo (blue/red/null)
+           - nebo když jsme v two-mode a některé tokeny nemají expected vůbec */}
+        {(!expectedSane || (!singleModeColor && !expectedCompleteForTwoMode)) && (
           <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3 mb-4">
             Pozor: u této otázky chybí očekávaná barva (expected/color). Bez toho se to nedá vyhodnotit.
             Použij <b>words: [{`{ word:"A", color:"red" }`}]</b> nebo <b>tokens: [{`{ char:"A", expected:"red" }`}]</b>.

@@ -5,6 +5,17 @@ import { CheckCircle2, XCircle, RotateCcw } from "lucide-react";
 import confetti from "./confetti";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
+
+// ✅ Fisher–Yates shuffle (returns new array)
+function shuffleArray(input) {
+  const arr = Array.isArray(input) ? [...input] : [];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 export default function SortExercise({
   exercise,
   onComplete,
@@ -23,7 +34,8 @@ export default function SortExercise({
 
   const initialPool = useMemo(() => {
     const allItems = current?.categories?.flatMap((cat) => cat.items) || [];
-    return allItems;
+    // ✅ promíchat, aby nebyly první všechny z jedné kategorie
+    return shuffleArray(allItems);
   }, [current]);
 
   const [items, setItems] = useState(initialPool);
@@ -177,7 +189,7 @@ export default function SortExercise({
         const nextItems = nextQuestion?.categories?.flatMap((cat) => cat.items) || [];
 
         setCurrentIndex(nextIndex);
-        setItems(nextItems);
+        setItems(shuffleArray(nextItems));
         setCategoryItems({});
         setShowResult(false);
       } else {

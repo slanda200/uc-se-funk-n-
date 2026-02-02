@@ -6919,86 +6919,6 @@
     "grade": null
   },
   {
-   "topic_id": "6972c3f0a1b2c3d4e5f60731",
-   "category_id": "6972c420a1b2c3d4e5f60741",
-    "type": "fill",
-   "title": "Doplň chybějící písmeno – B (lehké)",
-   "instructions": "Doplň chybějící písmeno (i / y) a napiš celé slovo správně.",
-   "questions": [
-    {
-      "question": "b__k (zvíře v lese)",
-      "answer": "býk",
-      "options": [],
-      "pairs": [],
-      "categories": [],
-      "text": null,
-      "words": [],
-      "type": null,
-      "audio_url": null,
-      "image_url": null
-    },
-    {
-      "question": "b__dlit (kde žiješ)",
-      "answer": "bydlit",
-      "options": [],
-      "pairs": [],
-      "categories": [],
-      "text": null,
-      "words": [],
-      "type": null,
-      "audio_url": null,
-      "image_url": null
-    },
-    {
-      "question": "b__t (existovat)",
-      "answer": "být",
-      "options": [],
-      "pairs": [],
-      "categories": [],
-      "text": null,
-      "words": [],
-      "type": null,
-      "audio_url": null,
-      "image_url": null
-    },
-    {
-      "question": "b__lina (tráva, rostlina)",
-      "answer": "bylina",
-      "options": [],
-      "pairs": [],
-      "categories": [],
-      "text": null,
-      "words": [],
-      "type": null,
-      "audio_url": null,
-      "image_url": null
-    },
-    {
-      "question": "b__strý (rychlý / chytrý)",
-      "answer": "bystrý",
-      "options": [],
-      "pairs": [],
-      "categories": [],
-      "text": null,
-      "words": [],
-      "type": null,
-      "audio_url": null,
-      "image_url": null
-    }
-  ],
-    "difficulty": 1,
-    "points": 10,
-   "is_test": false,
-    "order": 1,
-    "id": "vyjm3_b_fill_01",
-    "created_date": "2026-01-21T00:00:00.000000",
-    "updated_date": "2026-01-21T00:00:00.000000",
-   "created_by_id": "local",
-    "created_by": "local",
-    "is_sample": "false",
-    "grade": null
-  }, 
-  {
     "topic_id": "6972c3f0a1b2c3d4e5f60731",
    "category_id": "6972c420a1b2c3d4e5f60741",
    "type": "cloze",
@@ -8774,6 +8694,1920 @@
   "is_test": false,
   "id": "cj3vslcloze3",
   "created_date": "2026-01-29T10:00:00.000000"
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "cloze",
+  "title": "Vyjmenovaná slova po M - Úroveň 1 (Základ)",
+  "instructions": "Doplň chybějící písmena i/í nebo y/ý kliknutím na správnou variantu.",
+  "questions": [
+    {
+      "text": "m___š (zvířátko)",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Myš je vyjmenované slovo po M."
+    },
+    {
+      "text": "m___ska (na lupínky)",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Miska není vyjmenované slovo."
+    },
+    {
+      "text": "m___dlo (na mytí)",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýdlo je slovo příbuzné k vyjmenovanému slovu mýt."
+    },
+    {
+      "text": "m___nutka (na vaření)",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Minutka není vyjmenované slovo."
+    },
+    {
+      "text": "m___slet (hlavou)",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Myslet patří mezi vyjmenovaná slova."
+    },
+    {
+      "text": "m___chat (vařečkou)",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Míchat není vyjmenované slovo."
+    },
+    {
+      "text": "hm___z (včela nebo moucha)",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Hmyz patří mezi vyjmenovaná slova."
+    },
+    {
+      "text": "m___lá (maminka)",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Milá není vyjmenované slovo."
+    },
+    {
+      "text": "m___t (nádobí)",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýt (čistit vodou) je vyjmenované slovo."
+    },
+    {
+      "text": "m___mo (mimo silnici)",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mimo není vyjmenované slovo."
+    },
+    {
+      "text": "m___lit se (chybovat)",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýlit se je vyjmenované slovo."
+    },
+    {
+      "text": "kom___ník (na střeše)",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Kominík není vyjmenované slovo."
+    },
+    {
+      "text": "zam___kat (klíčem)",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Zamykat je vyjmenované slovo."
+    },
+    {
+      "text": "m___šidlo (pro kočku)",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Myšidlo je příbuzné ke slovu myš."
+    },
+    {
+      "text": "kam___nky (v řece)",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Kamínky nejsou vyjmenované slovo."
+    },
+    {
+      "text": "hlem___žď (má domeček)",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Hlemýžď je vyjmenované slovo."
+    },
+    {
+      "text": "m___stnost (pokoj)",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Místnost není vyjmenované slovo."
+    },
+    {
+      "text": "sm___kat (tahat)",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Smýkat patří mezi vyjmenovaná slova."
+    },
+    {
+      "text": "m___luje (mě máma)",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Milovat není vyjmenované slovo."
+    },
+    {
+      "text": "chm___ří (z pampelišky)",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Chmýří patří mezi vyjmenovaná slova."
+    },
+    {
+      "text": "m___stní (rozhlas)",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Místní není vyjmenované slovo."
+    },
+    {
+      "text": "dm___chat (do ohně)",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Dmýchat je vyjmenované slovo."
+    },
+    {
+      "text": "m___sa (s ovocem)",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mísa není vyjmenované slovo."
+    },
+    {
+      "text": "m___ (všichni)",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Zájmeno my (my všichni) je vyjmenované slovo."
+    },
+    {
+      "text": "m___tina (v lese)",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýtina je příbuzná ke slovu mýtit."
+    }
+  ],
+  "difficulty": 1,
+  "points": 10,
+  "is_test": false,
+  "id": "cj3vsmcloze1",
+  "created_date": "2026-02-01T19:00:00.000000",
+  "created_by": "Gemini-Teacher"
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "cloze",
+  "title": "Vyjmenovaná slova po M - Úroveň 2 (Střední)",
+  "instructions": "Pozorně si přečti větu a doplň správné i/í nebo y/ý podle významu.",
+  "questions": [
+    {
+      "text": "Musím si m___t ruce před jídlem.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýt (čistit vodou) je vyjmenované slovo."
+    },
+    {
+      "text": "Chci m___t nového psa.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mít (vlastnit) není vyjmenované slovo."
+    },
+    {
+      "text": "Podej m___ tu knihu, prosím.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Zájmeno mi (mně) není vyjmenované slovo."
+    },
+    {
+      "text": "M___ půjdeme dneska do kina.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Zájmeno my (všichni) je vyjmenované slovo."
+    },
+    {
+      "text": "Z komína stoupal černý d___m.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Dým je vyjmenované slovo."
+    },
+    {
+      "text": "To je ale m___lý kluk.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Milý není vyjmenované slovo."
+    },
+    {
+      "text": "Nesmíš se zm___lit v příkladu.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Zmýlit se je příbuzné k vyjmenovanému slovu mýlit se."
+    },
+    {
+      "text": "Litom___šl je krásné město.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Litomyšl patří mezi vyjmenovaná slova."
+    },
+    {
+      "text": "Tatínek m___lá dřevo v lese.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mílat není vyjmenované slovo (v tomto smyslu dáváme pozor na mýtit)."
+    },
+    {
+      "text": "Kočka m___ňouká za dveřmi.",
+      "answer": "ň",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mňoukat se píše s měkkým mň, není to vyjmenované slovo."
+    },
+    {
+      "text": "Na louce je rozkvetlá m___tina.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýtina je příbuzná ke slovu mýtit."
+    },
+    {
+      "text": "Už um___š všechny úkoly?",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Umíš (od umět) není vyjmenované slovo."
+    },
+    {
+      "text": "Hladová m___ška hledala sýr.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Myška je příbuzná k vyjmenovanému slovu myš."
+    },
+    {
+      "text": "V mrazáku je nanukový m___ša.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Míša (jméno/zmrzlina) se píše s měkkým í."
+    },
+    {
+      "text": "Slyšeli jsme m___šidlové pískání.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Myšidlový je odvozeno od slova myš."
+    },
+    {
+      "text": "M___slivec šel do lesa.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Myslivec je příbuzný k vyjmenovanému slovu myslet."
+    },
+    {
+      "text": "Zámek se sám zam___ká.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Zamykat je vyjmenované slovo."
+    },
+    {
+      "text": "To je ale velký om___l.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Omyl je příbuzný ke slovu mýlit se."
+    },
+    {
+      "text": "Maminka um___la podlahu.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Umyla je příbuzné ke slovu mýt."
+    },
+    {
+      "text": "Prášek udělal m___dlovou pěnu.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýdlový je příbuzný ke slovu mýdlo."
+    },
+    {
+      "text": "M___chačkou mícháme maltu.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Míchačka/míchat není vyjmenované slovo."
+    },
+    {
+      "text": "Děti se s m___čem hrají na hřišti.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Míč (míčem) není vyjmenované slovo."
+    },
+    {
+      "text": "Hlem___ždí tempo je pomalé.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Přídavné jméno od slova hlemýžď."
+    },
+    {
+      "text": "Včela je užitečný hm___z.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Hmyz je vyjmenované slovo."
+    },
+    {
+      "text": "Nesmíš se neustále m___lit.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýlit se je vyjmenované slovo."
+    }
+  ],
+  "difficulty": 2,
+  "points": 25,
+  "is_test": false,
+  "id": "cj3vsmcloze2",
+  "created_date": "2026-02-01T19:10:00.000000",
+  "created_by": "Gemini-Teacher"
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "cloze",
+  "title": "Vyjmenovaná slova po M - Úroveň 3 (Expert)",
+  "instructions": "Pozor, tohle je nejtěžší úroveň! Rozhodni podle významu a souvislostí.",
+  "questions": [
+    {
+      "text": "Kovář d___chal do žhavého uhlí.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Dmýchat je vyjmenované slovo (vhanět vzduch)."
+    },
+    {
+      "text": "Náhle se k té nehodě nachom___tl.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Nachomýtnout se je vyjmenované slovo."
+    },
+    {
+      "text": "Mořský živočich sum___š vypadá jako okurka.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Sumýš patří mezi vyjmenovaná slova po M."
+    },
+    {
+      "text": "Starořecký m___tus vypráví o hrdinech.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýtus je slovo cizího původu, píšeme tvrdé ý."
+    },
+    {
+      "text": "V m___sii v Africe pomáhají lékaři.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Misie (poslání) není vyjmenované slovo."
+    },
+    {
+      "text": "Musíme sm___kat s tím těžkým pytlem.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Smýkat (tahat) je vyjmenované slovo."
+    },
+    {
+      "text": "Kuchařka m___sila těsto na koláče.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mísit (míchat dohromady) není vyjmenované slovo."
+    },
+    {
+      "text": "Auto dostalo na ledu sm___k.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Smyk je příbuzné ke slovu smýkat."
+    },
+    {
+      "text": "Na m___tině rostly jahody.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýtina je příbuzná ke slovu mýtit (kácet)."
+    },
+    {
+      "text": "Dědeček nám v___mýšlel pohádky.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Vymýšlet je příbuzné ke slovu myslet."
+    },
+    {
+      "text": "Je to jen tvá pom___slná představa.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Pomyslný je příbuzný ke slovu myslet."
+    },
+    {
+      "text": "Při m___tí podlahy si namočil boty.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mytí je příbuzné ke slovu mýt."
+    },
+    {
+      "text": "Ten úkol je ale nesm___slný.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Nesmyslný je příbuzný ke slovu myslet."
+    },
+    {
+      "text": "M___tné se platí za průjezd tunelem.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýtné je příbuzné ke slovu mýtit (původně poplatek za průchod vymýceným místem)."
+    },
+    {
+      "text": "Kolem obličeje mu létali m___loši.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Myloš (hmyz) - lidový název, příbuzné k hmyz."
+    },
+    {
+      "text": "P___chavka vypustila oblak prachu.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Pýchavka (houba) - pozor, zde je chyták na P, ale v textu dáváme pozor na mýchat/míchat."
+    },
+    {
+      "text": "Stroj na m___tění pařezů hlučel.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mýtění je odvozeno od slova mýtit."
+    },
+    {
+      "text": "Vzducholoď se nazývá m___styk.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mystik (tajemný člověk) - cizí slovo, píšeme y."
+    },
+    {
+      "text": "M___mika v obličeji prozradila strach.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mimika není vyjmenované slovo."
+    },
+    {
+      "text": "Slyšíš to m___šidlové pištění?",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Myšidlový (od slova myš)."
+    },
+    {
+      "text": "Hladina vody se m___rnì vlnila.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Mírně (od mír) není vyjmenované slovo."
+    },
+    {
+      "text": "Kam___nek v botě mě tlačil.",
+      "answer": "í",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Kamínek není vyjmenované slovo."
+    },
+    {
+      "text": "V_m___tat pavučiny z rohů.",
+      "answer": "ý",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Vymýtat (vyhánět/čistit) je příbuzné k mýtit."
+    },
+    {
+      "text": "M___ nenecháme nikoho pozadu.",
+      "answer": "y",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Zájmeno my (všichni) je vyjmenované slovo."
+    },
+    {
+      "text": "M___nomet je zbraň.",
+      "answer": "i",
+      "options": ["i", "í", "y", "ý"],
+      "explanation": "Minomet (vrhá miny) - není vyjmenované."
+    }
+  ],
+  "difficulty": 3,
+  "points": 50,
+  "is_test": false,
+  "id": "cj3vsmcloze3",
+  "created_date": "2026-02-01T19:20:00.000000",
+  "created_by": "Gemini-Teacher"    
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "sort",
+  "title": "Rozřazovačka – Vyjmenovaná slova po M",
+  "instructions": "Rozřaď slova podle toho, zda patří mezi vyjmenovaná (a příbuzná) slova po M, nebo ne.",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Zařaď slova do správných kategorií.",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [
+        {
+          "name": "Vyjmenovaná a příbuzná",
+          "items": [
+            "Myš",
+            "Mýdlo",
+            "Myslet",
+            "Hmyz",
+            "Mýt",
+            "Hlemýžď",
+            "Zamykat",
+            "Mýlit se",
+            "Chmýří",
+            "Smýkat"
+          ]
+        },
+        {
+          "name": "Ostatní slova (měkké i)",
+          "items": [
+            "Miska",
+            "Míchat",
+            "Minutka",
+            "Mimo",
+            "Milovat",
+            "Místnost",
+            "Mísa",
+            "Kamínky",
+            "Mikuláš",
+            "Mina"
+          ]
+        }
+      ],
+      "text": null,
+      "words": [],
+      "type": "sort",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Vyjmenovaná slova si pamatujeme z řady, v ostatních slovech po M píšeme většinou měkké i."
+    }
+  ],
+  "difficulty": 1,
+  "points": 20,
+  "is_test": false,
+  "id": "cj3vsmsort1",
+  "created_date": "2026-02-01T20:00:00.000000",
+  "updated_date": "2026-02-01T20:00:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "sort",
+  "title": "Rozřazovačka – Významy slov po M",
+  "instructions": "Pozorně čti! Zařaď slova podle toho, jestli se v nich píše tvrdé Y (vyjmenovaná) nebo měkké I.",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Rozhodni, kam slova patří podle jejich významu:",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [
+        {
+          "name": "Píšeme tvrdé Y/Ý",
+          "items": [
+            "Mýt obličej",
+            "Slyšet dým",
+            "Mýlit se v úkolu",
+            "Vymýšlet příběhy",
+            "Zamykat dům",
+            "Lesní mýtina",
+            "Vypadat jako hmyz",
+            "Pomalý hlemýžď",
+            "Nové mýdlo",
+            "Velký omyl"
+          ]
+        },
+        {
+          "name": "Píšeme měkké I/Í",
+          "items": [
+            "Mít hračku",
+            "Milý člověk",
+            "Míchat čaj",
+            "Cílová meta",
+            "Už to umíš",
+            "Sypat na mísu",
+            "Pustit si film",
+            "První minuta",
+            "Podej mi ruku",
+            "Místní rozhlas"
+          ]
+        }
+      ],
+      "text": null,
+      "words": [],
+      "type": "sort",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Tady je potřeba hlídat význam: mýt (vodou) je vyjmenované, ale mít (vlastnit) není. Stejně tak zájmeno my (všichni) je vyjmenované, ale mi (mně) ne."
+    }
+  ],
+  "difficulty": 2,
+  "points": 30,
+  "is_test": false,
+  "id": "cj3vsmsort2",
+  "created_date": "2026-02-01T20:10:00.000000",
+  "updated_date": "2026-02-01T20:10:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "sort",
+  "title": "Rozřazovačka – Proč tam píšeme Y?",
+  "instructions": "V obou kategoriích se píše tvrdé Y/Ý. Dokážeš je ale rozdělit na vyjmenovaná a ta ostatní?",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Roztřiď slova podle důvodu, proč v nich píšeme Y/Ý:",
+      "answer": null,
+      "options": [],
+      "pairs": [],
+      "categories": [
+        {
+          "name": "Vyjmenovaná a příbuzná",
+          "items": [
+            "Hlemýžď",
+            "Mýdlo",
+            "Smýkat",
+            "Průsmyk",
+            "Sumýš",
+            "Dmýchat",
+            "Mýtina",
+            "Zamykat",
+            "Nachomýtnout se",
+            "Vymýšlet"
+          ]
+        },
+        {
+          "name": "Slova cizí (nevyjmenovaná)",
+          "items": [
+            "Mýtus",
+            "Symbol",
+            "Mytologie",
+            "Mystika",
+            "Symfonie",
+            "Synonymum",
+            "Gymnastika",
+            "Plyn",
+            "Beryl",
+            "Pyramida"
+          ]
+        }
+      ],
+      "text": null,
+      "words": [],
+      "type": "sort",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Tato úloha ukazuje, že ne každé slovo s tvrdým Y musí být nutně v seznamu vyjmenovaných slov. Slova jako mýtus nebo symbol jsou cizího původu."
+    }
+  ],
+  "difficulty": 3,
+  "points": 50,
+  "is_test": false,
+  "id": "cj3vsmsort3",
+  "created_date": "2026-02-01T20:30:00.000000",
+  "updated_date": "2026-02-01T20:30:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "match",
+  "title": "Spojování - Co znamenají slova po M?",
+  "instructions": "Spoj vyjmenované slovo s jeho správným významem.",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Přiřaď k vyjmenovaným slovům jejich popis.",
+      "answer": null,
+      "options": [],
+      "pairs": [
+        { "left": "MYŠ", "right": "malé zvířátko" },
+        { "left": "MÝDLO", "right": "věc na mytí" },
+        { "left": "HMYZ", "right": "včela nebo moucha" },
+        { "left": "HLEMÝŽĎ", "right": "má domeček na zádech" },
+        { "left": "ZAMYKAT", "right": "otočit klíčem v zámku" },
+        { "left": "MYSLET", "right": "pracovat hlavou" },
+        { "left": "CHMÝŘÍ", "right": "jemná pírka pampelišky" },
+        { "left": "DMÝCHAT", "right": "foukat do ohně" }
+      ],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "match",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Výborně! Tato základní vyjmenovaná slova už bezpečně ovládáš."
+    }
+  ],
+  "difficulty": 1,
+  "points": 15,
+  "is_test": false,
+  "id": "cj3vsmmatch1",
+  "created_date": "2026-02-01T21:45:00.000000",
+  "updated_date": "2026-02-01T21:45:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "match",
+  "title": "Spojování - Významy a chytáky (M)",
+  "instructions": "Pozorně čti a spojuj slova se správným popisem. Pozor na slova, která znějí stejně!",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Najdi správné dvojice pro slova, která se často pletou.",
+      "answer": null,
+      "options": [],
+      "pairs": [
+        { "left": "MY", "right": "my všichni (kamarádi)" },
+        { "left": "MI", "right": "dej mi (mně) tužku" },
+        { "left": "MÝT", "right": "čistit se mýdlem a vodou" },
+        { "left": "MÍT", "right": "vlastnit nějakou věc" },
+        { "left": "MÝLIT SE", "right": "udělat chybu" },
+        { "left": "MILÝ", "right": "hodný a laskavý člověk" },
+        { "left": "MÝDLO", "right": "příbuzné ke slovu mýt" },
+        { "left": "MYŠIDLO", "right": "hračka pro kočky" },
+        { "left": "MYSLIVEC", "right": "člověk, který hlídá les" },
+        { "left": "SMÝKAT", "right": "tahat věci po zemi" },
+        { "left": "MÝTINA", "right": "posekané místo v lese" },
+        { "left": "DÝM", "right": "kouř, který stoupá z komína" },
+        { "left": "HMYZ", "right": "například včela nebo komár" },
+        { "left": "ZAMYKAT", "right": "práce se zámkem a klíčem" },
+        { "left": "LITOMYŠL", "right": "název jednoho českého města" }
+      ],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "match",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Skvělá práce! Rozlišit 'my/mi' nebo 'mýt/mít' je v pravopisu po M to nejdůležitější."
+    }
+  ],
+  "difficulty": 2,
+  "points": 30,
+  "is_test": false,
+  "id": "cj3vsmmatch2",
+  "created_date": "2026-02-01T21:50:00.000000",
+  "updated_date": "2026-02-01T21:50:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "match",
+  "title": "Spojování - Expert (M)",
+  "instructions": "Tohle je nejvyšší úroveň! Spojuj i ty nejtěžší chytáky a slova cizího původu.",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Dokážeš správně přiřadit i ty největší špeky?",
+      "answer": null,
+      "options": [],
+      "pairs": [
+        { "left": "SUMÝŠ", "right": "mořský živočich (okurka)" },
+        { "left": "DMÝCHAT", "right": "vhánět vzduch do ohně" },
+        { "left": "MÝTUS", "right": "stará báje nebo pověst" },
+        { "left": "VYMÝTIT", "right": "úplně vykácet kus lesa" },
+        { "left": "VYMÍTAT", "right": "vyhánět zlé síly (měkké i)" },
+        { "left": "MÍSIT", "right": "spojovat těsto dohromady" },
+        { "left": "NACHOMÝTNOUT SE", "right": "octnout se náhodou u něčeho" },
+        { "left": "PRŮSMYK", "right": "úzká cesta mezi horami" },
+        { "left": "MÝTNÉ", "right": "poplatek za užití cesty" },
+        { "left": "SYMBOL", "right": "domluvené znamení či znak" },
+        { "left": "MYSTIKA", "right": "nadpřirozené tajno" },
+        { "left": "CHMÝŘÍ", "right": "jemné pápěří rostlin" },
+        { "left": "OMYL", "right": "chyba vzniklá zmýlením" },
+        { "left": "MIMIKA", "right": "pohyby obličejových svalů" },
+        { "left": "MYRIÁDA", "right": "nespočetné, velké množství" }
+      ],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "match",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Klobouk dolů, jsi expert! Zvládl jsi rozlišit i ty nejzáludnější dvojice jako mísit/myslet nebo vymýtit/vymítat."
+    }
+  ],
+  "difficulty": 3,
+  "points": 50,
+  "is_test": false,
+  "id": "cj3vsmmatch3",
+  "created_date": "2026-02-01T21:55:00.000000",
+  "updated_date": "2026-02-01T21:55:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "fill",
+  "title": "Vpisování – Vyjmenovaná slova po M",
+  "instructions": "Doplň do věty správné vyjmenované slovo po M. Pozor na správný pravopis!",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Doplň slovo: Kočka ráda loví malé ___.",
+      "answer": {
+        "mode": "subset",
+        "items": ["myši", "myš"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Správné slovo je myš nebo myši. Patří mezi vyjmenovaná slova po M."
+    },
+    {
+      "question": "Doplň slovo: Před jídlem si musíme pořádně ___ ruce.",
+      "answer": {
+        "mode": "subset",
+        "items": ["mýt", "umýt", "umyt"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Mýt se píše s tvrdým ý, protože jde o vyjmenované slovo (čištění vodou)."
+    },
+    {
+      "question": "Doplň slovo: Pomalý živočich s domečkem na zádech je ___.",
+      "answer": {
+        "mode": "subset",
+        "items": ["hlemýžď", "hlemyzd", "hlemýzd", "hlemýžd"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Hlemýžď patří mezi vyjmenovaná slova po M, uprostřed píšeme tvrdé ý."
+    },
+    {
+      "question": "Doplň slovo: Včely, mouchy a brouci jsou ___. (jeden název pro všechny)",
+      "answer": {
+        "mode": "subset",
+        "items": ["hmyz"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Hmyz je vyjmenované slovo po M."
+    },
+    {
+      "question": "Doplň slovo: Na mytí rukou používáme voňavé ___.",
+      "answer": {
+        "mode": "subset",
+        "items": ["mýdlo"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Mýdlo je slovo příbuzné k vyjmenovanému slovu mýt."
+    }
+  ],
+  "difficulty": 1,
+  "points": 25,
+  "is_test": false,
+  "id": "cj3vsmfill1",
+  "created_date": "2026-02-01T22:00:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "fill",
+  "title": "Vpisování – Významy a příbuzná slova",
+  "instructions": "Doplňuj správná slova. U druhé části napiš alespoň jedno slovo příbuzné.",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Doplň slovo: Prosím tě, podej ___ (mně) tu knihu.",
+      "answer": {
+        "mode": "subset",
+        "items": ["mi"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Zde píšeme měkké 'mi' (tvar zájmena já), protože nejde o vyjmenované slovo 'my' (všichni)."
+    },
+    {
+      "question": "Doplň slovo: Moc se ti omlouvám, byl to jen velký ___.",
+      "answer": {
+        "mode": "subset",
+        "items": ["omyl"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "audio_url": null,
+      "image_url": null,
+      "explanation": "Slovo 'omyl' je příbuzné k vyjmenovanému slovu 'mýlit se'."
+    },
+    {
+      "question": "Napiš libovolné slovo PŘÍBUZNÉ ke slovu: MÝT",
+      "answer": {
+        "mode": "subset",
+        "items": ["mýdlo", "umýt", "pomeje", "umývadlo", "myčka", "namydlit", "mýval", "umyl", "myl"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "explanation": "Příbuzná slova mají stejný kořen a souvisí s mytím (např. mýdlo, umývadlo)."
+    },
+    {
+      "question": "Napiš libovolné slovo PŘÍBUZNÉ ke slovu: MYŠ",
+      "answer": {
+        "mode": "subset",
+        "items": ["myška", "myšák", "myšiloov", "myšidlo", "myšina", "myšátko"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "explanation": "Příbuzná slova ke slovu myš jsou například myška nebo myšina."
+    },
+    {
+      "question": "Napiš libovolné slovo PŘÍBUZNÉ ke slovu: MYSLET",
+      "answer": {
+        "mode": "subset",
+        "items": ["myšlenka", "myslivec", "vymyslet", "přemýšlet", "mysl", "úmysl", "smysl"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "text": null,
+      "words": [],
+      "type": "fill",
+      "explanation": "Příbuzná slova ke slovu myslet jsou například myšlenka, myslivec nebo vymyslet."
+    }
+  ],
+  "difficulty": 2,
+  "points": 25,
+  "is_test": false,
+  "id": "cj3vsmfill2",
+  "created_date": "2026-02-01T22:10:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "fill",
+  "title": "Vpisování Expert – Rodiny slov",
+  "instructions": "Vypiš alespoň dvě nebo více slov PŘÍBUZNÝCH k zadanému slovu (odděluj je čárkou).",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Vypiš slova PŘÍBUZNÁ ke slovu: MÝTIT",
+      "answer": {
+        "mode": "subset",
+        "items": ["mýtina", "vymýtit", "vymycovat", "mýtiště", "mýtní", "mýtné", "mýta"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "explanation": "K mýtit patří mýtina (místo po stromech) nebo mýtné (poplatek)."
+    },
+    {
+      "question": "Vypiš slova PŘÍBUZNÁ ke slovu: SMÝKAT",
+      "answer": {
+        "mode": "subset",
+        "items": ["smyk", "smyčec", "smyčka", "přesmýkačka", "průsmyk", "smýčít", "nasmýkat"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "explanation": "Příbuzná jsou slova jako smyk, smyčka nebo horský průsmyk."
+    },
+    {
+      "question": "Vypiš slova PŘÍBUZNÁ ke slovu: MÝLIT SE",
+      "answer": {
+        "mode": "subset",
+        "items": ["omyl", "zmýlená", "neomylný", "mýlka", "zmýlit"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "explanation": "Nejčastějšími příbuznými slovy jsou omyl, mýlka nebo přídavné jméno neomylný."
+    },
+    {
+      "question": "Vypiš slova PŘÍBUZNÁ ke slovu: DMÝCHAT",
+      "answer": {
+        "mode": "subset",
+        "items": ["rozdmýchat", "dmýchadlo", "nadmýchat", "vdmýchat"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "explanation": "Tato slova souvisejí s vháněním vzduchu, například rozdmýchat oheň nebo dmýchadlo."
+    },
+    {
+      "question": "Vypiš slova PŘÍBUZNÁ ke slovu: MÝT (vodou)",
+      "answer": {
+        "mode": "subset",
+        "items": ["mýdlo", "umývadlo", "pomeje", "myčka", "mýval", "namydlit", "umývat", "vymýt", "umyl", "myl"]
+      },
+      "options": [],
+      "pairs": [],
+      "categories": [],
+      "explanation": "Pozor na záměnu s 'mít'. Příbuzná slova jsou mýdlo, umývadlo nebo třeba i mýval (protože si 'myje' potravu)."
+    }
+  ],
+  "difficulty": 3,
+  "points": 50,
+  "is_test": false,
+  "id": "cj3vsmfill3",
+  "created_date": "2026-02-01T22:20:00.000000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "decision",
+  "title": "Rozhodovačka M - Lehká",
+  "instructions": "Rozhodni, zda je tvrzení o slovech po M správné. Vyber Ano nebo Ne.",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Patří slovo MYŠ mezi vyjmenovaná slova po M?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, myš je základní vyjmenované slovo."
+    },
+    {
+      "question": "Píšeme ve slově MISKA tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, miska není vyjmenované slovo, píšeme měkké i."
+    },
+    {
+      "question": "Je slovo MÝDLO příbuzné ke slovu MÝT?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, mýdlo souvisí s mytím, proto píšeme tvrdé ý."
+    },
+    {
+      "question": "Píšeme ve slově MÍČ tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, míč není vyjmenované slovo."
+    },
+    {
+      "question": "Patří slovo HMYZ mezi vyjmenovaná slova?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, hmyz je vyjmenované slovo po M."
+    },
+    {
+      "question": "Píšeme ve slově MINUTKA tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, minutka není vyjmenované slovo."
+    },
+    {
+      "question": "Je slovo MYSLET vyjmenované slovo?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, patří do základní řady."
+    },
+    {
+      "question": "Je slovo MÍSA vyjmenované slovo?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, v slově mísa píšeme měkké í."
+    },
+    {
+      "question": "Píšeme ve slově HLEMÝŽĎ tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, hlemýžď je vyjmenované slovo."
+    },
+    {
+      "question": "Patří slovo MICHAL mezi vyjmenovaná slova?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, jméno Michal píšeme s měkkým i."
+    },
+    {
+      "question": "Je slovo ZAMYKAT vyjmenované slovo?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, zamykat patří k vyjmenovaným slovům po M."
+    },
+    {
+      "question": "Píšeme ve slově MIKINA tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, mikina není vyjmenované slovo."
+    },
+    {
+      "question": "Je slovo DÝM vyjmenované slovo?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, dým je v seznamu vyjmenovaných slov."
+    },
+    {
+      "question": "Píšeme ve slově MIMINKO tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, miminko píšeme vždy s měkkými i."
+    },
+    {
+      "question": "Je slovo MÝLIT SE vyjmenované slovo?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, mýlit se znamená chybovat a je to vyjmenované slovo."
+    }
+  ],
+  "difficulty": 1,
+  "points": 15,
+  "is_test": false,
+  "id": "cj3vsmdecision1",
+  "created_date": "2026-02-01T23:00:00.000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "decision",
+  "title": "Rozhodovačka M - Střední",
+  "instructions": "Doplňuj i/y po písmenu M. Rozhodni, zda se v daném slově píše tvrdé Y/Ý. Vyber Ano nebo Ne.",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Píše se ve slově 'm_dlo' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, mýdlo je příbuzné ke slovu mýt."
+    },
+    {
+      "question": "Píše se ve větě ' Podej m_ tužku' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, v tomto případě jde o zájmeno (mně), nikoliv o skupinu lidí."
+    },
+    {
+      "question": "Píše se ve slově 'm_slivec' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, myslivec je příbuzné ke slovu myslet."
+    },
+    {
+      "question": "Píše se ve slově 'm_chačka' (na vaření) tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, míchat není vyjmenované slovo."
+    },
+    {
+      "question": "Píše se ve slově 'v_mýšlet' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to příbuzné ke slovu myslet."
+    },
+    {
+      "question": "Píše se ve slově 'm_sa' (na ovoce) tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, mísa není vyjmenované slovo, píšeme měkké í."
+    },
+    {
+      "question": "Píše se ve slově 'zam_kat' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, zamykat patří mezi vyjmenovaná slova."
+    },
+    {
+      "question": "Píše se ve slově 'm_stenka' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, je to odvozeno od slova místo, píšeme měkké í."
+    },
+    {
+      "question": "Píše se ve slově 'om_l' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to příbuzné ke slovu mýlit se."
+    },
+    {
+      "question": "Píše se ve slově 'm_láček' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, miláček není vyjmenované slovo."
+    },
+    {
+      "question": "Píše se ve slově 'm_tina' (v lese) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to příbuzné ke slovu mýtit."
+    },
+    {
+      "question": "Píše se ve slově 'm_čka' (na nádobí) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to příbuzné ke slovu mýt."
+    },
+    {
+      "question": "Píše se ve slově 'm_nutka' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, minutka se píše s měkkým i."
+    },
+    {
+      "question": "Píše se ve slově 'hlem_žď' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, hlemýžď je vyjmenované slovo."
+    },
+    {
+      "question": "Píše se ve slově 'm_t' (vlastnit) tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, mít ve smyslu vlastnit není vyjmenované slovo."
+    },
+    {
+      "question": "Píše se ve slově 'm_val' (zvíře) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, mýval je příbuzné ke slovu mýt (protože si potravu 'myje')."
+    },
+    {
+      "question": "Píše se ve slově 'm_nk' (mnich) tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, v tomto případě píšeme měkké i."
+    },
+    {
+      "question": "Píše se ve slově 'sm_kat' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, smýkat je vyjmenované slovo."
+    },
+    {
+      "question": "Píše se ve slově 'm_lá' (osoba) tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, milý/milá píšeme s měkkým i."
+    },
+    {
+      "question": "Píše se ve slově 'd_m' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, dým je vyjmenované slovo."
+    }
+  ],
+  "difficulty": 2,
+  "points": 30,
+  "is_test": false,
+  "id": "cj3vsmdecision2",
+  "created_date": "2026-02-01T23:30:00.000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "decision",
+  "title": "Rozhodovačka M - Expert",
+  "instructions": "Rozhodni, zda se v daném slově nebo spojení píše tvrdé Y/Ý. Vyber Ano nebo Ne.",
+  "legend": null,
+  "questions": [
+    {
+      "question": "Píše se ve slově 'm_tus' (báje) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, mýtus je slovo cizího původu a píšeme v něm tvrdé ý."
+    },
+    {
+      "question": "Píše se ve slově 'v_mítat' (ďábla) tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, vymítat (vyhánět) je odvozeno od slova mítat, píšeme měkké í. Pozor na rozdíl od vymýtit les."
+    },
+    {
+      "question": "Píše se ve slově 'sum_š' (mořský živočich) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, sumýš patří mezi vyjmenovaná slova po M."
+    },
+    {
+      "question": "Píše se ve slově 'm_sit' (těsto) tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, mísit (míchat) není vyjmenované slovo. Píšeme měkké í."
+    },
+    {
+      "question": "Píše se ve slově 's_mbol' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, symbol je slovo cizího původu, píšeme tvrdé y."
+    },
+    {
+      "question": "Píše se ve slově 'm_mika' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, mimika není vyjmenované slovo, píšeme měkké i."
+    },
+    {
+      "question": "Píše se ve slově 'nachom_tnout se' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, toto slovo patří mezi vyjmenovaná slova po M."
+    },
+    {
+      "question": "Píše se ve slově 'průsm_k' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to slovo příbuzné ke smýkat."
+    },
+    {
+      "question": "Píše se ve spojení 'm_tné se platí' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, mýtné je příbuzné ke slovu mýtit."
+    },
+    {
+      "question": "Píše se ve slově 'm_rnictví' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, je to odvozeno od slova mír, píšeme měkké í."
+    },
+    {
+      "question": "Píše se ve slově 'm_stika' (tajemno) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, mystika je cizí slovo, píšeme tvrdé y."
+    },
+    {
+      "question": "Píše se ve slově 'přesm_kačka' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to příbuzné ke slovu smýkat."
+    },
+    {
+      "question": "Píše se ve slově 'm_nerál' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, minerál není vyjmenované slovo, píšeme měkké i."
+    },
+    {
+      "question": "Píše se ve slově 'v_mýtit' (pařezy) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, vymýtit je příbuzné k mýtit."
+    },
+    {
+      "question": "Píše se ve slově 'm_riáda' (množství) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, v tomto cizím slově píšeme po M tvrdé y."
+    },
+    {
+      "question": "Píše se ve spojení 'm_lá maminka' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, milá není vyjmenované slovo, píšeme měkké i."
+    },
+    {
+      "question": "Píše se ve slově 'm_dlovat' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to příbuzné ke slovu mýdlo (mýt)."
+    },
+    {
+      "question": "Píše se ve slově 'om_lný' (člověk) tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to příbuzné ke slovu mýlit se."
+    },
+    {
+      "question": "Píše se ve slově 'm_sule' tvrdé Y?",
+      "answer": "Ne",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ne, misule (nebo miska) se píše s měkkým i."
+    },
+    {
+      "question": "Píše se ve slově 'dm_chadlo' tvrdé Y?",
+      "answer": "Ano",
+      "options": ["Ano", "Ne"],
+      "explanation": "Ano, je to příbuzné ke slovu dmýchat."
+    }
+  ],
+  "difficulty": 3,
+  "points": 40,
+  "is_test": false,
+  "id": "cj3vsmdecision3",
+  "created_date": "2026-02-01T23:20:00.000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "analysis",
+  "title": "Hledej chyby - Lehká úroveň",
+  "instructions": "V každé větě najdi slovo, které je napsané špatně, a označ ho červeně. Ostatní slova označ modře nebo je nechej být.",
+  "legend": {
+    "red": "Chyba"
+  },
+  "questions": [
+    {
+      "question": "Najdi chybu:",
+      "text": "Kočka honila malé miši.",
+      "words": [
+        { "word": "Kočka", "color": "blue" },
+        { "word": "honila", "color": "blue" },
+        { "word": "malé", "color": "blue" },
+        { "word": "miši.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Myš je vyjmenované slovo, píšeme tvrdé y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Musíme si mýt vlastní auto.",
+      "words": [
+        { "word": "Musíme", "color": "blue" },
+        { "word": "si", "color": "blue" },
+        { "word": "mýt", "color": "red" },
+        { "word": "vlastní", "color": "blue" },
+        { "word": "auto.", "color": "blue" }
+      ],
+      "type": "analysis",
+      "explanation": "Ve významu 'vlastnit' píšeme měkké i (mít)."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "V lese bzučel hmiz.",
+      "words": [
+        { "word": "V", "color": "blue" },
+        { "word": "lese", "color": "blue" },
+        { "word": "bzučel", "color": "blue" },
+        { "word": "hmiz.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Hmyz je vyjmenované slovo, píšeme tvrdé y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Umej si ruce midlem.",
+      "words": [
+        { "word": "Umej", "color": "blue" },
+        { "word": "si", "color": "blue" },
+        { "word": "ruce", "color": "blue" },
+        { "word": "midlem.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Mýdlo je příbuzné ke slovu mýt, píšeme tvrdé ý."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Hlemýžď se pomalu smíkal.",
+      "words": [
+        { "word": "Hlemýžď", "color": "blue" },
+        { "word": "se", "color": "blue" },
+        { "word": "pomalu", "color": "blue" },
+        { "word": "smíkal.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Smýkat je vyjmenované slovo, píšeme tvrdé ý."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Zkuste na to nemislit.",
+      "words": [
+        { "word": "Zkuste", "color": "blue" },
+        { "word": "na", "color": "blue" },
+        { "word": "to", "color": "blue" },
+        { "word": "nemislit.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Myslet je vyjmenované slovo, píšeme tvrdé y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Klíčem musíme zamikat.",
+      "words": [
+        { "word": "Klíčem", "color": "blue" },
+        { "word": "musíme", "color": "blue" },
+        { "word": "zamikat.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Zamykat je vyjmenované slovo, píšeme tvrdé y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Z komína stoupal dím.",
+      "words": [
+        { "word": "Z", "color": "blue" },
+        { "word": "komína", "color": "blue" },
+        { "word": "stoupal", "color": "blue" },
+        { "word": "dím.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Dým je vyjmenované slovo, píšeme tvrdé y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "V lese roste chmíří.",
+      "words": [
+        { "word": "V", "color": "blue" },
+        { "word": "lese", "color": "blue" },
+        { "word": "roste", "color": "blue" },
+        { "word": "chmíří.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Chmýří je vyjmenované slovo, píšeme tvrdé ý."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Nesmíš se v úkolu mílit.",
+      "words": [
+        { "word": "Nesmíš", "color": "blue" },
+        { "word": "se", "color": "blue" },
+        { "word": "v", "color": "blue" },
+        { "word": "úkolu", "color": "blue" },
+        { "word": "mílit.", "color": "red" }
+      ],
+      "type": "analysis",
+      "explanation": "Mýlit se je vyjmenované slovo, píšeme tvrdé ý."
+    }
+  ],
+  "difficulty": 1,
+  "points": 10,
+  "is_test": false,
+  "id": "cj3vsmanalysis1",
+  "created_date": "2026-02-01T23:58:00.000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "analysis",
+  "title": "Hledej chyby - Střední úroveň",
+  "instructions": "V každé větě najdi jedno slovo s chybou a označ ho červeně. Správná slova označ modře.",
+  "question_limit": 8,
+  "legend": {
+    "red": "Chyba"
+  },
+  "questions": [
+    {
+      "question": "Najdi chybu:",
+      "text": "Podej my tu tužku.",
+      "words": [{ "word": "Podej", "color": "blue" }, { "word": "my", "color": "red" }, { "word": "tu", "color": "blue" }, { "word": "tužku.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Podej 'mi' (mně) se píše s měkkým i."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Maminka chce mýt nové auto.",
+      "words": [{ "word": "Maminka", "color": "blue" }, { "word": "chce", "color": "blue" }, { "word": "mýt", "color": "red" }, { "word": "nové", "color": "blue" }, { "word": "auto.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Ve významu 'vlastnit' píšeme 'mít' s měkkým i."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "V kuchyni je velká mýsa.",
+      "words": [{ "word": "V", "color": "blue" }, { "word": "kuchyni", "color": "blue" }, { "word": "je", "color": "blue" }, { "word": "velká", "color": "blue" }, { "word": "mýsa.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Mísa není vyjmenované slovo."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Myslivec sledoval mívaly v lese.",
+      "words": [{ "word": "Myslivec", "color": "blue" }, { "word": "sledoval", "color": "blue" }, { "word": "mívaly", "color": "red" }, { "word": "v", "color": "blue" }, { "word": "lese.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Mýval (zvíře) je příbuzné k mýt, píšeme y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Pavel začal mýchat těsto.",
+      "words": [{ "word": "Pavel", "color": "blue" }, { "word": "začal", "color": "blue" }, { "word": "mýchat", "color": "red" }, { "word": "těsto.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Míchat píšeme s měkkým í."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "To byl ale ošklivý omil!",
+      "words": [{ "word": "To", "color": "blue" }, { "word": "byl", "color": "blue" }, { "word": "ale", "color": "blue" }, { "word": "ošklivý", "color": "blue" }, { "word": "omil!", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Omyl je příbuzné k mýlit se, píšeme y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "V lese byla velká mítina.",
+      "words": [{ "word": "V", "color": "blue" }, { "word": "lese", "color": "blue" }, { "word": "byla", "color": "blue" }, { "word": "velká", "color": "blue" }, { "word": "mítina.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Mýtina je příbuzná k mýtit, píšeme y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Brácha je mýlý kluk.",
+      "words": [{ "word": "Brácha", "color": "blue" }, { "word": "je", "color": "blue" }, { "word": "mýlý", "color": "red" }, { "word": "kluk.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Milý píšeme s měkkým i."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Protože mi jsme tým.",
+      "words": [{ "word": "Protože", "color": "blue" }, { "word": "mi", "color": "red" }, { "word": "jsme", "color": "blue" }, { "word": "tým.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Zájmeno 'my' (všichni) píšeme s y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Nová mička na nádobí.",
+      "words": [{ "word": "Nová", "color": "blue" }, { "word": "mičku", "color": "red" }, { "word": "na", "color": "blue" }, { "word": "nádobí.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Myčka je odvozená od mýt."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Mám v m_stnosti ticho.",
+      "words": [{ "word": "Mám", "color": "blue" }, { "word": "v", "color": "blue" }, { "word": "mýstnosti", "color": "red" }, { "word": "ticho.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Místnost je od slova místo, není vyjmenované."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "M_lá maminka se usmála.",
+      "words": [{ "word": "Milá", "color": "blue" }, { "word": "maminka", "color": "blue" }, { "word": "se", "color": "blue" }, { "word": "usmála.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Tady je past! Milá je správně. Chyba je ve slově: m_minka."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Zámek se musí zamikat.",
+      "words": [{ "word": "Zámek", "color": "blue" }, { "word": "se", "color": "blue" }, { "word": "musí", "color": "blue" }, { "word": "zamikat.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Zamykat je vyjmenované slovo."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Dědeček m_val auto.",
+      "words": [{ "word": "Dědeček", "color": "blue" }, { "word": "míval", "color": "red" }, { "word": "auto.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Pokud auto čistil, píšeme mýval (od mýt). Pokud ho vlastnil, píšeme míval."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Cesta vede přes průsmik.",
+      "words": [{ "word": "Cesta", "color": "blue" }, { "word": "vede", "color": "blue" }, { "word": "přes", "color": "blue" }, { "word": "průsmik.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Průsmyk je příbuzné ke smýkat."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Vypadá to jako mýnus.",
+      "words": [{ "word": "Vypadá", "color": "blue" }, { "word": "to", "color": "blue" }, { "word": "jako", "color": "blue" }, { "word": "mýnus.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Mínus není vyjmenované slovo."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Pampeliška má bílé chmíří.",
+      "words": [{ "word": "Pampeliška", "color": "blue" }, { "word": "má", "color": "blue" }, { "word": "bílé", "color": "blue" }, { "word": "chmíří.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Chmýří píšeme s y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "V mislivně je klid.",
+      "words": [{ "word": "V", "color": "blue" }, { "word": "mislivně", "color": "red" }, { "word": "je", "color": "blue" }, { "word": "klid.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Myslivna je od slova myslet."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Slyšeli jsme mňoukat miši.",
+      "words": [{ "word": "Slyšeli", "color": "blue" }, { "word": "jsme", "color": "blue" }, { "word": "mňoukat", "color": "blue" }, { "word": "miši.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Myši jsou vyjmenované slovo."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Ta mišlenka se mi líbí.",
+      "words": [{ "word": "Ta", "color": "blue" }, { "word": "mišlenka", "color": "red" }, { "word": "se", "color": "blue" }, { "word": "mi", "color": "blue" }, { "word": "líbí.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Myšlenka je od slova myslet."
+    }
+  ],
+  "difficulty": 2,
+  "points": 40,
+  "is_test": false,
+  "id": "cj3vsmanalysis2",
+  "created_date": "2026-02-01T23:59:00.000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
+  },
+  {
+  "topic_id": "6972c3f0a1b2c3d4e5f60731",
+  "category_id": "6972c420a1b2c3d4e5f60744",
+  "type": "analysis",
+  "title": "Hledej chyby - Expert",
+  "instructions": "V každé větě najdi jedno slovo s chybou a označ ho červeně. Správná slova označ modře.",
+  "legend": {
+    "red": "Chyba"
+  },
+  "questions": [
+    {
+      "question": "Najdi chybu:",
+      "text": "Starý mýtus vyprávěl o hrdinech.",
+      "words": [{ "word": "Starý", "color": "blue" }, { "word": "mítus", "color": "red" }, { "word": "vyprávěl", "color": "blue" }, { "word": "o", "color": "blue" }, { "word": "hrdinech.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Mýtus je slovo cizího původu, píšeme v něm tvrdé y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Kněz chtěl vymítat zlé duchy.",
+      "words": [{ "word": "Kněz", "color": "blue" }, { "word": "chtěl", "color": "blue" }, { "word": "vymýtat", "color": "red" }, { "word": "zlé", "color": "blue" }, { "word": "duchy.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Vymítat (vyhánět) píšeme s měkkým í. Tvrdé y je ve slově vymýtit (kácet)."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "V moři plave zvláštní sumýš.",
+      "words": [{ "word": "V", "color": "blue" }, { "word": "moři", "color": "blue" }, { "word": "plave", "color": "blue" }, { "word": "zvláštní", "color": "blue" }, { "word": "sumíš.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Sumýš patří mezi vyjmenovaná slova po M."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Musíš mísit těsto velmi opatrně.",
+      "words": [{ "word": "Musíš", "color": "blue" }, { "word": "mýsit", "color": "red" }, { "word": "těsto", "color": "blue" }, { "word": "velmi", "color": "blue" }, { "word": "opatrně.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Mísit (míchat) není vyjmenované slovo, píšeme měkké í."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Holubice je symbol míru.",
+      "words": [{ "word": "Holubice", "color": "blue" }, { "word": "je", "color": "blue" }, { "word": "simbol", "color": "red" }, { "word": "míru.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Symbol je cizí slovo, píšeme tvrdé y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Herec má velmi výraznou mimiku.",
+      "words": [{ "word": "Herec", "color": "blue" }, { "word": "má", "color": "blue" }, { "word": "velmi", "color": "blue" }, { "word": "výraznou", "color": "blue" }, { "word": "mýmiku.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Mimika není vyjmenované slovo, píšeme měkké i."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Nachomýtnout se k nehodě je smůla.",
+      "words": [{ "word": "Nachomítnout", "color": "red" }, { "word": "se", "color": "blue" }, { "word": "k", "color": "blue" }, { "word": "nehodě", "color": "blue" }, { "word": "je", "color": "blue" }, { "word": "smůla.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Nachomýtnout se je vyjmenované slovo po M."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "V lese rostou vzácné minerály.",
+      "words": [{ "word": "V", "color": "blue" }, { "word": "lese", "color": "blue" }, { "word": "rostou", "color": "blue" }, { "word": "vzácné", "color": "blue" }, { "word": "mynerály.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Minerál se píše s měkkým i."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Dřevorubci museli vymýtit starý les.",
+      "words": [{ "word": "Dřevorubci", "color": "blue" }, { "word": "museli", "color": "blue" }, { "word": "vimýtit", "color": "red" }, { "word": "starý", "color": "blue" }, { "word": "les.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Vymýtit (kácet) je příbuzné k mýtit, píšeme tvrdé y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Hvězdář viděl myriády hvězd.",
+      "words": [{ "word": "Hvězdář", "color": "blue" }, { "word": "viděl", "color": "blue" }, { "word": "miriády", "color": "red" }, { "word": "hvězd.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Myriáda je cizí slovo s tvrdým y po m."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Kovář musel rozdmýchat oheň.",
+      "words": [{ "word": "Kovář", "color": "blue" }, { "word": "musel", "color": "blue" }, { "word": "rozdmíchat", "color": "red" }, { "word": "oheň.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Dmýchat je vyjmenované slovo, píšeme tvrdé ý."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Tajemná mystika nás láká.",
+      "words": [{ "word": "Tajemná", "color": "blue" }, { "word": "mistika", "color": "red" }, { "word": "nás", "color": "blue" }, { "word": "láká.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Mystika je cizí slovo s tvrdým y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Na dálnici se platí mýtné.",
+      "words": [{ "word": "Na", "color": "blue" }, { "word": "dálnici", "color": "blue" }, { "word": "se", "color": "blue" }, { "word": "platí", "color": "blue" }, { "word": "mítné.", "color": "red" }],
+      "type": "analysis",
+      "explanation": "Mýtné je příbuzné k mýtit, píšeme tvrdé ý."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Mám rád plynulý pohyb.",
+      "words": [{ "word": "Mám", "color": "blue" }, { "word": "rád", "color": "blue" }, { "word": "plinulý", "color": "red" }, { "word": "pohyb.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Plynulý je od slova plyn (vyjmenované po P), ale žák musí hlídat i okolní slova."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Hlemýždí ulita je pevná.",
+      "words": [{ "word": "Hlemíždí", "color": "red" }, { "word": "ulita", "color": "blue" }, { "word": "je", "color": "blue" }, { "word": "pevná.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Příbuzné slovo k hlemýžď si zachovává tvrdé ý."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Mírnictví je důležité pro klid.",
+      "words": [{ "word": "Mýrnictví", "color": "red" }, { "word": "je", "color": "blue" }, { "word": "důležité", "color": "blue" }, { "word": "pro", "color": "blue" }, { "word": "klid.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Odvozeno od slova mír, píšeme měkké í."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Změřili jsme azimut cesty.",
+      "words": [{ "word": "Změřili", "color": "blue" }, { "word": "jsme", "color": "blue" }, { "word": "azymut", "color": "red" }, { "word": "cesty.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Azimut se píše s měkkým i (i když jsme ho dříve v rozřazovačce řešili jako cizí slovo, standardní pravopis je s i)."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Eponym je název po osobě.",
+      "words": [{ "word": "Eponim", "color": "red" }, { "word": "je", "color": "blue" }, { "word": "název", "color": "blue" }, { "word": "po", "color": "blue" }, { "word": "osobě.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Eponym je cizí slovo, po m se píše y."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Smyčec klouzal po strunách.",
+      "words": [{ "word": "Smíčec", "color": "red" }, { "word": "klouzal", "color": "blue" }, { "word": "po", "color": "blue" }, { "word": "strunách.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Smyčec je příbuzný ke smýkat."
+    },
+    {
+      "question": "Najdi chybu:",
+      "text": "Mýlka se může stát každému.",
+      "words": [{ "word": "Mílka", "color": "red" }, { "word": "se", "color": "blue" }, { "word": "může", "color": "blue" }, { "word": "stát", "color": "blue" }, { "word": "každému.", "color": "blue" }],
+      "type": "analysis",
+      "explanation": "Mýlka je příbuzné slovo k mýlit se."
+    }
+  ],
+  "difficulty": 3,
+  "points": 60,
+  "is_test": false,
+  "id": "cj3vsmanalysis3",
+  "created_date": "2026-02-01T23:59:59.000",
+  "created_by": "Gemini-Teacher",
+  "grade": 3
   }
-
 ]

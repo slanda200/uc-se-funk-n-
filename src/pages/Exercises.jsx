@@ -52,6 +52,24 @@ const exerciseTypeNames = {
   image: 'Obrázek a psaní'
 };
 
+// ✅ helper: co považujeme za "finální test"
+function isFinalTestExercise(e) {
+  return !!e && (e.type === 'test' || e.is_test === true);
+}
+
+// ✅ helper: preferuj opravdový test podle type
+function pickFinalTestForDifficulty(exercises, diff) {
+  const list = Array.isArray(exercises) ? exercises : [];
+
+  // 1) nejdřív preferuj "type === test" (to je správná varianta)
+  const exact = list.find((e) => Number(e?.difficulty) === diff && e?.type === 'test');
+  if (exact) return exact;
+
+  // 2) fallback: když někdo používá is_test bez type (neideální, ale radši něco)
+  const fallback = list.find((e) => Number(e?.difficulty) === diff && e?.is_test === true);
+  return fallback || null;
+}
+
 export default function Exercises() {
   const navigate = useNavigate();
 
@@ -151,11 +169,12 @@ export default function Exercises() {
   };
 
   /**
-   * ✅ odemčení testu: všechna netest cvičení v obtížnosti musí být completed
+   * ✅ odemčení testu: všechna NETEST cvičení v obtížnosti musí být completed
+   * (zpřesněno: netest = !(type===test || is_test===true))
    */
   const isTestUnlocked = (difficulty) => {
     const difficultyExercises = exercises.filter(
-      (e) => e.difficulty === difficulty && !e.is_test
+      (e) => Number(e?.difficulty) === difficulty && !isFinalTestExercise(e)
     );
     if (difficultyExercises.length === 0) return false;
 
@@ -214,6 +233,16 @@ export default function Exercises() {
     return safe + '…';
   };
 
+  // ✅ otevření finálního testu (vždy vybere správný test podle diff)
+  const openFinalTest = (diff) => {
+    const test = pickFinalTestForDifficulty(exercises, diff);
+    if (!test?.id) {
+      alert('Finální test pro tuto obtížnost nebyl nalezen.');
+      return;
+    }
+    navigate(createPageUrl(`Play?exercise=${test.id}`));
+  };
+
   return (
     <div className={`min-h-screen bg-gradient-to-br from-slate-50 ${colors.bg} to-white`}>
       {/* Header */}
@@ -260,7 +289,6 @@ export default function Exercises() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            // ✅ zvětšeno ~40%: p-6 -> p-8, větší mezery, větší ikonka, větší nadpis
             className="mb-10 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 border-2 border-blue-200"
           >
             <div className="flex items-start gap-5">
@@ -272,7 +300,6 @@ export default function Exercises() {
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <h3 className="text-2xl font-extrabold text-slate-800">📚 Vysvětlivka</h3>
 
-                  {/* ✅ výraznější tlačítko: bílé, tlustší border, shadow */}
                   <Button
                     variant="outline"
                     className="h-10 px-4 rounded-xl bg-white border-2 border-blue-300 text-blue-800 shadow-sm hover:shadow-md hover:bg-white"
@@ -284,7 +311,6 @@ export default function Exercises() {
                   </Button>
                 </div>
 
-                {/* ✅ zachová odstavce + příjemnější mezery */}
                 <div className="text-slate-700 leading-relaxed whitespace-pre-wrap space-y-2">
                   {getSnippet(topic.explanation, SNIPPET_CHARS)}
                 </div>
@@ -313,9 +339,8 @@ export default function Exercises() {
           </motion.div>
         ) : (
           <>
-            {/* Difficulty 1/2/3 sections */}
             {[1, 2, 3].map((diff) => {
-              const diffExercises = exercises.filter((e) => e.difficulty === diff);
+              const diffExercises = exercises.filter((e) => Number(e?.difficulty) === diff);
               if (diffExercises.length === 0) return null;
 
               const title =
@@ -327,6 +352,9 @@ export default function Exercises() {
                     ? 'bg-yellow-100 text-yellow-700'
                     : 'bg-red-100 text-red-700';
 
+              // ✅ vyber správný finální test pro tuhle obtížnost
+              const finalTest = pickFinalTestForDifficulty(exercises, diff);
+
               return (
                 <div className="mb-8" key={diff}>
                   <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
@@ -336,7 +364,7 @@ export default function Exercises() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* normal exercises */}
                     {exercises
-                      .filter((e) => e.difficulty === diff && !e.is_test)
+                      .filter((e) => Number(e?.difficulty) === diff && !isFinalTestExercise(e))
                       .map((exercise, index) => {
                         const p = getExerciseProgress(exercise.id);
                         const Icon = exerciseTypeIcons[exercise.type] || Play;
@@ -402,96 +430,99 @@ export default function Exercises() {
                         );
                       })}
 
-                    {/* test */}
-                    {exercises
-                      .filter((e) => e.difficulty === diff && e.is_test)
-                      .map((exercise) => {
-                        const p = getExerciseProgress(exercise.id);
-                        const unlocked = isTestUnlocked(diff);
-                        const Icon = exerciseTypeIcons[exercise.type] || Star;
-                        const isCompleted = p?.completed;
-                        const stars = p?.stars || 0;
+                    {/* finální test – jen 1 správný test pro diff */}
+                    {finalTest && (() => {
+                      const p = getExerciseProgress(finalTest.id);
+                      const unlocked = isTestUnlocked(diff);
+                      const isCompleted = p?.completed;
+                      const stars = p?.stars || 0;
 
-                        return (
-                          <motion.div
-                            key={exercise.id}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.3 }}
+                      return (
+                        <motion.div
+                          key={finalTest.id}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => unlocked && openFinalTest(diff)}
+                            onKeyDown={(e) => {
+                              if (!unlocked) return;
+                              if (e.key === 'Enter' || e.key === ' ') openFinalTest(diff);
+                            }}
+                            className={!unlocked ? 'pointer-events-none' : ''}
                           >
-                            <Link
-                              to={unlocked ? createPageUrl(`Play?exercise=${exercise.id}`) : '#'}
-                              className={!unlocked ? 'pointer-events-none' : ''}
+                            <div
+                              className={`
+                                rounded-2xl md:rounded-3xl p-5 md:p-6
+                                shadow-md transition-all
+                                border-2 relative overflow-hidden
+                                ${
+                                  unlocked
+                                    ? `bg-gradient-to-br from-yellow-50 to-orange-50 ${
+                                        isCompleted ? 'border-yellow-300' : 'border-yellow-200'
+                                      } hover:shadow-xl`
+                                    : 'bg-slate-100 border-slate-200 opacity-60'
+                                }
+                              `}
                             >
-                              <div
-                                className={`
-                                  rounded-2xl md:rounded-3xl p-5 md:p-6
-                                  shadow-md transition-all
-                                  border-2 relative overflow-hidden
-                                  ${
-                                    unlocked
-                                      ? `bg-gradient-to-br from-yellow-50 to-orange-50 ${
-                                          isCompleted ? 'border-yellow-300' : 'border-yellow-200'
-                                        } hover:shadow-xl`
-                                      : 'bg-slate-100 border-slate-200 opacity-60'
-                                  }
-                                `}
-                              >
-                                {!unlocked && (
-                                  <div className="absolute inset-0 bg-slate-900/10 flex items-center justify-center backdrop-blur-sm">
-                                    <div className="text-center">
-                                      <div className="text-3xl mb-2">🔒</div>
-                                      <p className="text-sm font-medium text-slate-700">
-                                        Dokonči všechna cvičení
-                                      </p>
-                                    </div>
+                              {!unlocked && (
+                                <div className="absolute inset-0 bg-slate-900/10 flex items-center justify-center backdrop-blur-sm">
+                                  <div className="text-center">
+                                    <div className="text-3xl mb-2">🔒</div>
+                                    <p className="text-sm font-medium text-slate-700">
+                                      Dokonči všechna cvičení
+                                    </p>
                                   </div>
-                                )}
-
-                                {isCompleted && unlocked && (
-                                  <div className="absolute top-3 right-3">
-                                    <CheckCircle2 className="w-6 h-6 text-yellow-500" />
-                                  </div>
-                                )}
-
-                                <div className={`w-12 h-12 rounded-xl ${unlocked ? 'bg-yellow-200' : 'bg-slate-200'} flex items-center justify-center mb-4`}>
-                                  <Icon className={`w-6 h-6 ${unlocked ? 'text-yellow-700' : 'text-slate-400'}`} />
                                 </div>
+                              )}
 
-                                <h3 className="text-lg font-bold text-slate-800 mb-1">
-                                  {exercise.title}
-                                </h3>
+                              {isCompleted && unlocked && (
+                                <div className="absolute top-3 right-3">
+                                  <CheckCircle2 className="w-6 h-6 text-yellow-500" />
+                                </div>
+                              )}
 
-                                <p className="text-sm text-slate-500 mb-3">
-                                  {exerciseTypeNames[exercise.type] || 'Cvičení'}
-                                </p>
-
-                                {exercise.instructions && (
-                                  <p className="text-sm text-slate-400 mb-3 line-clamp-2">
-                                    {exercise.instructions}
-                                  </p>
-                                )}
-
-                                {unlocked && (
-                                  <div className="flex items-center gap-1">
-                                    {[1, 2, 3].map((s) => (
-                                      <Star
-                                        key={s}
-                                        className={`w-5 h-5 ${
-                                          s <= stars ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'
-                                        }`}
-                                      />
-                                    ))}
-                                    <span className="ml-2 text-sm text-slate-500">
-                                      {p?.score ?? 0}%
-                                    </span>
-                                  </div>
-                                )}
+                              <div className={`w-12 h-12 rounded-xl ${unlocked ? 'bg-yellow-200' : 'bg-slate-200'} flex items-center justify-center mb-4`}>
+                                <Star className={`w-6 h-6 ${unlocked ? 'text-yellow-700' : 'text-slate-400'}`} />
                               </div>
-                            </Link>
-                          </motion.div>
-                        );
-                      })}
+
+                              <h3 className="text-lg font-bold text-slate-800 mb-1">
+                                {finalTest.title}
+                              </h3>
+
+                              <p className="text-sm text-slate-500 mb-3">
+                                Finální test
+                              </p>
+
+                              {finalTest.instructions && (
+                                <p className="text-sm text-slate-400 mb-3 line-clamp-2">
+                                  {finalTest.instructions}
+                                </p>
+                              )}
+
+                              {unlocked && (
+                                <div className="flex items-center gap-1">
+                                  {[1, 2, 3].map((s) => (
+                                    <Star
+                                      key={s}
+                                      className={`w-5 h-5 ${
+                                        s <= stars ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'
+                                      }`}
+                                    />
+                                  ))}
+                                  <span className="ml-2 text-sm text-slate-500">
+                                    {p?.score ?? 0}%
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })()}
                   </div>
                 </div>
               );
