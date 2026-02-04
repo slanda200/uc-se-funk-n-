@@ -46,10 +46,59 @@ export default function Grades() {
   });
 
   // ✅ potřebujeme exercises, abychom spočítali progres za třídu
-  const { data: exercises = [] } = useQuery({
+  const { data: baseExercises = [] } = useQuery({
     queryKey: ['exercises'],
     queryFn: () => base44.entities.Exercise.list(),
   });
+
+  // ✅ Supabase exercises (vytvořené přes /admin) – doplní se k exercise.json
+  const topicIdList = React.useMemo(() => (topics || []).map(t => String(t.id)), [topics]);
+
+  const topicIdKey = React.useMemo(() => (topicIdList || []).join(','), [topicIdList]);
+
+  const { data: sbExercises = [] } = useQuery({
+    queryKey: ['sbExercisesByTopics', subject, topics.length, topicIdKey],
+    queryFn: async () => {
+      const ids = topicIdList;
+      if (!ids || ids.length === 0) return [];
+
+      const { data, error } = await supabase
+        .from('exercises')
+        .select('id, topic_id, payload, type')
+        .in('topic_id', ids);
+
+      if (error) throw error;
+
+      return (data || []).map((r) => ({
+        id: r.id,
+        topic_id: r.topic_id,
+        is_test: !!(r?.payload?.is_test) || r.type === 'test',
+      }));
+    },
+    enabled: (topicIdList || []).length > 0,
+  });
+
+  // ✅ Spoj base44 + Supabase exercises (bez duplicit)
+  const exercises = React.useMemo(() => {
+    const out = [];
+    const seen = new Set();
+
+    for (const e of baseExercises || []) {
+      const id = String(e?.id);
+      if (seen.has(id)) continue;
+      seen.add(id);
+      out.push(e);
+    }
+
+    for (const e of sbExercises || []) {
+      const id = String(e?.id);
+      if (seen.has(id)) continue;
+      seen.add(id);
+      out.push(e);
+    }
+
+    return out;
+  }, [baseExercises, sbExercises]);
 
   // ✅ Supabase progress rows
   const { data: sbProgressRows = [] } = useQuery({
@@ -126,8 +175,8 @@ export default function Grades() {
     const gradeTopics = topicsByGrade[grade] || [];
     if (gradeTopics.length === 0) return { completed: 0, total: 0, stars: 0, maxStars: 0 };
 
-    const topicIds = new Set(gradeTopics.map(t => t.id));
-    const gradeExercises = exercises.filter(e => topicIds.has(e.topic_id) && !e.is_test);
+    const topicIds = new Set(gradeTopics.map(t => String(t.id)));
+    const gradeExercises = exercises.filter(e => topicIds.has(String(e.topic_id)) && !e.is_test);
 
     if (gradeExercises.length === 0) return { completed: 0, total: 0, stars: 0, maxStars: 0 };
 

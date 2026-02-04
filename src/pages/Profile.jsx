@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
@@ -78,6 +78,44 @@ function intensityBg(v, max) {
   if (r <= 0.25) return 'bg-emerald-200';
   if (r <= 0.55) return 'bg-emerald-400';
   return 'bg-emerald-600';
+}
+
+function intensityText(v, max) {
+  // aby bylo číslo čitelné i na světlém kroužku
+  if (!v) return 'text-slate-600';
+  const m = max || 1;
+  const r = v / m;
+  if (r <= 0.25) return 'text-slate-800';
+  return 'text-white';
+}
+
+function buildMonthCalendar(year, month, activityMap) {
+  // month: 0-based
+  const first = new Date(year, month, 1);
+  const jsDow = first.getDay(); // 0..6 (Ne..So)
+  const offset = (jsDow + 6) % 7; // Po=0 ... Ne=6
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  const cells = [];
+  for (let i = 0; i < offset; i++) cells.push(null);
+
+  let max = 0;
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dt = new Date(year, month, d);
+    const iso = isoLocalDate(dt);
+    const v = Number(activityMap.get(iso) || 0);
+    max = Math.max(max, v);
+    cells.push({ d, iso, v });
+  }
+
+  return {
+    year,
+    month,
+    monthLabel: `${monthNameCZ(month)} ${year}`,
+    cells,
+    max,
+  };
 }
 
 export default function Profile() {
@@ -160,11 +198,39 @@ export default function Profile() {
 
   const rankBadge = getRankBadge(rankInfo);
 
-  // Seed data z Base44 (témata/cvičení)
+  // Seed data ze Supabase (cvičení)
   const { data: exercises = [] } = useQuery({
     queryKey: ['allExercises'],
-    queryFn: () => base44.entities.Exercise.list(),
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('exercises')
+        .select('id, topic_id, category_id, type, payload');
+
+      if (error) throw error;
+
+      return (data || []).map((r) => ({
+        id: r.id,
+        topic_id: r.topic_id,
+        category_id: r.category_id,
+        type: r.type,
+        payload: r.payload,
+        is_test: !!(r?.payload?.is_test) || r.type === 'test',
+      }));
+    },
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   });
+
+  // ✅ Map id -> is_test a Set všech id (aby se statistiky počítaly jen z existujících cvičení)
+  const exerciseIdSet = useMemo(() => new Set((exercises || []).map((e) => String(e.id))), [exercises]);
+  const isTestById = useMemo(() => {
+    const m = new Map();
+    for (const e of exercises || []) {
+      m.set(String(e.id), !!e.is_test);
+    }
+    return m;
+  }, [exercises]);
 
   const { data: topics = [] } = useQuery({
     queryKey: ['allTopics'],
@@ -183,7 +249,6 @@ export default function Profile() {
     queryFn: async () => {
       const rows = await fetchMyProgress();
       return rows || [];
-
     },
     enabled: !!user?.id,
     staleTime: 0,
@@ -197,14 +262,14 @@ export default function Profile() {
     queryFn: async () => {
       if (!user?.id) return [];
       const from = new Date();
-      from.setDate(from.getDate() - 120); // ať to pokryje měsíc i při přelomu
-      const fromISO = isoLocalDate(from);
+      from.setDate(from.getDate() - 365); // ✅ až rok zpět
+      const fromIso = isoLocalDate(from);
 
       const { data, error } = await supabase
         .from('user_daily_activity')
-        .select('day, exercises_done')
+        .select('day, exercises_completed')
         .eq('user_id', user.id)
-        .gte('day', fromISO)
+        .gte('day', fromIso)
         .order('day', { ascending: true });
 
       if (error) return [];
@@ -214,98 +279,144 @@ export default function Profile() {
     staleTime: 0,
     refetchOnMount: 'always',
     refetchOnWindowFocus: true,
-
   });
+
+  const hasSbProgress = !!user?.id && (sbProgressRows?.length || 0) > 0;
 
   // --- Normalizace progressu (Supabase) ---
   const sbProgressMap = useMemo(() => {
     const m = new Map();
     for (const r of sbProgressRows || []) {
-      m.set(String(r.exercise_id), {
+      const exId = String(r.exercise_id);
+      if (exerciseIdSet.size > 0 && !exerciseIdSet.has(exId)) continue;
+      if (isTestById.get(exId)) continue;
+      m.set(exId, {
         completed: !!r.completed,
         stars: Number(r.best_stars ?? r.stars ?? 0) || 0,
         score: Number(r.best_score ?? r.score ?? 0) || 0,
       });
     }
     return m;
-  }, [sbProgressRows]);
+  }, [sbProgressRows, exerciseIdSet, isTestById]);
 
-  const hasSbProgress = !!user?.id && (sbProgressRows?.length || 0) > 0;
-
-  // --- Local fallback ---
+  // --- Local progress map (fallback) ---
   const localProgressMap = useMemo(() => {
-    try {
-      return getProgressMap() || {};
-    } catch {
-      return {};
+    const map = getProgressMap();
+    const m = new Map();
+    for (const [id, p] of Object.entries(map || {})) {
+      m.set(String(id), {
+        completed: !!p.completed,
+        stars: Number(p.bestStars ?? p.stars ?? 0) || 0,
+        score: Number(p.bestScore ?? p.score ?? 0) || 0,
+      });
     }
+    return m;
   }, []);
 
   const getExerciseProgress = (exerciseId) => {
     const id = String(exerciseId);
-
-    // 1) preferuj Supabase
-    const sb = sbProgressMap.get(id);
-    if (sb) return sb;
-
-    // 2) fallback na localStorage (jen když Supabase pro tohle id nic nemá)
-    const lp = localProgressMap[id] || localProgressMap[exerciseId];
-    if (!lp) return null;
-
-    return {
-      completed: !!lp.completed,
-      stars: Number(lp.bestStars ?? lp.stars ?? 0) || 0,
-      score: Number(lp.bestScore ?? lp.score ?? 0) || 0,
-    };
+    if (hasSbProgress && sbProgressMap.has(id)) return sbProgressMap.get(id);
+    if (!hasSbProgress && localProgressMap.has(id)) return localProgressMap.get(id);
+    return null;
   };
 
+  // =========================
+  // ✅✅✅ AKTIVITA (JEDINÉ ZMĚNY JSOU TADY)
+  // =========================
 
-  // --- Aktivita: mapování den -> počet cvičení ---
-  const activityMap = useMemo(() => {
+  // 1) Primární mapování z user_daily_activity
+  const activityMapFromTable = useMemo(() => {
     const m = new Map();
     for (const r of dailyActivity || []) {
-      m.set(String(r.day), Number(r.exercises_done || 0));
+      const key = String(r.day || '').slice(0, 10);
+      m.set(key, Number(r.exercises_completed || 0));
     }
     return m;
   }, [dailyActivity]);
 
-  // --- Kalendář aktuálního měsíce (čísla + kroužek) ---
-  const calendar = useMemo(() => {
-    const now = new Date();
-    const y = now.getFullYear();
-    const m = now.getMonth();
+  // 2) Fallback: když tabulka user_daily_activity nic nevrací, dopočítej aktivitu z progressů
+  const activityMapFallbackFromProgress = useMemo(() => {
+    const m = new Map();
 
-    const first = new Date(y, m, 1);
-    const last = new Date(y, m + 1, 0);
+    for (const r of sbProgressRows || []) {
+      const exId = String(r.exercise_id);
+      if (exerciseIdSet.size > 0 && !exerciseIdSet.has(exId)) continue;
+      if (isTestById.get(exId)) continue;
+      if (!r.completed) continue;
 
-    // pondělí = 0 ... neděle = 6
-    const jsDay = first.getDay(); // 0=neděle
-    const mondayIndex = (jsDay + 6) % 7; // pondělí=0
+      const rawDate = r.completed_at || r.updated_at || r.created_at || null;
+      if (!rawDate) continue;
 
-    const daysInMonth = last.getDate();
-    const cells = [];
+      const day = String(rawDate).slice(0, 10);
+      if (!day || day.length !== 10) continue;
 
-    // padding před 1. dnem
-    for (let i = 0; i < mondayIndex; i++) cells.push(null);
-
-    // dny
-    for (let d = 1; d <= daysInMonth; d++) {
-      const date = new Date(y, m, d);
-      const iso = isoLocalDate(date);
-      const v = activityMap.get(iso) || 0;
-      cells.push({ d, iso, v });
+      m.set(day, (m.get(day) || 0) + 1);
     }
 
-    const max = Math.max(1, ...cells.filter(Boolean).map((x) => x.v || 0));
-    return {
-      year: y,
-      month: m,
-      monthLabel: `${monthNameCZ(m)} ${y}`,
-      cells,
-      max,
-      todayIso: isoLocalDate(now),
-    };
+    return m;
+  }, [sbProgressRows, exerciseIdSet, isTestById]);
+
+  // 3) Finální activityMap: preferuj user_daily_activity, ale když je prázdná, použij fallback
+  const activityMap = useMemo(() => {
+    if ((dailyActivity || []).length > 0) return activityMapFromTable;
+    return activityMapFallbackFromProgress;
+  }, [dailyActivity, activityMapFromTable, activityMapFallbackFromProgress]);
+
+  // --- Kalendáře: rok zpět + měsíc dopředu (ale teď se bude přepínat přes tlačítka) ---
+  const calendarRange = useMemo(() => {
+    const now = new Date();
+    const todayIso = isoLocalDate(now);
+
+    const start = new Date(now);
+    start.setDate(1);
+    start.setMonth(start.getMonth() - 12);
+
+    const end = new Date(now);
+    end.setDate(1);
+    end.setMonth(end.getMonth() + 1);
+
+    const months = [];
+    const cur = new Date(start);
+
+    while (cur <= end) {
+      const y = cur.getFullYear();
+      const m = cur.getMonth();
+      const cal = buildMonthCalendar(y, m, activityMap);
+      const key = `${y}-${m}`;
+      months.push({ ...cal, key, todayIso });
+      cur.setMonth(cur.getMonth() + 1);
+    }
+
+    const currentKey = `${now.getFullYear()}-${now.getMonth()}`;
+    return { months, todayIso, currentKey };
   }, [activityMap]);
+
+  // ✅ defaultně vybraný je aktuální měsíc (a zůstává při refreshi dat)
+  const [selectedMonthKey, setSelectedMonthKey] = React.useState('');
+  useEffect(() => {
+    if (!selectedMonthKey && calendarRange.currentKey) {
+      setSelectedMonthKey(calendarRange.currentKey);
+    }
+    // pokud by se stalo, že vybraný klíč v novém rozsahu neexistuje, vrať na current
+    if (selectedMonthKey) {
+      const exists = calendarRange.months.some((m) => m.key === selectedMonthKey);
+      if (!exists && calendarRange.currentKey) setSelectedMonthKey(calendarRange.currentKey);
+    }
+  }, [calendarRange.currentKey, calendarRange.months, selectedMonthKey]);
+
+  const selectedCalendar = useMemo(() => {
+    return calendarRange.months.find((m) => m.key === selectedMonthKey) || null;
+  }, [calendarRange.months, selectedMonthKey]);
+
+  // label: "02/2025"
+  const monthChipLabel = (cal) => {
+    const mm = String(cal.month + 1).padStart(2, '0');
+    return `${mm}/${cal.year}`;
+  };
+
+  // =========================
+  // ✅✅✅ KONEC AKTIVITY ZMĚN
+  // =========================
 
   const subjects = ['Čeština', 'Angličtina', 'Matematika'];
 
@@ -395,7 +506,7 @@ export default function Profile() {
       if (!p) continue;
 
       if (p.completed || (p.score ?? 0) > 0 || (p.stars ?? 0) > 0) {
-     totalCompleted += 1;
+        totalCompleted += 1;
       }
       totalStars += p.stars || 0;
 
@@ -429,46 +540,48 @@ export default function Profile() {
           </Button>
         </Link>
 
-        {/* Header */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-              <span className="text-3xl text-white font-bold">{avatarLetter}</span>
-            </div>
-
-            <div className="flex-1 min-w-0">
-              {/* řádek se jménem + badge doprava */}
-              <div className="flex items-center justify-between gap-3">
-                <h1 className="text-3xl font-bold text-slate-800 truncate">{displayName}</h1>
-
-                {rankBadge && (
-                  <Link
-                    to={createPageUrl('Leaderboard')}
-                    title="Otevřít žebříček"
-                    className={`
-                      shrink-0 inline-flex items-center gap-2
-                      px-4 py-2 rounded-full
-                      text-sm font-extrabold
-                      transition
-                      hover:scale-[1.03] active:scale-[0.97]
-                      hover:shadow-md
-                      ${rankBadge.cls}
-                    `}
-                  >
-                    <span className="text-base">🏆</span>
-                    <span>{rankBadge.text}</span>
-                  </Link>
-                )}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                {avatarLetter}
               </div>
-
-              <p className="text-slate-500 flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                {user.email}
-              </p>
+              <div>
+                <div className="text-2xl font-bold text-slate-800">{displayName}</div>
+                <div className="flex items-center gap-2 text-slate-500">
+                  <Mail className="w-4 h-4" />
+                  <span className="text-sm">{user.email}</span>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* Overall Stats */}
+            {rankBadge ? (
+              <Link to={createPageUrl('Leaderboard')}>
+                <div className={`px-3 py-2 rounded-full text-sm font-bold shadow-sm ${rankBadge.cls}`}>
+                  {rankBadge.text}
+                </div>
+              </Link>
+            ) : (
+              <Link to={createPageUrl('Leaderboard')}>
+                <div className="px-3 py-2 rounded-full text-sm font-bold bg-slate-100 text-slate-500">
+                  🎖️
+                </div>
+              </Link>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.04 }}
+          className="mb-8"
+        >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <Card>
               <CardHeader className="pb-3">
@@ -526,7 +639,7 @@ export default function Profile() {
           </div>
         </motion.div>
 
-        {/* ✅ Aktivita – MALÝ KALENDÁŘ (čísla + kroužek, hover tooltip) */}
+        {/* ✅ Aktivita – MĚSÍČNÍ TLAČÍTKA + JEDEN KALENDÁŘ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -537,7 +650,7 @@ export default function Profile() {
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center justify-between gap-3">
                 <span>Aktivita</span>
-                <span className="text-sm text-slate-500">{calendar.monthLabel}</span>
+                <span className="text-sm text-slate-500">Vyber měsíc</span>
               </CardTitle>
               <CardDescription className="text-sm">
                 Čím tmavší kroužek, tím víc cvičení. Najetím zobrazíš detail.
@@ -545,69 +658,102 @@ export default function Profile() {
             </CardHeader>
 
             <CardContent>
-              {/* dny v týdnu */}
-              <div className="grid grid-cols-7 gap-2 mb-2 text-xs text-slate-400">
-                {['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'].map((d) => (
-                  <div key={d} className="text-center">{d}</div>
-                ))}
-              </div>
-
-              {/* kalendář */}
-              <div className="grid grid-cols-7 gap-2">
-                {calendar.cells.map((cell, idx) => {
-                  if (!cell) {
-                    return <div key={`empty-${idx}`} className="h-9" />;
-                  }
-
-                  const isToday = cell.iso === calendar.todayIso;
-                  const ring = intensityBg(cell.v, calendar.max);
-
+              {/* měsíční tlačítka */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-4">
+                {calendarRange.months.map((m) => {
+                  const active = m.key === selectedMonthKey;
                   return (
-                    <div key={cell.iso} className="relative group h-9 flex items-center justify-center">
-                      {/* kroužek */}
-                      <div
-                        className={[
-                          'w-9 h-9 rounded-full flex items-center justify-center',
-                          ring,
-                          'ring-1 ring-slate-200',
-                          isToday ? 'ring-2 ring-slate-400' : '',
-                        ].join(' ')}
-                      >
-                        <span className={['text-xs font-semibold', cell.v ? 'text-white' : 'text-slate-600'].join(' ')}>
-                          {cell.d}
-                        </span>
-                      </div>
-
-                      {/* tooltip */}
-                      <div
-                        className="
-                          pointer-events-none
-                          absolute -top-10 left-1/2 -translate-x-1/2
-                          whitespace-nowrap
-                          opacity-0 group-hover:opacity-100
-                          transition
-                          text-xs
-                          bg-slate-900 text-white
-                          px-2 py-1 rounded-md
-                          shadow-lg
-                        "
-                      >
-                        {cell.d}. {String(calendar.month + 1).padStart(2, '0')}. {calendar.year} • {cell.v} cvičení
-                      </div>
-                    </div>
+                    <button
+                      key={m.key}
+                      onClick={() => setSelectedMonthKey(m.key)}
+                      className={[
+                        'shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold transition',
+                        active
+                          ? 'bg-slate-900 text-white shadow-sm'
+                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200',
+                      ].join(' ')}
+                      title={m.monthLabel}
+                      type="button"
+                    >
+                      {monthChipLabel(m)}
+                    </button>
                   );
                 })}
               </div>
 
-              {/* legenda */}
-              <div className="mt-4 flex items-center gap-2 text-xs text-slate-500">
-                <span>Méně</span>
-                <span className="inline-block w-3 h-3 rounded-full bg-slate-100 ring-1 ring-slate-200" />
-                <span className="inline-block w-3 h-3 rounded-full bg-emerald-200 ring-1 ring-slate-200" />
-                <span className="inline-block w-3 h-3 rounded-full bg-emerald-400 ring-1 ring-slate-200" />
-                <span className="inline-block w-3 h-3 rounded-full bg-emerald-600 ring-1 ring-slate-200" />
-                <span>Více</span>
-              </div>
+              {/* vybraný měsíc */}
+              {selectedCalendar ? (
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-sm font-semibold text-slate-700">{selectedCalendar.monthLabel}</div>
+                    <div className="text-xs text-slate-400">
+                      {selectedCalendar.max ? `Max den: ${selectedCalendar.max} cvičení` : 'Bez aktivity'}
+                    </div>
+                  </div>
+
+                  {/* dny v týdnu */}
+                  <div className="grid grid-cols-7 gap-1 mb-1 text-[11px] text-slate-400">
+                    {['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'].map((d) => (
+                      <div key={`${selectedCalendar.monthLabel}-${d}`} className="text-center">{d}</div>
+                    ))}
+                  </div>
+
+                  {/* kalendář (větší dny + menší mezery) */}
+                  <div className="grid grid-cols-7 gap-1">
+                    {selectedCalendar.cells.map((cell, idx) => {
+                      if (!cell) {
+                        return <div key={`${selectedCalendar.monthLabel}-empty-${idx}`} className="h-11" />;
+                      }
+
+                      const isToday = cell.iso === selectedCalendar.todayIso;
+                      const ring = intensityBg(cell.v, selectedCalendar.max);
+
+                      return (
+                        <div key={cell.iso} className="relative group h-11 flex items-center justify-center">
+                          <div
+                            className={[
+                              'w-11 h-11 rounded-full flex items-center justify-center',
+                              ring,
+                              'ring-1 ring-slate-200',
+                              isToday ? 'ring-2 ring-slate-500' : '',
+                            ].join(' ')}
+                          >
+                            <span className={['text-sm font-semibold', intensityText(cell.v, selectedCalendar.max)].join(' ')}>
+                              {cell.d}
+                            </span>
+                          </div>
+
+                          <div
+                            className="
+                              pointer-events-none
+                              absolute -top-11 left-1/2 -translate-x-1/2
+                              whitespace-nowrap
+                              opacity-0 group-hover:opacity-100
+                              transition
+                              text-xs
+                              bg-slate-900 text-white
+                              px-2 py-1 rounded-md
+                              shadow-lg
+                            "
+                          >
+                            {cell.d}. {String(selectedCalendar.month + 1).padStart(2, '0')}. {selectedCalendar.year} • {cell.v} cvičení
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* legenda */}
+                  <div className="mt-3 flex items-center gap-2 text-xs text-slate-500">
+                    <span>Méně</span>
+                    <span className="inline-block w-3 h-3 rounded-full bg-slate-100 ring-1 ring-slate-200" />
+                    <span className="inline-block w-3 h-3 rounded-full bg-emerald-200 ring-1 ring-slate-200" />
+                    <span className="inline-block w-3 h-3 rounded-full bg-emerald-400 ring-1 ring-slate-200" />
+                    <span className="inline-block w-3 h-3 rounded-full bg-emerald-600 ring-1 ring-slate-200" />
+                    <span>Více</span>
+                  </div>
+                </div>
+              ) : null}
             </CardContent>
           </Card>
         </motion.div>
@@ -619,154 +765,168 @@ export default function Profile() {
           transition={{ delay: 0.1 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-bold text-slate-800 mb-4">Výkon podle předmětů</h2>
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle>Výkon podle předmětů</CardTitle>
+            </CardHeader>
 
-          <div className="grid gap-6">
-            {subjects.map((subject, index) => {
-              const stats = getSubjectStats(subject);
-              const colors = subjectColors[subject];
+            <CardContent className="space-y-6">
+              {subjects.map((s) => {
+                const stats = getSubjectStats(s);
+                const color = subjectColors[s] || subjectColors['Čeština'];
 
-              return (
-                <motion.div
-                  key={subject}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 + index * 0.1 }}
-                >
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center justify-between">
-                        <span>{subject}</span>
-                        <span className={`text-2xl font-bold ${colors.text}`}>{stats.avgScore}%</span>
-                      </CardTitle>
-                      <CardDescription>
-                        {stats.completed} z {stats.totalExercises} cvičení dokončeno
-                      </CardDescription>
-                    </CardHeader>
+                if (stats.totalExercises === 0) return null;
 
-                    <CardContent className="space-y-4">
+                return (
+                  <div key={s} className="space-y-3">
+                    <div className="flex items-center justify-between">
                       <div>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span className="text-slate-500">Dokončeno</span>
-                          <span className="font-medium">{stats.completionRate}%</span>
-                        </div>
-                        <Progress value={stats.completionRate} className="h-2" />
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <div className="text-sm text-slate-500 mb-1">Hvězdičky</div>
-                          <div className="flex items-center gap-2">
-                            <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                            <span className="font-bold">{stats.totalStars}</span>
-                            <span className="text-slate-400">/ {stats.maxStars}</span>
-                          </div>
-                        </div>
-                        <div>
-                          <div className="text-sm text-slate-500 mb-1">Průměr</div>
-                          <div className="font-bold text-lg">{stats.avgScore}%</div>
+                        <div className="font-bold text-slate-800">{s}</div>
+                        <div className="text-xs text-slate-500">
+                          {stats.completed} z {stats.totalExercises} cvičení dokončeno
                         </div>
                       </div>
+                      <div className="text-2xl font-bold text-slate-700">{stats.avgScore}%</div>
+                    </div>
 
-                      {stats.weakestTopics.length > 0 && (
-                        <div className="border-t pt-4">
-                          <div className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
-                            <TrendingDown className="w-4 h-4 text-red-500" />
-                            Kde můžeš zlepšit
-                          </div>
-                          <div className="space-y-2">
-                            {stats.weakestTopics.map((item, idx) => (
-                              <Link key={idx} to={getTopicLink(item.topic.id)} className="block">
-                                <div className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
-                                  <div className="flex-1">
-                                    <div className="text-sm font-medium">{item.topic.name}</div>
-                                    <div className="text-xs text-slate-500">{item.topic.grade}. třída</div>
-                                  </div>
-                                  <div className="text-sm font-medium text-red-600">
-                                    {Math.round(item.avgScore)}%
-                                  </div>
-                                </div>
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                    <div className="space-y-2">
+                      <div className="text-xs text-slate-500 flex items-center justify-between">
+                        <span>Dokončeno</span>
+                        <span>{stats.completionRate}%</span>
+                      </div>
+                      <Progress value={stats.completionRate} className="h-2" />
+                    </div>
 
-                      {stats.strongestTopics.length > 0 && (
-                        <div className="border-t pt-4">
-                          <div className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
-                            <TrendingUp className="w-4 h-4 text-emerald-500" />
-                            Tvoje silné stránky
-                          </div>
-                          <div className="space-y-2">
-                            {stats.strongestTopics.map((item, idx) => (
-                              <Link key={idx} to={getTopicLink(item.topic.id)} className="block">
-                                <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 transition-colors">
-                                  <div className="flex-1">
-                                    <div className="text-sm font-medium">{item.topic.name}</div>
-                                    <div className="text-xs text-slate-500">{item.topic.grade}. třída</div>
-                                  </div>
-                                  <div className="text-sm font-medium text-emerald-600">
-                                    {Math.round(item.avgScore)}%
-                                  </div>
-                                </div>
-                              </Link>
-                            ))}
-                          </div>
+                    <div className="grid grid-cols-2 gap-4 pt-2 border-t">
+                      <div className="text-sm">
+                        <div className="text-slate-500">Hvězdičky</div>
+                        <div className="flex items-center gap-2">
+                          <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                          <span className="font-bold">{stats.totalStars}</span>
+                          <span className="text-slate-400">/ {stats.maxStars}</span>
                         </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
-          </div>
+                      </div>
+                      <div className="text-sm">
+                        <div className="text-slate-500">Průměr</div>
+                        <div className="font-bold">{stats.avgScore}%</div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                      <div>
+                        <div className="text-sm text-slate-600 flex items-center gap-2">
+                          <TrendingDown className="w-4 h-4 text-rose-500" />
+                          <span className="font-medium">Kde můžeš zlepšit</span>
+                        </div>
+                        <div className="mt-2 space-y-2">
+                          {stats.weakestTopics.map((t) => (
+                            <Link key={t.topic.id} to={getTopicLink(t.topic.id)} className="block">
+                              <div className="flex items-center justify-between text-sm p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition">
+                                <div>
+                                  <div className="font-medium text-slate-800">{t.topic.name}</div>
+                                  <div className="text-xs text-slate-500">{t.topic.grade}.</div>
+                                </div>
+                                <div className="font-bold text-rose-600">{Math.round(t.avgScore)}%</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="text-sm text-slate-600 flex items-center gap-2">
+                          <TrendingUp className="w-4 h-4 text-emerald-500" />
+                          <span className="font-medium">Tvoje silné stránky</span>
+                        </div>
+                        <div className="mt-2 space-y-2">
+                          {stats.strongestTopics.map((t) => (
+                            <Link key={t.topic.id} to={getTopicLink(t.topic.id)} className="block">
+                              <div className="flex items-center justify-between text-sm p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 transition">
+                                <div>
+                                  <div className="font-medium text-slate-800">{t.topic.name}</div>
+                                  <div className="text-xs text-slate-500">{t.topic.grade}.</div>
+                                </div>
+                                <div className="font-bold text-emerald-600">{Math.round(t.avgScore)}%</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </CardContent>
+          </Card>
         </motion.div>
 
-        {/* Change Password (PŮVODNÍ hezký blok s textem) */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+        {/* Security */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.12 }}
+        >
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Lock className="w-5 h-5" />
-                Změna hesla
-              </CardTitle>
-              <CardDescription>Aktualizujte své heslo pro lepší zabezpečení</CardDescription>
+            <CardHeader className="pb-3">
+              <CardTitle>Zabezpečení</CardTitle>
+              <CardDescription>Změň si heslo.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 flex items-start gap-2">
-                <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5" />
-                <p className="text-sm text-yellow-800">
-                  Změna hesla není v této verzi podporována. Kontaktujte administrátora.
-                </p>
-              </div>
 
-              <div className="space-y-3 opacity-50 pointer-events-none">
-                <div>
-                  <label className="text-sm font-medium text-slate-700">Nové heslo</label>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-slate-700">Nové heslo</div>
                   <Input
                     type="password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    placeholder="Alespoň 6 znaků"
-                    disabled
+                    placeholder="••••••••"
                   />
                 </div>
 
-                <div>
-                  <label className="text-sm font-medium text-slate-700">Potvrdit heslo</label>
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-slate-700">Potvrdit heslo</div>
                   <Input
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="Zadejte heslo znovu"
-                    disabled
+                    placeholder="••••••••"
                   />
                 </div>
+              </div>
 
-                <Button disabled className="w-full">
-                  Změnit heslo
-                </Button>
+              <Button
+                className="w-full md:w-auto h-12 px-6 text-base rounded-xl"
+                onClick={async () => {
+                  if (!newPassword || newPassword.length < 6) {
+                    alert('Heslo musí mít alespoň 6 znaků.');
+                    return;
+                  }
+                  if (newPassword !== confirmPassword) {
+                    alert('Hesla se neshodují.');
+                    return;
+                  }
+
+                  const { error } = await supabase.auth.updateUser({ password: newPassword });
+                  if (error) {
+                    alert(error.message);
+                    return;
+                  }
+
+                  setNewPassword('');
+                  setConfirmPassword('');
+                  alert('Heslo bylo změněno.');
+                }}
+              >
+                <Lock className="w-4 h-4 mr-2" />
+                Změnit heslo
+              </Button>
+
+              <div className="flex items-start gap-2 text-sm text-slate-500">
+                <AlertCircle className="w-4 h-4 mt-0.5" />
+                <span>
+                  Změna hesla je okamžitá pro aktuální účet.
+                </span>
               </div>
             </CardContent>
           </Card>

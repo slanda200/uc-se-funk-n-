@@ -41,11 +41,60 @@ export default function Topics() {
     queryFn: () => base44.entities.Topic.filter({ subject, grade }, 'order'),
   });
 
+  // ✅ jen topic IDs pro stránku (kvůli Supabase exercises a kategoriím)
+  const topicIds = React.useMemo(() => new Set((topics || []).map(t => String(t.id))), [topics]);
+
   // ✅ všechny exercises (kvůli progresu po tématech)
-  const { data: exercises = [] } = useQuery({
+  const { data: baseExercises = [] } = useQuery({
     queryKey: ['exercises'],
     queryFn: () => base44.entities.Exercise.list(),
   });
+
+  // ✅ Supabase exercises (vytvořené přes /admin) – doplní se k exercise.json
+  const { data: sbExercises = [] } = useQuery({
+    queryKey: ['sbExercisesByTopics', subject, grade, topics.length],
+    queryFn: async () => {
+      const ids = Array.from(topicIds);
+      if (ids.length === 0) return [];
+
+      const { data, error } = await supabase
+        .from('exercises')
+        .select('id, topic_id, category_id, payload, type')
+        .in('topic_id', ids);
+
+      if (error) throw error;
+
+      return (data || []).map((r) => ({
+        id: r.id,
+        topic_id: r.topic_id,
+        category_id: r.category_id,
+        is_test: !!(r?.payload?.is_test) || r.type === 'test',
+      }));
+    },
+    enabled: topicIds.size > 0,
+  });
+
+  // ✅ Spoj base44 + Supabase exercises (bez duplicit)
+  const exercises = React.useMemo(() => {
+    const out = [];
+    const seen = new Set();
+
+    for (const e of baseExercises || []) {
+      const id = String(e?.id);
+      if (seen.has(id)) continue;
+      seen.add(id);
+      out.push(e);
+    }
+
+    for (const e of sbExercises || []) {
+      const id = String(e?.id);
+      if (seen.has(id)) continue;
+      seen.add(id);
+      out.push(e);
+    }
+
+    return out;
+  }, [baseExercises, sbExercises]);
 
   // ✅ Supabase progress rows
   const { data: sbProgressRows = [] } = useQuery({
@@ -66,9 +115,6 @@ export default function Topics() {
   }, [sbProgressRows]);
 
   const hasSbProgress = !!user?.id && (sbProgressRows?.length || 0) > 0;
-
-  // ✅ jen kategorie pro témata na stránce (rychlejší + správně)
-  const topicIds = React.useMemo(() => new Set((topics || []).map(t => String(t.id))), [topics]);
 
   const { data: categories = [] } = useQuery({
     queryKey: ['categoriesByTopics', subject, grade, topics.length],
@@ -205,7 +251,7 @@ export default function Topics() {
           </motion.div>
         ) : (
           <div className="space-y-4">
-            {(shouldUseSections
+            {shouldUseSections
               ? groupedTopics.flatMap((group) => {
                   const header = (
                     <motion.div
@@ -356,7 +402,7 @@ export default function Topics() {
                       </Link>
                     </motion.div>
                   );
-                }))}
+                })}
           </div>
         )}
       </div>

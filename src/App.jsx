@@ -30,6 +30,9 @@ import Library from "@/pages/Library.jsx";
 // 📖 Plné vysvětlení tématu
 import TopicExplanation from "@/pages/TopicExplanation.jsx";
 
+import Admin from "@/pages/Admin";
+
+
 const queryClient = new QueryClient();
 
 export default function App() {
@@ -71,6 +74,8 @@ export default function App() {
 
             {/* ❌ Fallback – vždy až poslední */}
             <Route path="*" element={<Navigate to="/" replace />} />
+            
+            <Route path="/admin" element={<Admin />} />
           </Routes>
           <Analytics />
         </Layout>

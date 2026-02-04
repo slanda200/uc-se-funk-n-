@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { useQuery } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
 import { supabase } from '@/lib/supabaseClient';
 import { fetchMyProgress } from '@/lib/progressApi';
 import {
@@ -20,9 +19,6 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getProgressFor } from '@/lib/progressStore';
-
-// ❌ ExpandableText pryč – nechceme "Zobrazit vše"
-// import ExpandableText from '@/components/ExpandableText';
 
 const exerciseTypeIcons = {
   fill: PenTool,
@@ -52,34 +48,54 @@ const exerciseTypeNames = {
   image: 'Obrázek a psaní'
 };
 
-// ✅ helper: co považujeme za "finální test"
+// ✅ Fix: normalizace ID z URL ("" / "null" / "undefined" => null)
+const normalizeId = (v) => {
+  if (v === undefined || v === null) return null;
+  const s = String(v).trim();
+  if (!s || s === 'null' || s === 'undefined') return null;
+  return s;
+};
+
+// co považujeme za finální test
 function isFinalTestExercise(e) {
   return !!e && (e.type === 'test' || e.is_test === true);
 }
 
-// ✅ helper: preferuj opravdový test podle type
 function pickFinalTestForDifficulty(exercises, diff) {
   const list = Array.isArray(exercises) ? exercises : [];
-
-  // 1) nejdřív preferuj "type === test" (to je správná varianta)
   const exact = list.find((e) => Number(e?.difficulty) === diff && e?.type === 'test');
   if (exact) return exact;
-
-  // 2) fallback: když někdo používá is_test bez type (neideální, ale radši něco)
   const fallback = list.find((e) => Number(e?.difficulty) === diff && e?.is_test === true);
   return fallback || null;
+}
+
+function normalizeExerciseRow(row) {
+  // Převod DB řádku -> formát, co čekají tvoje UI komponenty (jako exercise.json)
+  const payload = row?.payload && typeof row.payload === 'object' ? row.payload : {};
+  return {
+    id: row.id,
+    created_at: row.created_at,
+    created_by: row.created_by,
+    topic_id: row.topic_id ?? null,
+    category_id: row.category_id ?? null,
+    type: row.type,
+    title: row.title,
+    instructions: row.instructions ?? null,
+    // důležité: payload rozbalit na top-level
+    ...payload,
+  };
 }
 
 export default function Exercises() {
   const navigate = useNavigate();
 
   const urlParams = new URLSearchParams(window.location.search);
-  const topicId = urlParams.get('topic');
-  const categoryId = urlParams.get('category');
 
-  /**
-   * ✅ Supabase user
-   */
+  // ✅ Fix: tady se to nejčastěji rozbíjelo (category="", category="null")
+  const topicId = normalizeId(urlParams.get('topic'));
+  const categoryId = normalizeId(urlParams.get('category'));
+
+  // supabase user
   const { data: user } = useQuery({
     queryKey: ['sbUser'],
     queryFn: async () => {
@@ -89,41 +105,30 @@ export default function Exercises() {
     },
   });
 
-  /**
-   * ✅ Topic / Category / Exercises necháme na Base44
-   */
-  const { data: topic } = useQuery({
-    queryKey: ['topic', topicId],
-    queryFn: async () => {
-      const topics = await base44.entities.Topic.filter({ id: topicId });
-      return topics[0];
-    },
-    enabled: !!topicId,
-  });
-
-  const { data: category } = useQuery({
-    queryKey: ['category', categoryId],
-    queryFn: async () => {
-      const categories = await base44.entities.Category.filter({ id: categoryId });
-      return categories[0];
-    },
-    enabled: !!categoryId,
-  });
-
+  // načti exercises ze Supabase
   const { data: exercises = [], isLoading } = useQuery({
-    queryKey: ['exercises', topicId, categoryId],
-    queryFn: () => {
-      const filter = categoryId
-        ? { topic_id: topicId, category_id: categoryId }
-        : { topic_id: topicId, category_id: null };
-      return base44.entities.Exercise.filter(filter);
+    queryKey: ['sbExercises', topicId, categoryId],
+    queryFn: async () => {
+      if (!topicId) return [];
+
+      let q = supabase
+        .from('exercises')
+        .select('id, created_at, created_by, topic_id, category_id, type, title, instructions, payload')
+        .eq('topic_id', topicId);
+
+      // ✅ Fix: NE "if(categoryId)" – protože ""/null/"null" rozbíjí filtrování
+      if (categoryId !== null) q = q.eq('category_id', categoryId);
+      else q = q.is('category_id', null);
+
+      const { data, error } = await q.order('created_at', { ascending: false });
+      if (error) throw error;
+
+      return (data || []).map(normalizeExerciseRow);
     },
     enabled: !!topicId,
   });
 
-  /**
-   * ✅ Progress ze Supabase (user_progress)
-   */
+  // progress ze Supabase (user_progress)
   const { data: sbProgressRows = [] } = useQuery({
     queryKey: ['userProgress', user?.id],
     queryFn: async () => {
@@ -133,9 +138,6 @@ export default function Exercises() {
     enabled: !!user?.id,
   });
 
-  /**
-   * ✅ map: exercise_id -> progress
-   */
   const sbProgressMap = React.useMemo(() => {
     const m = new Map();
     for (const r of sbProgressRows || []) {
@@ -150,17 +152,12 @@ export default function Exercises() {
 
   const useSupabaseProgress = !!user?.id && sbProgressRows.length > 0;
 
-  /**
-   * ✅ progress pro 1 exercise (Supabase prefer, jinak localStorage)
-   */
   const getExerciseProgress = (exerciseId) => {
     if (useSupabaseProgress) {
       return sbProgressMap.get(String(exerciseId)) || null;
     }
-
     const lp = getProgressFor(exerciseId);
     if (!lp) return null;
-
     return {
       completed: !!lp.completed,
       stars: Number(lp.bestStars ?? lp.stars ?? 0) || 0,
@@ -168,10 +165,6 @@ export default function Exercises() {
     };
   };
 
-  /**
-   * ✅ odemčení testu: všechna NETEST cvičení v obtížnosti musí být completed
-   * (zpřesněno: netest = !(type===test || is_test===true))
-   */
   const isTestUnlocked = (difficulty) => {
     const difficultyExercises = exercises.filter(
       (e) => Number(e?.difficulty) === difficulty && !isFinalTestExercise(e)
@@ -207,33 +200,10 @@ export default function Exercises() {
     },
   };
 
-  const colors = subjectColors[topic?.subject] || subjectColors.Matematika;
+  // nemáš tu teď topic objekt → nech default
+  const colors = subjectColors.Matematika;
 
-  // ✅ otevřít plné vysvětlení + back link (vrátí tě sem)
-  const openFullExplanation = () => {
-    if (!topic?.id) return;
-    const backUrl = encodeURIComponent(window.location.pathname + window.location.search);
-    navigate(createPageUrl(`TopicExplanation?topic=${topic.id}&back=${backUrl}`));
-  };
-
-  // ✅ snippet: kratší text + zachová řádky
-  const SNIPPET_CHARS = 380; // cca o čtvrtku kratší než 520
-
-  const getSnippet = (text, maxChars) => {
-    const t = String(text || '');
-    const trimmed = t.trim();
-    if (!trimmed) return '';
-
-    if (trimmed.length <= maxChars) return trimmed;
-
-    const cut = trimmed.slice(0, maxChars);
-    const lastSpace = cut.lastIndexOf(' ');
-    const safe = lastSpace > 120 ? cut.slice(0, lastSpace) : cut;
-
-    return safe + '…';
-  };
-
-  // ✅ otevření finálního testu (vždy vybere správný test podle diff)
+  // otevřít finální test
   const openFinalTest = (diff) => {
     const test = pickFinalTestForDifficulty(exercises, diff);
     if (!test?.id) {
@@ -248,77 +218,23 @@ export default function Exercises() {
       {/* Header */}
       <div className={`bg-gradient-to-r ${colors.gradient} text-white`}>
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <Link
-            to={
-              categoryId
-                ? createPageUrl(`Categories?topic=${topicId}`)
-                : topic
-                  ? createPageUrl(
-                      `Topics?subject=${encodeURIComponent(topic.subject)}&grade=${topic.grade}`
-                    )
-                  : createPageUrl('Home')
-            }
-          >
-            <Button
-              variant="ghost"
-              className="mb-4 text-white/80 hover:text-white hover:bg-white/10"
-            >
+          <Link to={createPageUrl('Home')}>
+            <Button variant="ghost" className="mb-4 text-white/80 hover:text-white hover:bg-white/10">
               <ArrowLeft className="w-5 h-5 mr-2" />
-              {categoryId ? 'Zpět na kategorie' : 'Zpět na témata'}
+              Zpět
             </Button>
           </Link>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <h1 className="text-2xl md:text-3xl font-bold">
-              {category ? category.name : (topic?.name || 'Cvičení')}
-            </h1>
-            {topic && (
-              <p className="text-white/80">
-                {topic.subject} • {topic.grade}. třída
-                {category && ` • ${topic.name}`}
-              </p>
-            )}
+            <h1 className="text-2xl md:text-3xl font-bold">Cvičení</h1>
+            <p className="text-white/80">
+              topic: {topicId} {categoryId !== null ? `• category: ${categoryId}` : ''}
+            </p>
           </motion.div>
         </div>
       </div>
 
-      {/* Exercises */}
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* ✅ Topic Explanation (Vysvětlivka) */}
-        {topic?.explanation && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-10 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 border-2 border-blue-200"
-          >
-            <div className="flex items-start gap-5">
-              <div className={`w-16 h-16 rounded-2xl ${colors.light} flex items-center justify-center flex-shrink-0`}>
-                <BookOpen className={`w-8 h-8 ${colors.text}`} />
-              </div>
-
-              <div className="flex-1">
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <h3 className="text-2xl font-extrabold text-slate-800">📚 Vysvětlivka</h3>
-
-                  <Button
-                    variant="outline"
-                    className="h-10 px-4 rounded-xl bg-white border-2 border-blue-300 text-blue-800 shadow-sm hover:shadow-md hover:bg-white"
-                    onClick={openFullExplanation}
-                    title="Otevřít celé vysvětlení"
-                  >
-                    <Info className="w-4 h-4 mr-2" />
-                    Celé vysvětlení
-                  </Button>
-                </div>
-
-                <div className="text-slate-700 leading-relaxed whitespace-pre-wrap space-y-2">
-                  {getSnippet(topic.explanation, SNIPPET_CHARS)}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[1, 2, 3, 4].map((i) => (
@@ -352,7 +268,6 @@ export default function Exercises() {
                     ? 'bg-yellow-100 text-yellow-700'
                     : 'bg-red-100 text-red-700';
 
-              // ✅ vyber správný finální test pro tuhle obtížnost
               const finalTest = pickFinalTestForDifficulty(exercises, diff);
 
               return (
@@ -362,7 +277,6 @@ export default function Exercises() {
                   </h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* normal exercises */}
                     {exercises
                       .filter((e) => Number(e?.difficulty) === diff && !isFinalTestExercise(e))
                       .map((exercise, index) => {
@@ -376,7 +290,7 @@ export default function Exercises() {
                             key={exercise.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: index * 0.05 }}
                           >
                             <Link to={createPageUrl(`Play?exercise=${exercise.id}`)}>
                               <div
@@ -397,9 +311,7 @@ export default function Exercises() {
                                   <Icon className={`w-6 h-6 ${colors.text}`} />
                                 </div>
 
-                                <h3 className="text-lg font-bold text-slate-800 mb-1">
-                                  {exercise.title}
-                                </h3>
+                                <h3 className="text-lg font-bold text-slate-800 mb-1">{exercise.title}</h3>
 
                                 <p className="text-sm text-slate-500 mb-3">
                                   {exerciseTypeNames[exercise.type] || 'Cvičení'}
@@ -415,14 +327,10 @@ export default function Exercises() {
                                   {[1, 2, 3].map((s) => (
                                     <Star
                                       key={s}
-                                      className={`w-5 h-5 ${
-                                        s <= stars ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'
-                                      }`}
+                                      className={`w-5 h-5 ${s <= stars ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'}`}
                                     />
                                   ))}
-                                  <span className="ml-2 text-sm text-slate-500">
-                                    {p?.score ?? 0}%
-                                  </span>
+                                  <span className="ml-2 text-sm text-slate-500">{p?.score ?? 0}%</span>
                                 </div>
                               </div>
                             </Link>
@@ -430,7 +338,6 @@ export default function Exercises() {
                         );
                       })}
 
-                    {/* finální test – jen 1 správný test pro diff */}
                     {finalTest && (() => {
                       const p = getExerciseProgress(finalTest.id);
                       const unlocked = isTestUnlocked(diff);
@@ -442,7 +349,7 @@ export default function Exercises() {
                           key={finalTest.id}
                           initial={{ opacity: 0, scale: 0.95 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.3 }}
+                          transition={{ delay: 0.2 }}
                         >
                           <div
                             role="button"
@@ -489,13 +396,8 @@ export default function Exercises() {
                                 <Star className={`w-6 h-6 ${unlocked ? 'text-yellow-700' : 'text-slate-400'}`} />
                               </div>
 
-                              <h3 className="text-lg font-bold text-slate-800 mb-1">
-                                {finalTest.title}
-                              </h3>
-
-                              <p className="text-sm text-slate-500 mb-3">
-                                Finální test
-                              </p>
+                              <h3 className="text-lg font-bold text-slate-800 mb-1">{finalTest.title}</h3>
+                              <p className="text-sm text-slate-500 mb-3">Finální test</p>
 
                               {finalTest.instructions && (
                                 <p className="text-sm text-slate-400 mb-3 line-clamp-2">
@@ -508,14 +410,10 @@ export default function Exercises() {
                                   {[1, 2, 3].map((s) => (
                                     <Star
                                       key={s}
-                                      className={`w-5 h-5 ${
-                                        s <= stars ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'
-                                      }`}
+                                      className={`w-5 h-5 ${s <= stars ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'}`}
                                     />
                                   ))}
-                                  <span className="ml-2 text-sm text-slate-500">
-                                    {p?.score ?? 0}%
-                                  </span>
+                                  <span className="ml-2 text-sm text-slate-500">{p?.score ?? 0}%</span>
                                 </div>
                               )}
                             </div>

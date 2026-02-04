@@ -88,6 +88,35 @@ export default function Home() {
   });
 
   /**
+   * ✅ Aktuální seznam cvičení ze Supabase (aby se statistiky počítaly jen z existujících cvičení)
+   */
+  const { data: sbExercises = [] } = useQuery({
+    queryKey: ['sbExercisesForStats'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('exercises')
+        .select('id, type, payload');
+
+      if (error) throw error;
+
+      return (data || []).map((r) => ({
+        id: String(r.id),
+        is_test: !!(r?.payload?.is_test) || r.type === 'test',
+      }));
+    },
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
+  });
+
+  const sbExerciseIdSet = React.useMemo(() => new Set((sbExercises || []).map((e) => String(e.id))), [sbExercises]);
+  const sbIsTestById = React.useMemo(() => {
+    const m = new Map();
+    for (const e of sbExercises || []) m.set(String(e.id), !!e.is_test);
+    return m;
+  }, [sbExercises]);
+
+  /**
    * ✅ Daily streak ze Supabase
    */
   const { data: streakRow } = useQuery({
@@ -127,15 +156,23 @@ export default function Home() {
   }, []);
 
   /**
-   * ✅ Převod Supabase řádků do tvaru pro StatsCard
+   * ✅ Převod Supabase řádků do tvaru pro StatsCard (jen existující cvičení + bez testů)
    */
   const sbProgressArray = React.useMemo(() => {
-    return (sbProgressRows || []).map((r) => ({
-      completed: !!r.completed,
-      stars: r.best_stars ?? 0,
-      score: r.best_score ?? 0,
-    }));
-  }, [sbProgressRows]);
+    const allowed = sbExerciseIdSet;
+    return (sbProgressRows || [])
+      .filter((r) => {
+        const exId = String(r.exercise_id);
+        if (allowed.size > 0 && !allowed.has(exId)) return false;
+        if (sbIsTestById.get(exId)) return false;
+        return true;
+      })
+      .map((r) => ({
+        completed: !!r.completed,
+        stars: r.best_stars ?? 0,
+        score: r.best_score ?? 0,
+      }));
+  }, [sbProgressRows, sbExerciseIdSet, sbIsTestById]);
 
   /**
    * ✅ Preferuj Supabase progress, pokud existuje

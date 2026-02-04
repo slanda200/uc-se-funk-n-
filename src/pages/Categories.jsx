@@ -12,7 +12,14 @@ import { getProgressFor } from '@/lib/progressStore';
 
 export default function Categories() {
   const urlParams = new URLSearchParams(window.location.search);
-  const topicId = urlParams.get('topic');
+  const normalizeId = (v) => {
+    if (v === undefined || v === null) return null;
+    const s = String(v).trim();
+    if (!s || s === 'null' || s === 'undefined') return null;
+    return s;
+  };
+
+  const topicId = normalizeId(urlParams.get('topic'));
 
   /**
    * ✅ Supabase user (stejně jako Home.jsx)
@@ -46,7 +53,20 @@ export default function Categories() {
 
   const { data: allExercises = [] } = useQuery({
     queryKey: ['exercises', topicId],
-    queryFn: () => base44.entities.Exercise.filter({ topic_id: topicId }),
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('exercises')
+        .select('id, category_id, payload, type')
+        .eq('topic_id', topicId);
+
+      if (error) throw error;
+
+      return (data || []).map((r) => ({
+        id: r.id,
+        category_id: r.category_id,
+        is_test: !!(r?.payload?.is_test) || r.type === 'test',
+      }));
+    },
     enabled: !!topicId,
   });
 

@@ -21,15 +21,94 @@ export default function Leaderboard() {
   const { data: rows = [], isLoading, error } = useQuery({
     queryKey: ["leaderboardStars", limit],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("leaderboard_stars")
-        .select("user_id, username, total_stars, completed_count, last_active")
-        .order("total_stars", { ascending: false })
-        .order("completed_count", { ascending: false })
-        .limit(limit);
+      // ✅ Leaderboard počítáme jen z aktuálně existujících cvičení v tabulce `exercises`
+      // (a ignorujeme testy), aby se po smazání cvičení neukazovaly staré hvězdy.
+      const { data: exData, error: exError } = await supabase
+        .from("exercises")
+        .select("id, type, payload");
 
-      if (error) throw error;
-      return data || [];
+      if (exError) throw exError;
+
+      const validExerciseIds = (exData || [])
+        .filter((e) => {
+          const isTest = !!(e?.payload?.is_test) || e?.type === "test";
+          return !isTest;
+        })
+        .map((e) => String(e.id));
+
+      // Když nejsou žádná cvičení, leaderboard je prázdný
+      if (validExerciseIds.length === 0) return [];
+
+      const { data: progressRows, error: prError } = await supabase
+        .from("user_progress")
+        .select("user_id, exercise_id, best_stars, completed, updated_at, created_at")
+        .in("exercise_id", validExerciseIds);
+
+      if (prError) throw prError;
+
+      // agregace per user
+      const byUser = new Map();
+
+      for (const r of progressRows || []) {
+        const userId = String(r.user_id);
+        const stars = Number(r.best_stars ?? 0) || 0;
+        const completed = !!r.completed;
+        const lastActive = r.updated_at || r.created_at || null;
+
+        if (!byUser.has(userId)) {
+          byUser.set(userId, {
+            user_id: userId,
+            total_stars: 0,
+            completed_count: 0,
+            last_active: lastActive,
+          });
+        }
+
+        const u = byUser.get(userId);
+        u.total_stars += stars;
+        if (completed) u.completed_count += 1;
+
+        // max timestamp (string compare works for ISO timestamps)
+        if (lastActive && (!u.last_active || String(lastActive) > String(u.last_active))) {
+          u.last_active = lastActive;
+        }
+      }
+
+      const agg = Array.from(byUser.values());
+
+      // usernames z profiles
+      const userIds = agg.map((x) => x.user_id);
+      const { data: profRows, error: profError } = await supabase
+        .from("profiles")
+        .select("user_id, username")
+        .in("user_id", userIds);
+
+      if (profError) throw profError;
+
+      const nameById = new Map(
+        (profRows || []).map((p) => [String(p.user_id), p.username || "Uživatel"])
+      );
+
+      const finalRows = agg.map((x) => ({
+        user_id: x.user_id,
+        username: nameById.get(String(x.user_id)) || "Uživatel",
+        total_stars: x.total_stars,
+        completed_count: x.completed_count,
+        last_active: x.last_active,
+      }));
+
+      finalRows.sort((a, b) => {
+        if ((b.total_stars ?? 0) !== (a.total_stars ?? 0))
+          return (b.total_stars ?? 0) - (a.total_stars ?? 0);
+        if ((b.completed_count ?? 0) !== (a.completed_count ?? 0))
+          return (b.completed_count ?? 0) - (a.completed_count ?? 0);
+        const al = a.last_active ? String(a.last_active) : "";
+        const bl = b.last_active ? String(b.last_active) : "";
+        if (bl !== al) return bl > al ? 1 : -1;
+        return 0;
+      });
+
+      return finalRows.slice(0, limit);
     },
   });
 
@@ -101,12 +180,8 @@ export default function Leaderboard() {
                         </div>
 
                         <div className="min-w-0">
-                          <div className="font-semibold text-slate-800 truncate">
-                            {r.username}
-                          </div>
-                          <div className="text-xs text-slate-500">
-                            Dokončeno: {r.completed_count ?? 0}
-                          </div>
+                          <div className="font-semibold text-slate-800 truncate">{r.username}</div>
+                          <div className="text-xs text-slate-500">Dokončeno: {r.completed_count ?? 0}</div>
                         </div>
                       </div>
 

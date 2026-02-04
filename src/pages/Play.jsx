@@ -32,6 +32,67 @@ import { saveProgress } from "@/lib/progressStore";
 import { supabase } from "@/lib/supabaseClient";
 import { upsertProgress } from "@/lib/progressApi";
 
+// ----------------------------
+// ✅ helpers: uuid + supabase mapping
+// ----------------------------
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function isUuid(v) {
+  return UUID_RE.test(String(v || ''));
+}
+
+function normalizeSupabaseExerciseRow(row) {
+  if (!row) return null;
+  // row = { id, topic_id, category_id, type, title, instructions, payload }
+  const payload = (row.payload && typeof row.payload === 'object') ? row.payload : {};
+  return {
+    // Base44-like shape
+    id: row.id,
+    topic_id: row.topic_id ?? null,
+    category_id: row.category_id ?? null,
+    type: row.type,
+    title: row.title,
+    instructions: row.instructions ?? null,
+
+    // spread payload into top-level (so your components can read questions/cards/pairs/...)
+    ...payload,
+
+    // meta (optional)
+    _source: 'supabase',
+  };
+}
+
+async function getSupabaseExerciseById(id) {
+  if (!id) return null;
+  const { data, error } = await supabase
+    .from('exercises')
+    .select('*')
+    .eq('id', id)
+    .maybeSingle();
+
+  if (error) {
+    // if table missing / RLS / etc.
+    console.error("❌ Supabase get exercise error:", error);
+    return null;
+  }
+  return normalizeSupabaseExerciseRow(data);
+}
+
+async function listSupabaseExercises({ topicId, categoryId }) {
+  let q = supabase.from('exercises').select('*');
+
+  if (categoryId) q = q.eq('category_id', categoryId);
+  else if (topicId) q = q.eq('topic_id', topicId);
+
+  const { data, error } = await q;
+  if (error) {
+    console.error("❌ Supabase list exercises error:", error);
+    return [];
+  }
+  return (data || []).map(normalizeSupabaseExerciseRow).filter(Boolean);
+}
+
 // --- localStorage helpers ---
 const attemptKey = (exerciseId) => `attempts:${String(exerciseId)}`;
 
@@ -78,14 +139,12 @@ function easierDifficulty(current) {
 // ✅ global question limiting
 // ----------------------------
 const DEFAULT_MAX_QUESTIONS = 12;
-
-// ✅ default pro test generátor
 const DEFAULT_TEST_QUESTIONS = 15;
 
-// simple deterministic RNG (so order doesn't change on rerender)
+// deterministic RNG
 function hashToSeed(str) {
   const s = String(str ?? "");
-  let h = 2166136261; // FNV-1a
+  let h = 2166136261;
   for (let i = 0; i < s.length; i++) {
     h ^= s.charCodeAt(i);
     h = Math.imul(h, 16777619);
@@ -127,7 +186,6 @@ function getQuestionLimit(ex) {
   return DEFAULT_MAX_QUESTIONS;
 }
 
-// ✅ test limit (volitelné pole v test exercise)
 function getTestQuestionLimit(ex) {
   const raw =
     ex?.test_question_limit ??
@@ -142,21 +200,8 @@ function getTestQuestionLimit(ex) {
 }
 
 // ----------------------------
-// ✅ "jiný typ úlohy" preference
+// ✅ MixedTest (finální test renderer)
 // ----------------------------
-const TYPE_FALLBACK_ORDER = ['quiz', 'decision', 'fill', 'cloze', 'match', 'sort', 'memory', 'analysis', 'listening', 'image', 'test'];
-
-function pickDifferentTypeExercise(exercises, currentType) {
-  if (!Array.isArray(exercises) || exercises.length === 0) return null;
-  for (const t of TYPE_FALLBACK_ORDER) {
-    if (t === currentType) continue;
-    const found = exercises.find((e) => e?.type === t);
-    if (found) return found;
-  }
-  return exercises.find((e) => e?.type && e.type !== currentType) || null;
-}
-
-
 function MixedTest({
   exercise,
   onComplete,
@@ -176,7 +221,6 @@ function MixedTest({
   const q = questions[idx] || null;
 
   React.useEffect(() => {
-    // reset input when switching question
     setAnswer('');
     setSubmitted(false);
     setIsCorrect(false);
@@ -186,7 +230,6 @@ function MixedTest({
 
   const checkFill = (q, a) => {
     const ans = q?.answer;
-    // podporujeme: string / {mode:'subset', items:[...]}
     if (typeof ans === 'string' || typeof ans === 'number') {
       return normalize(a) === normalize(ans);
     }
@@ -205,7 +248,6 @@ function MixedTest({
   };
 
   const getQuestionText = (q) => q?.question ?? q?.text ?? '';
-
   const getOptions = (q) => Array.isArray(q?.options) ? q.options : [];
 
   const handleSubmit = () => {
@@ -214,14 +256,13 @@ function MixedTest({
     const t = (q.type || '').toLowerCase();
     const ok =
       t === 'fill' ? checkFill(q, answer) :
-      (t === 'quiz' || t === 'decision') ? checkChoice(q, answer) :
-      false;
+        (t === 'quiz' || t === 'decision') ? checkChoice(q, answer) :
+          false;
 
     setSubmitted(true);
     setIsCorrect(ok);
     if (ok) setCorrectCount((c) => c + 1);
 
-    // Attempt item -> pro AttemptReview
     onAttemptItem?.({
       exercise_id: exercise?.id,
       question_index: idx,
@@ -232,7 +273,7 @@ function MixedTest({
       explanation: q?.explanation ?? null,
     });
 
-    onAnswerResult?.({ correct: ok, question_index: idx });
+    onAnswerResult?.(ok);
   };
 
   const handleNext = () => {
@@ -299,8 +340,7 @@ function MixedTest({
         </div>
       </div>
 
-      {/* Answer UI */}
-      {isChoice(q) && (
+      {((q?.type || '').toLowerCase() === 'quiz' || (q?.type || '').toLowerCase() === 'decision') && (
         <div className="grid grid-cols-1 gap-2 mb-4">
           {options.map((opt) => {
             const selected = normalize(answer) === normalize(opt);
@@ -322,7 +362,7 @@ function MixedTest({
         </div>
       )}
 
-      {isFill(q) && (
+      {((q?.type || '').toLowerCase() === 'fill') && (
         <div className="mb-4">
           <input
             value={answer}
@@ -334,7 +374,6 @@ function MixedTest({
         </div>
       )}
 
-      {/* Controls */}
       {!submitted ? (
         <Button
           onClick={handleSubmit}
@@ -372,7 +411,6 @@ function MixedTest({
   );
 }
 
-
 export default function Play() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -383,55 +421,40 @@ export default function Play() {
   const [isComplete, setIsComplete] = useState(false);
   const [result, setResult] = useState(null);
 
-  // ✅ modal pro předčasné ukončení
   const [showEarlyExit, setShowEarlyExit] = useState(false);
 
-  // ✅ supabase user
   const [user, setUser] = useState(null);
 
-  // ✅ COMBO / STREAK
   const [combo, setCombo] = useState(0);
   const [bestCombo, setBestCombo] = useState(0);
   const [comboMsg, setComboMsg] = useState(null);
 
-  // ✅ ATTEMPT tracking
   const attemptIdRef = useRef(null);
   const attemptItemsRef = useRef([]);
   const [lastAttemptId, setLastAttemptId] = useState(null);
 
-  // ✅ dedupe streaku
   const streakGuardRef = useRef({ ts: 0, val: null });
-
-  // ✅ guard proti dvojímu zapsání "daily activity"
   const dailyActivityGuardRef = useRef({ key: null });
 
-  // ✅ reset attempt id když se změní exercise
   useEffect(() => {
     attemptIdRef.current = `${Date.now()}_${Math.random().toString(16).slice(2)}`;
     attemptItemsRef.current = [];
     setLastAttemptId(null);
-
-    // reset daily activity guard (nové cvičení = nový klíč)
     dailyActivityGuardRef.current = { key: null };
   }, [exerciseId]);
 
-  // ✅ DŮLEŽITÝ FIX:
-  // když se změní URL (nové exerciseId), tak VYPNI completion screen
   useEffect(() => {
     setIsComplete(false);
     setResult(null);
     setShowEarlyExit(false);
 
-    // reset streak
     setCombo(0);
     setBestCombo(0);
     setComboMsg(null);
 
-    // reset guard
     streakGuardRef.current = { ts: 0, val: null };
   }, [exerciseId]);
 
-  // Auth
   useEffect(() => {
     let mounted = true;
 
@@ -450,11 +473,22 @@ export default function Play() {
     };
   }, []);
 
+  // ✅ Exercise: try Supabase first (UUID), fallback to Base44
   const { data: exercise, isLoading } = useQuery({
     queryKey: ['exercise', exerciseId],
     queryFn: async () => {
+      if (!exerciseId) return null;
+
+      // 1) Supabase
+      const sb = await getSupabaseExerciseById(exerciseId);
+      if (sb) return sb;
+
+      // 2) Base44 fallback
       const exercises = await base44.entities.Exercise.filter({ id: exerciseId });
-      return exercises[0];
+      const ex = exercises?.[0] || null;
+      if (ex) return { ...ex, _source: 'base44' };
+
+      return null;
     },
     enabled: !!exerciseId,
   });
@@ -468,39 +502,43 @@ export default function Play() {
     enabled: !!exercise?.topic_id,
   });
 
-  // ✅ všechny úlohy v topicu (kvůli "Další úloha" + test generátor)
+  // ✅ scopeExercises: Base44 + Supabase for same topic/category
   const { data: scopeExercises = [] } = useQuery({
     queryKey: ['scopeExercises', exercise?.category_id || null, exercise?.topic_id || null],
     queryFn: async () => {
-      // Preferuj kategorii, pokud existuje. Když není, fallback na topic.
-      if (exercise?.category_id) {
-        const list = await base44.entities.Exercise.filter({ category_id: exercise.category_id });
-        return Array.isArray(list) ? list : [];
+      const catId = exercise?.category_id || null;
+      const topId = exercise?.topic_id || null;
+
+      let baseList = [];
+      if (catId) baseList = await base44.entities.Exercise.filter({ category_id: catId });
+      else if (topId) baseList = await base44.entities.Exercise.filter({ topic_id: topId });
+
+      const sbList = await listSupabaseExercises({ topicId: topId, categoryId: catId });
+
+      const merged = [...(Array.isArray(baseList) ? baseList : []), ...(Array.isArray(sbList) ? sbList : [])];
+
+      // unique by id (string)
+      const seen = new Set();
+      const out = [];
+      for (const e of merged) {
+        const id = String(e?.id ?? '');
+        if (!id || seen.has(id)) continue;
+        seen.add(id);
+        out.push(e);
       }
-      if (exercise?.topic_id) {
-        const list = await base44.entities.Exercise.filter({ topic_id: exercise.topic_id });
-        return Array.isArray(list) ? list : [];
-      }
-      return [];
+      return out;
     },
     enabled: !!exercise?.category_id || !!exercise?.topic_id,
   });
 
-  // ✅ limit + shuffle questions globally + TEST generator
   const activeExercise = useMemo(() => {
     if (!exercise) return null;
 
     const seed = `${exerciseId}:${attemptIdRef.current || "seed"}`;
-
     const isTest = exercise?.is_test === true || exercise?.type === "test";
 
-    // ✅ TEST: vezmi otázky z ostatních úloh v tématu se stejnou difficulty
     if (isTest) {
-      // ✅ TEST: namixuj otázky jen z *této kategorie + obtížnosti*
       const testLimit = getTestQuestionLimit(exercise);
-
-      // ⚠️ DŮLEŽITÉ: finální test dává smysl jen z typů, které umíme v testu zobrazit
-      // (quiz/decision/fill). Ostatní typy (match/sort/analysis/cloze/...) by vyžadovaly speciální UI.
       const allowedTypes = new Set(['quiz', 'decision', 'fill']);
 
       const poolExercises = (scopeExercises || []).filter((ex2) =>
@@ -512,7 +550,6 @@ export default function Play() {
       const poolQuestions = poolExercises.flatMap((ex2) =>
         (Array.isArray(ex2?.questions) ? ex2.questions : []).map((q, idx) => ({
           ...q,
-          // ✅ aby bylo jasné, jaký renderer použít
           type: q?.type || ex2.type,
           _source_exercise_id: ex2.id,
           _source_question_index: idx,
@@ -527,7 +564,6 @@ export default function Play() {
       return { ...exercise, questions: selected };
     }
 
-    // ✅ NORMAL: max 12 (nebo question_limit)
     const qs = Array.isArray(exercise?.questions) ? exercise.questions : [];
     const limit = Math.min(qs.length, getQuestionLimit(exercise));
 
@@ -537,7 +573,6 @@ export default function Play() {
     return { ...exercise, questions: shuffled };
   }, [exerciseId, exercise, scopeExercises]);
 
-  // ✅ streak callback
   const onAnswerResult = React.useCallback((isCorrect) => {
     const now = Date.now();
     const last = streakGuardRef.current;
@@ -552,9 +587,9 @@ export default function Play() {
         if (next >= 2) {
           const text =
             next === 2 ? "🔥 Dobře! 2× správně" :
-            next === 3 ? "🚀 Skvělé! 3× za sebou" :
-            next === 5 ? "🏆 Mega! 5× v řadě" :
-            `⚡ Combo ${next}×`;
+              next === 3 ? "🚀 Skvělé! 3× za sebou" :
+                next === 5 ? "🏆 Mega! 5× v řadě" :
+                  `⚡ Combo ${next}×`;
 
           setComboMsg(text);
 
@@ -569,7 +604,6 @@ export default function Play() {
     }
   }, []);
 
-  // ✅ attempt items
   const onAttemptItem = React.useCallback((item) => {
     if (!item) return;
     const list = attemptItemsRef.current || [];
@@ -612,7 +646,6 @@ export default function Play() {
     });
 
     if (user?.id) {
-      // 1) ulož progress
       try {
         await upsertProgress({
           exerciseId,
@@ -627,9 +660,8 @@ export default function Play() {
         console.error("❌ Nepodařilo se uložit progres do Supabase:", e);
       }
 
-      // 2) ✅ inkrement denní aktivity (jen jednou na dokončení)
       try {
-        const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+        const today = new Date().toISOString().slice(0, 10);
         const guardKey = `${user.id}:${String(exerciseId)}:${String(attemptId)}:${today}`;
 
         if (dailyActivityGuardRef.current.key !== guardKey) {
@@ -648,7 +680,6 @@ export default function Play() {
     }
   };
 
-  // ✅ FIX: handleEarlyFinish už nepoužívá `ex` dřív než existuje
   const handleEarlyFinish = () => {
     const exLocal = activeExercise || exercise;
     const questions = Array.isArray(exLocal?.questions) ? exLocal.questions : [];
@@ -708,11 +739,6 @@ export default function Play() {
 
   const colors = subjectColors[topic?.subject] || subjectColors['Matematika'];
 
-  // ✅ doporučení další úlohy podle score + difficulty (1..3)
-// pravidla:
-// - difficulty 1: >=75% -> 2, jinak zůstat 1
-// - difficulty 2: >=75% -> 3, 25–74% -> zůstat 2, <25% -> 1
-// - difficulty 3: >=25% -> zůstat 3, <25% -> 2
   const recommendation = useMemo(() => {
     if (!isComplete || !result || !exercise) return null;
 
@@ -732,7 +758,6 @@ export default function Play() {
 
     const byDiff = (d) => others.filter((e) => getExerciseDifficulty(e) === d);
 
-    // 1) spočti cílovou obtížnost podle pravidel výše
     let targetDiff = curDiff;
 
     if (curDiff === 1) {
@@ -745,47 +770,40 @@ export default function Play() {
       targetDiff = score >= 25 ? 3 : 2;
     }
 
-    // 2) vyber úlohu z cílové obtížnosti (preferuj stejný typ, když měníme obtížnost)
     const poolTarget = byDiff(targetDiff);
-
     let chosen = null;
 
     if (poolTarget.length > 0) {
-      // pokud se obtížnost mění, preferuj stejný typ jako aktuální
       if (targetDiff !== curDiff && curType) {
         const sameTypePool = poolTarget.filter((e) => e?.type === curType);
         chosen = pickRandom(sameTypePool) || pickRandom(poolTarget);
       } else {
-        // stejná obtížnost: preferuj jiný typ (když jde), jinak náhodně
         const diffTypePool = curType ? poolTarget.filter((e) => e?.type && e.type !== curType) : poolTarget;
         chosen = pickRandom(diffTypePool) || pickRandom(poolTarget);
       }
     }
 
-    // 3) fallbacky (když v cílové obtížnosti nic není)
     if (!chosen) {
-      // zkus stejnou obtížnost (jiné cvičení)
       const sameDiffPool = byDiff(curDiff);
       chosen = pickRandom(sameDiffPool) || pickRandom(others);
     }
 
     if (!chosen) return null;
 
-    // 4) texty do UI
     const label =
       targetDiff > curDiff ? "Další cvičení (těžší)" :
-      targetDiff < curDiff ? "Další cvičení (lehčí)" :
-      "Další cvičení";
+        targetDiff < curDiff ? "Další cvičení (lehčí)" :
+          "Další cvičení";
 
     const title =
       targetDiff > curDiff ? "Jdeš nahoru! 🔥" :
-      targetDiff < curDiff ? "Zkusíme lehčí krok 🙂" :
-      "Ještě jedno na procvičení 💪";
+        targetDiff < curDiff ? "Zkusíme lehčí krok 🙂" :
+          "Ještě jedno na procvičení 💪";
 
     const text =
       targetDiff > curDiff ? "Máš super výsledek – zkus těžší úroveň ve stejné kategorii." :
-      targetDiff < curDiff ? "Tohle bylo těžší – dáme lehčí úroveň ve stejné kategorii." :
-      "Zůstaneme na stejné obtížnosti a dáme jiné cvičení.";
+        targetDiff < curDiff ? "Tohle bylo těžší – dáme lehčí úroveň ve stejné kategorii." :
+          "Zůstaneme na stejné obtížnosti a dáme jiné cvičení.";
 
     return {
       title,
@@ -823,7 +841,6 @@ export default function Play() {
 
   const ex = activeExercise || exercise;
 
-  // Completion screen
   if (isComplete && result) {
     const reviewUrl =
       lastAttemptId
@@ -877,7 +894,6 @@ export default function Play() {
             </div>
           )}
 
-          {/* ✅ Doporučení + tlačítko Další úloha */}
           {recommendation?.exercise?.id && (
             <div className="mb-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 text-left">
               <div className="flex items-start gap-3">
@@ -949,7 +965,6 @@ export default function Play() {
 
   return (
     <div className={`min-h-screen bg-gradient-to-br from-slate-50 ${colors.bg} to-white`}>
-      {/* combo toast */}
       {comboMsg && (
         <div className="fixed top-20 left-1/2 -translate-x-1/2 z-[9999]">
           <div className="px-4 py-2 rounded-2xl bg-slate-900 text-white text-sm font-semibold shadow-lg">
@@ -958,7 +973,6 @@ export default function Play() {
         </div>
       )}
 
-      {/* Header */}
       <div className="bg-white/80 backdrop-blur-sm border-b border-slate-100 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -998,7 +1012,6 @@ export default function Play() {
         </div>
       </div>
 
-      {/* Exercise Content */}
       <div className="max-w-4xl mx-auto px-4 py-8">
         {ex.instructions && (
           <motion.div
@@ -1019,7 +1032,6 @@ export default function Play() {
         />
       </div>
 
-      {/* Modal: předčasné ukončení */}
       {showEarlyExit && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
