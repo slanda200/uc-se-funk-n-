@@ -547,7 +547,7 @@ export default function Profile() {
         >
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white text-2xl font-bold shadow-md">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-2xl font-bold shadow-md">
                 {avatarLetter}
               </div>
               <div>

@@ -22,7 +22,7 @@ const EXERCISE_TYPES = [
 ];
 
 // ✅ šablony payloadu – aby admin nemusel začínat od nuly
-function templateFor(type) {
+export function templateFor(type) {
   switch (type) {
     case "decision":
     case "quiz":
@@ -32,7 +32,7 @@ function templateFor(type) {
             question: "Otázka…",
             options: ["A", "B", "C"],
             answer: "A",
-            explanation: "Krátké vysvětlení (volitelné).",
+            explanation: "",
           },
         ],
       };
@@ -43,41 +43,40 @@ function templateFor(type) {
           {
             question: "Doplň slovo: ___",
             answer: "správná odpověď",
-            explanation: "Vysvětlení (volitelné).",
+            explanation: "",
           },
         ],
       };
 
     case "cloze":
-      // Pozn.: tvoje ClozeExercise může mít jiný formát.
-      // Tohle je rozumná šablona a když bude potřeba, upravíme ji podle komponenty.
       return {
         text: "Doplň chybějící slova v textu…",
         questions: [
           {
             question: "Věta: Mám rád ___.",
             answer: "čokoládu",
-            explanation: "Vysvětlení (volitelné).",
+            explanation: "",
           },
         ],
       };
 
     case "match":
       return {
-        pairs: [
-          { left: "Pes", right: "Dog" },
-          { left: "Kočka", right: "Cat" },
-        ],
         instructions_hint: "Páruj správné dvojice.",
+        pairs: [
+          { left: "Pes", right: "Dog", explanation: "" },
+          { left: "Kočka", right: "Cat", explanation: "" },
+        ],
       };
 
     case "memory":
+      // explanation je tady na každé kartě (může zůstat prázdné)
       return {
         cards: [
-          { id: "1a", value: "A" },
-          { id: "1b", value: "A" },
-          { id: "2a", value: "B" },
-          { id: "2b", value: "B" },
+          { id: "1a", value: "A", explanation: "" },
+          { id: "1b", value: "A", explanation: "" },
+          { id: "2a", value: "B", explanation: "" },
+          { id: "2b", value: "B", explanation: "" },
         ],
       };
 
@@ -85,20 +84,30 @@ function templateFor(type) {
       return {
         categories: ["Samohlásky", "Souhlásky"],
         items: [
-          { text: "A", category: "Samohlásky" },
-          { text: "K", category: "Souhlásky" },
+          { text: "A", category: "Samohlásky", explanation: "" },
+          { text: "K", category: "Souhlásky", explanation: "" },
         ],
       };
 
     case "analysis":
+      // ✅ Legend potřebuje 2 barvy: red & blue (podle tvého screenshotu)
+      // ✅ Klikací segmenty bereme jako words: [{ word, color }]
       return {
-        legend: "Legenda / pravidlo (volitelné).",
+        legend: {
+          red: "Co znamená červená (red)…",
+          blue: "Co znamená modrá (blue)…",
+        },
         text: "Text k rozboru…",
         questions: [
           {
             question: "Najdi epizeuxis.",
+            words: [
+              // ukázka: systém to bude generovat z věty po slovech (mezera = segment)
+              // { word: "Najdi", color: "blue" },
+              // { word: "epizeuxis", color: "red" },
+            ],
             answer: "…",
-            explanation: "…",
+            explanation: "",
           },
         ],
       };
@@ -107,35 +116,620 @@ function templateFor(type) {
       return {
         audio_url: null,
         text: "Co slyšíš? Přepiš větu…",
-        questions: [
-          { question: "Napiš přesně větu z poslechu.", answer: "…", explanation: null },
-        ],
+        questions: [{ question: "Napiš přesně větu z poslechu.", answer: "…", explanation: "" }],
       };
 
     case "image":
       return {
         image_url: null,
         text: "Podívej se na obrázek a napiš odpověď…",
-        questions: [
-          { question: "Co je na obrázku?", answer: "…", explanation: null },
-        ],
+        questions: [{ question: "Co je na obrázku?", answer: "…", explanation: "" }],
       };
 
     case "test":
-      // Pozn.: tvůj Play.jsx si test generuje mixem z jiných úloh podle difficulty.
-      // Tady stačí prázdný payload + nastavíme is_test / type=test.
       return {
-        questions: [],
         note: "Test se může generovat automaticky v Play.jsx (mix otázek z tématu).",
+        questions: [
+          // i kdyby prázdné, držíme strukturu s explanation
+          // { question: "...", answer: "...", explanation: "" }
+        ],
+        explanation: "",
       };
 
     default:
-      return { questions: [] };
+      return { questions: [{ question: "", answer: "", explanation: "" }] };
   }
 }
 
 function toJsonText(obj) {
   return JSON.stringify(obj, null, 2);
+}
+
+// ===============================
+// ✅ UNIVERSAL PAYLOAD BUILDER (formulář z JSON)
+// + SPECIAL CASE pro analysis (legend red/blue + words segmenty)
+// ===============================
+function clone(v) {
+  return JSON.parse(JSON.stringify(v));
+}
+
+function isPlainObject(v) {
+  return !!v && typeof v === "object" && !Array.isArray(v);
+}
+
+function guessNewItemFromExample(example) {
+  if (Array.isArray(example)) return [];
+  if (isPlainObject(example)) {
+    const out = {};
+    for (const k of Object.keys(example)) out[k] = guessNewItemFromExample(example[k]);
+    return out;
+  }
+  if (typeof example === "string") return "";
+  if (typeof example === "number") return 0;
+  if (typeof example === "boolean") return false;
+  return null;
+}
+
+function InputPrimitive({ value, onChange }) {
+  const [isNull, setIsNull] = useState(value === null);
+
+  useEffect(() => setIsNull(value === null), [value]);
+
+  if (isNull) {
+    return (
+      <div className="flex gap-2 items-center">
+        <input value={"null"} disabled className="w-full rounded-xl border px-3 py-2 bg-slate-50" />
+        <button
+          type="button"
+          onClick={() => {
+            setIsNull(false);
+            onChange("");
+          }}
+          className="px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold"
+        >
+          Nastavit
+        </button>
+      </div>
+    );
+  }
+
+  if (typeof value === "boolean") {
+    return (
+      <label className="flex items-center gap-3">
+        <input type="checkbox" checked={!!value} onChange={(e) => onChange(e.target.checked)} />
+        <span className="text-sm text-slate-700">{value ? "true" : "false"}</span>
+        <button
+          type="button"
+          onClick={() => onChange(null)}
+          className="ml-auto px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold"
+        >
+          null
+        </button>
+      </label>
+    );
+  }
+
+  const isNumber = typeof value === "number";
+  return (
+    <div className="flex gap-2 items-center">
+      <input
+        type={isNumber ? "number" : "text"}
+        value={value ?? ""}
+        onChange={(e) => {
+          const raw = e.target.value;
+          onChange(isNumber ? (raw === "" ? 0 : Number(raw)) : raw);
+        }}
+        className="w-full rounded-xl border px-3 py-2"
+      />
+      <button
+        type="button"
+        onClick={() => onChange(null)}
+        className="px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold"
+      >
+        null
+      </button>
+    </div>
+  );
+}
+
+function JsonForm({ value, onChange }) {
+  // Primitive
+  if (value === null || typeof value !== "object") {
+    return <InputPrimitive value={value} onChange={onChange} />;
+  }
+
+  // Array
+  if (Array.isArray(value)) {
+    const arr = value;
+    const example = arr[0] ?? ""; // když je prázdný, uděláme default string
+    const addItem = () => {
+      const next = clone(arr);
+      next.push(guessNewItemFromExample(example));
+      onChange(next);
+    };
+
+    return (
+      <div className="space-y-2">
+        {arr.map((item, idx) => (
+          <div key={idx} className="rounded-2xl border bg-white p-3">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-xs text-slate-500">#{idx + 1}</div>
+              <button
+                type="button"
+                onClick={() => {
+                  const next = clone(arr);
+                  next.splice(idx, 1);
+                  onChange(next);
+                }}
+                className="px-2 py-1 rounded-lg border bg-white hover:bg-rose-50 text-rose-700 font-semibold text-xs"
+              >
+                Smazat
+              </button>
+            </div>
+
+            <JsonForm
+              value={item}
+              onChange={(v) => {
+                const next = clone(arr);
+                next[idx] = v;
+                onChange(next);
+              }}
+            />
+          </div>
+        ))}
+
+        <button
+          type="button"
+          onClick={addItem}
+          className="w-full px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold"
+        >
+          + Přidat
+        </button>
+      </div>
+    );
+  }
+
+  // Object
+  const obj = value;
+  const keys = Object.keys(obj);
+
+  return (
+    <div className="space-y-3">
+      {keys.map((k) => (
+        <div key={k} className="rounded-2xl border bg-white p-3">
+          <div className="text-xs font-semibold text-slate-700 mb-2">{k}</div>
+
+          <JsonForm
+            value={obj[k]}
+            onChange={(v) => {
+              const next = clone(obj);
+              next[k] = v;
+              onChange(next);
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function normalizeAnalysisPayload(payloadObjRaw) {
+  const payloadObj = payloadObjRaw && typeof payloadObjRaw === "object" ? payloadObjRaw : {};
+  const next = clone(payloadObj);
+
+  // legend: když je string (staré), převedeme na {red:string, blue:""}
+  if (typeof next.legend === "string") {
+    next.legend = { red: next.legend, blue: "" };
+  }
+  if (next.legend == null || typeof next.legend !== "object" || Array.isArray(next.legend)) {
+    next.legend = { red: "", blue: "" };
+  }
+  if (typeof next.legend.red !== "string") next.legend.red = next.legend.red == null ? "" : String(next.legend.red);
+  if (typeof next.legend.blue !== "string") next.legend.blue = next.legend.blue == null ? "" : String(next.legend.blue);
+
+  if (typeof next.text !== "string") next.text = next.text == null ? "" : String(next.text);
+
+  if (!Array.isArray(next.questions)) next.questions = [];
+  next.questions = next.questions.map((q) => {
+    const qq = q && typeof q === "object" ? { ...q } : {};
+    if (typeof qq.question !== "string") qq.question = qq.question == null ? "" : String(qq.question);
+    if (typeof qq.answer !== "string") qq.answer = qq.answer == null ? "" : String(qq.answer);
+    if (typeof qq.explanation !== "string") qq.explanation = qq.explanation == null ? "" : String(qq.explanation);
+
+    // words: [{word, color}] — pro klikací segmenty po slovech
+    if (!Array.isArray(qq.words)) qq.words = [];
+    qq.words = qq.words
+      .filter((w) => w && typeof w === "object")
+      .map((w) => ({
+        word: typeof w.word === "string" ? w.word : w.word == null ? "" : String(w.word),
+        color: w.color === "red" || w.color === "blue" ? w.color : "blue",
+      }));
+
+    return qq;
+  });
+
+  return next;
+}
+
+function splitToWords(sentence) {
+  return String(sentence || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(" ")
+    .filter(Boolean);
+}
+
+function AnalysisBuilder({ payloadObj, setPayloadObj, payloadText, setPayloadText }) {
+  const normalized = useMemo(() => normalizeAnalysisPayload(payloadObj), [payloadObj]);
+
+  useEffect(() => {
+    // Když dojde k normalizaci (např. při editaci starých payloadů), synchronizujeme stav
+    if (JSON.stringify(normalized) !== JSON.stringify(payloadObj)) {
+      setPayloadObj(normalized);
+      setPayloadText(toJsonText(normalized));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [normalized]);
+
+  const setAndSync = (nextObj) => {
+    setPayloadObj(nextObj);
+    setPayloadText(toJsonText(nextObj));
+  };
+
+  const updateLegend = (key, val) => {
+    const next = clone(normalized);
+    next.legend = next.legend || { red: "", blue: "" };
+    next.legend[key] = val;
+    setAndSync(next);
+  };
+
+  const updateText = (val) => {
+    const next = clone(normalized);
+    next.text = val;
+    setAndSync(next);
+  };
+
+  const addQuestion = () => {
+    const next = clone(normalized);
+    next.questions = Array.isArray(next.questions) ? next.questions : [];
+    next.questions.push({
+      question: "",
+      words: [],
+      answer: "",
+      explanation: "",
+    });
+    setAndSync(next);
+  };
+
+  const deleteQuestion = (idx) => {
+    const next = clone(normalized);
+    next.questions.splice(idx, 1);
+    setAndSync(next);
+  };
+
+  const updateQuestionField = (idx, field, val) => {
+    const next = clone(normalized);
+    next.questions[idx] = next.questions[idx] || { question: "", words: [], answer: "", explanation: "" };
+    next.questions[idx][field] = val;
+    setAndSync(next);
+  };
+
+  const generateWordsFromSentence = (idx) => {
+    const next = clone(normalized);
+    const q = next.questions[idx] || { question: "", words: [], answer: "", explanation: "" };
+    const words = splitToWords(q.question);
+    q.words = words.map((w) => ({ word: w, color: "blue" }));
+    // ✅ “answer” necháme jako string (kvůli kompatibilitě), ale můžeš ho používat i jako nápovědu.
+    // V Play.jsx by se mělo vyhodnocovat primárně přes q.words (to chce i ta hláška v UI).
+    q.answer = q.answer || "";
+    next.questions[idx] = q;
+    setAndSync(next);
+  };
+
+  const updateWord = (qIdx, wIdx, patch) => {
+    const next = clone(normalized);
+    const q = next.questions[qIdx];
+    q.words[wIdx] = { ...q.words[wIdx], ...patch };
+    setAndSync(next);
+  };
+
+  const deleteWord = (qIdx, wIdx) => {
+    const next = clone(normalized);
+    const q = next.questions[qIdx];
+    q.words.splice(wIdx, 1);
+    setAndSync(next);
+  };
+
+  const addWordManual = (qIdx) => {
+    const next = clone(normalized);
+    const q = next.questions[qIdx];
+    q.words.push({ word: "", color: "blue" });
+    setAndSync(next);
+  };
+
+  return (
+    <div>
+      <div className="flex items-center justify-between">
+        <label className="text-sm font-semibold text-slate-700">Payload (formulář)</label>
+        <div className="text-xs text-slate-500">
+          Analysis režim: legend (red/blue) + words segmenty (mezera = jedno slovo).
+        </div>
+      </div>
+
+      <div className="mt-2 rounded-2xl border p-4 bg-slate-50 space-y-4">
+        {/* legend: 2 okýnka */}
+        <div className="rounded-2xl border bg-white p-3">
+          <div className="text-xs font-semibold text-slate-700 mb-2">legend</div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <div className="text-xs text-slate-500 mb-1">red:</div>
+              <input
+                value={normalized.legend?.red ?? ""}
+                onChange={(e) => updateLegend("red", e.target.value)}
+                className="w-full rounded-xl border px-3 py-2"
+                placeholder="Co znamená red…"
+              />
+            </div>
+
+            <div>
+              <div className="text-xs text-slate-500 mb-1">blue:</div>
+              <input
+                value={normalized.legend?.blue ?? ""}
+                onChange={(e) => updateLegend("blue", e.target.value)}
+                className="w-full rounded-xl border px-3 py-2"
+                placeholder="Co znamená blue…"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* text */}
+        <div className="rounded-2xl border bg-white p-3">
+          <div className="text-xs font-semibold text-slate-700 mb-2">text</div>
+          <input
+            value={normalized.text ?? ""}
+            onChange={(e) => updateText(e.target.value)}
+            className="w-full rounded-xl border px-3 py-2"
+            placeholder="Text k rozboru…"
+          />
+        </div>
+
+        {/* questions */}
+        <div className="rounded-2xl border bg-white p-3">
+          <div className="flex items-center justify-between">
+            <div className="text-xs font-semibold text-slate-700">questions</div>
+            <button
+              type="button"
+              onClick={addQuestion}
+              className="px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold"
+            >
+              + Přidat otázku
+            </button>
+          </div>
+
+          <div className="mt-3 space-y-3">
+            {(normalized.questions || []).length === 0 ? (
+              <div className="text-sm text-slate-500">Zatím žádné otázky.</div>
+            ) : (
+              normalized.questions.map((q, idx) => (
+                <div key={idx} className="rounded-2xl border bg-slate-50 p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-xs text-slate-500">#{idx + 1}</div>
+                    <button
+                      type="button"
+                      onClick={() => deleteQuestion(idx)}
+                      className="px-2 py-1 rounded-lg border bg-white hover:bg-rose-50 text-rose-700 font-semibold text-xs"
+                    >
+                      Smazat
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-3">
+                    <div className="rounded-2xl border bg-white p-3">
+                      <div className="text-xs font-semibold text-slate-700 mb-2">question</div>
+                      <input
+                        value={q.question ?? ""}
+                        onChange={(e) => updateQuestionField(idx, "question", e.target.value)}
+                        className="w-full rounded-xl border px-3 py-2"
+                        placeholder="Sem napiš větu / slova. Mezery = segmenty."
+                      />
+                      <div className="mt-2 flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => generateWordsFromSentence(idx)}
+                          className="px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold"
+                        >
+                          Rozdělit na slova
+                        </button>
+                        <div className="text-xs text-slate-500">
+                          Udělá words[] z question (segment = slovo).
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl border bg-white p-3">
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs font-semibold text-slate-700">words (klikací segmenty)</div>
+                        <button
+                          type="button"
+                          onClick={() => addWordManual(idx)}
+                          className="px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold"
+                        >
+                          + Přidat segment
+                        </button>
+                      </div>
+
+                      <div className="mt-2 space-y-2">
+                        {(q.words || []).length === 0 ? (
+                          <div className="text-sm text-slate-500">
+                            Zatím nejsou segmenty. Klikni „Rozdělit na slova“ nebo přidej ručně.
+                          </div>
+                        ) : (
+                          (q.words || []).map((w, wIdx) => (
+                            <div key={wIdx} className="grid grid-cols-1 md:grid-cols-12 gap-2 items-center">
+                              <div className="md:col-span-7">
+                                <input
+                                  value={w.word ?? ""}
+                                  onChange={(e) => updateWord(idx, wIdx, { word: e.target.value })}
+                                  className="w-full rounded-xl border px-3 py-2"
+                                  placeholder="slovo"
+                                />
+                              </div>
+                              <div className="md:col-span-3">
+                                <select
+                                  value={w.color === "red" ? "red" : "blue"}
+                                  onChange={(e) => updateWord(idx, wIdx, { color: e.target.value })}
+                                  className="w-full rounded-xl border px-3 py-2"
+                                >
+                                  <option value="blue">blue</option>
+                                  <option value="red">red</option>
+                                </select>
+                              </div>
+                              <div className="md:col-span-2 text-right">
+                                <button
+                                  type="button"
+                                  onClick={() => deleteWord(idx, wIdx)}
+                                  className="px-2 py-2 rounded-xl border bg-white hover:bg-rose-50 text-rose-700 font-semibold text-sm w-full"
+                                >
+                                  Smazat
+                                </button>
+                              </div>
+                            </div>
+                          ))
+                        )}
+                      </div>
+
+                      <div className="mt-2 text-xs text-slate-500">
+                        Play.jsx (podle hlášky v UI) očekává u otázky `words: [{`{"word":"A","color":"red"}`}...]`.
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl border bg-white p-3">
+                      <div className="text-xs font-semibold text-slate-700 mb-2">answer</div>
+                      <input
+                        value={q.answer ?? ""}
+                        onChange={(e) => updateQuestionField(idx, "answer", e.target.value)}
+                        className="w-full rounded-xl border px-3 py-2"
+                        placeholder="Volitelné (pokud Play používá words, answer nemusí být potřeba)"
+                      />
+                      <div className="mt-2 text-xs text-slate-500">
+                        Pokud chceš mít i “readable” answer, můžeš sem psát např. „pes:red, je:blue, bílej:blue“.
+                        Vyhodnocení se ale má opírat o words[].
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl border bg-white p-3">
+                      <div className="text-xs font-semibold text-slate-700 mb-2">explanation</div>
+                      <input
+                        value={q.explanation ?? ""}
+                        onChange={(e) => updateQuestionField(idx, "explanation", e.target.value)}
+                        className="w-full rounded-xl border px-3 py-2"
+                        placeholder="Vysvětlení (volitelné)…"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-3">
+        <textarea
+          value={payloadText}
+          onChange={(e) => {
+            const nextText = e.target.value;
+            setPayloadText(nextText);
+            try {
+              const parsed = JSON.parse(nextText);
+              setPayloadObj(parsed);
+            } catch {
+              // ignorujeme invalid JSON (uživatel může dopsat)
+            }
+          }}
+          className="mt-1 w-full rounded-2xl border px-3 py-2 font-mono text-sm min-h-[240px]"
+        />
+        <p className="text-xs text-slate-500 mt-2">
+          Pokročilé: JSON je stále “zdroj pravdy”. Jakmile je validní, formulář se synchronizuje.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function PayloadBuilder({ type, payloadObj, setPayloadObj, payloadText, setPayloadText }) {
+  const [showJson, setShowJson] = useState(false);
+
+  // ✅ Special UI pro analysis
+  if (type === "analysis") {
+    return (
+      <div>
+        <AnalysisBuilder
+          payloadObj={payloadObj}
+          setPayloadObj={setPayloadObj}
+          payloadText={payloadText}
+          setPayloadText={setPayloadText}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="flex items-center justify-between">
+        <label className="text-sm font-semibold text-slate-700">Payload (formulář)</label>
+        <button
+          type="button"
+          onClick={() => setShowJson((s) => !s)}
+          className="px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold"
+        >
+          {showJson ? "Skrýt JSON" : "Pokročilé: JSON"}
+        </button>
+      </div>
+
+      <div className="mt-2 rounded-2xl border p-3 bg-slate-50">
+        <JsonForm
+          value={payloadObj || {}}
+          onChange={(nextObj) => {
+            setPayloadObj(nextObj);
+            setPayloadText(toJsonText(nextObj));
+          }}
+        />
+      </div>
+
+      {showJson && (
+        <div className="mt-3">
+          <textarea
+            value={payloadText}
+            onChange={(e) => {
+              const nextText = e.target.value;
+              setPayloadText(nextText);
+              try {
+                const parsed = JSON.parse(nextText);
+                setPayloadObj(parsed);
+              } catch {
+                // ignorujeme invalid JSON (uživatel může dopsat)
+              }
+            }}
+            className="mt-1 w-full rounded-2xl border px-3 py-2 font-mono text-sm min-h-[260px]"
+          />
+          <p className="text-xs text-slate-500 mt-2">
+            Pokročilé: můžeš upravit JSON ručně. Formulář se synchronizuje, jakmile je JSON validní.
+          </p>
+        </div>
+      )}
+
+      <p className="text-xs text-slate-500 mt-2">
+        Tip: Pole (questions/pairs/cards/items/options/categories) mají tlačítko “+ Přidat” a každý řádek jde smazat.
+      </p>
+
+      <div className="mt-3 text-xs text-slate-500">
+        Aktivní typ: <span className="font-semibold text-slate-700">{type}</span>
+      </div>
+    </div>
+  );
 }
 
 export default function Admin() {
@@ -161,6 +755,7 @@ export default function Admin() {
   const [isTest, setIsTest] = useState(false);
 
   const [payloadText, setPayloadText] = useState(toJsonText(templateFor("decision")));
+  const [payloadObj, setPayloadObj] = useState(templateFor("decision"));
 
   const topicOptions = useMemo(() => {
     const arr = Array.isArray(topicsData) ? topicsData : [];
@@ -286,7 +881,9 @@ export default function Admin() {
   };
 
   const applyTemplate = () => {
-    setPayloadText(toJsonText(templateFor(type)));
+    const t = templateFor(type);
+    setPayloadObj(t);
+    setPayloadText(toJsonText(t));
     setMessage("✅ Šablona byla vložena do payloadu.");
   };
 
@@ -325,7 +922,16 @@ export default function Admin() {
     setInstructions(row.instructions || "");
     setTopicId(row.topic_id || "");
     setCategoryId(row.category_id || "");
-    setPayloadText(toJsonText(row.payload || {}));
+
+    let obj = row.payload || {};
+
+    // ✅ pokud editujeme analysis, normalizuj legend + words strukturu
+    if ((row.type || "") === "analysis") {
+      obj = normalizeAnalysisPayload(obj);
+    }
+
+    setPayloadObj(obj);
+    setPayloadText(toJsonText(obj));
 
     // is_test + difficulty – pokud je ukládáš jinde, bude to zatím false/1
     // (když chceš, dáme do DB sloupce, nebo to uložíme do payloadu)
@@ -345,7 +951,11 @@ export default function Admin() {
     setCategoryId("");
     setDifficulty(1);
     setIsTest(false);
-    setPayloadText(toJsonText(templateFor("decision")));
+
+    const t = templateFor("decision");
+    setPayloadObj(t);
+    setPayloadText(toJsonText(t));
+
     setMessage("🧹 Nová úloha (INSERT).");
   };
 
@@ -371,8 +981,15 @@ export default function Admin() {
     // - buď přidat sloupce do tabulky
     // - nebo to uložit do payloadu (zatím zvolíme payload)
     const finalType = isTest ? "test" : type;
+
+    // ✅ pro analysis ještě jednou “pojistka” normalizace (aby se neuložil starý legend string)
+    let normalizedPayload = payload;
+    if (finalType === "analysis") {
+      normalizedPayload = normalizeAnalysisPayload(payload);
+    }
+
     const finalPayload = {
-      ...payload,
+      ...normalizedPayload,
       // metadata do payloadu (dokud nejsou sloupce)
       difficulty: Number(difficulty) || 1,
       is_test: !!isTest,
@@ -450,12 +1067,8 @@ export default function Admin() {
         <div className="max-w-lg w-full bg-white rounded-2xl border p-6 text-center">
           <div className="text-2xl mb-2">🔒</div>
           <h1 className="text-xl font-bold text-slate-800">Nemáš přístup do adminu</h1>
-          <p className="text-slate-600 mt-2">
-            Tento účet není admin. Přihlas se admin účtem.
-          </p>
-          {gateError && (
-            <p className="text-xs text-rose-600 mt-3">Chyba: {gateError}</p>
-          )}
+          <p className="text-slate-600 mt-2">Tento účet není admin. Přihlas se admin účtem.</p>
+          {gateError && <p className="text-xs text-rose-600 mt-3">Chyba: {gateError}</p>}
         </div>
       </div>
     );
@@ -483,9 +1096,7 @@ export default function Admin() {
           </div>
 
           {message && (
-            <div className="mt-4 rounded-2xl border bg-slate-50 p-3 text-sm text-slate-700">
-              {message}
-            </div>
+            <div className="mt-4 rounded-2xl border bg-slate-50 p-3 text-sm text-slate-700">{message}</div>
           )}
 
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -493,11 +1104,7 @@ export default function Admin() {
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-semibold text-slate-700">Typ úlohy</label>
-                <select
-                  value={type}
-                  onChange={(e) => onChangeType(e.target.value)}
-                  className="mt-1 w-full rounded-xl border px-3 py-2"
-                >
+                <select value={type} onChange={(e) => onChangeType(e.target.value)} className="mt-1 w-full rounded-xl border px-3 py-2">
                   {EXERCISE_TYPES.map((t) => (
                     <option key={t.value} value={t.value}>
                       {t.label}
@@ -515,11 +1122,7 @@ export default function Admin() {
                   </button>
 
                   <label className="flex items-center gap-2 text-sm text-slate-700">
-                    <input
-                      type="checkbox"
-                      checked={isTest}
-                      onChange={(e) => setIsTest(e.target.checked)}
-                    />
+                    <input type="checkbox" checked={isTest} onChange={(e) => setIsTest(e.target.checked)} />
                     Finální test (vynutí type=test)
                   </label>
                 </div>
@@ -590,18 +1193,12 @@ export default function Admin() {
 
               <div>
                 <label className="text-sm font-semibold text-slate-700">Obtížnost (1–3)</label>
-                <select
-                  value={difficulty}
-                  onChange={(e) => setDifficulty(Number(e.target.value))}
-                  className="mt-1 w-full rounded-xl border px-3 py-2"
-                >
+                <select value={difficulty} onChange={(e) => setDifficulty(Number(e.target.value))} className="mt-1 w-full rounded-xl border px-3 py-2">
                   <option value={1}>1 – lehké</option>
                   <option value={2}>2 – střední</option>
                   <option value={3}>3 – těžké</option>
                 </select>
-                <p className="text-xs text-slate-500 mt-1">
-                  Zatím se ukládá do payloadu (difficulty, is_test). Pokud chceš, přidáme sloupce do DB.
-                </p>
+                <p className="text-xs text-slate-500 mt-1">Zatím se ukládá do payloadu (difficulty, is_test). Pokud chceš, přidáme sloupce do DB.</p>
               </div>
 
               <div className="flex items-center gap-3 pt-2">
@@ -629,15 +1226,14 @@ export default function Admin() {
             {/* pravý sloupec */}
             <div className="space-y-4">
               <div>
-                <label className="text-sm font-semibold text-slate-700">Payload (JSON)</label>
-                <textarea
-                  value={payloadText}
-                  onChange={(e) => setPayloadText(e.target.value)}
-                  className="mt-1 w-full rounded-2xl border px-3 py-2 font-mono text-sm min-h-[340px]"
+                <PayloadBuilder
+                  type={type}
+                  payloadObj={payloadObj}
+                  setPayloadObj={setPayloadObj}
+                  payloadText={payloadText}
+                  setPayloadText={setPayloadText}
                 />
-                <p className="text-xs text-slate-500 mt-2">
-                  Teď je to “jádro” úlohy. V dalším kroku viditelně uděláme klikací builder (např. přidat otázku tlačítkem).
-                </p>
+                <p className="text-xs text-slate-500 mt-2">Teď je to “jádro” úlohy. Formulář je klikací builder (přidat otázku/řádek tlačítkem).</p>
               </div>
 
               <div className="rounded-2xl border bg-white p-4">
@@ -692,9 +1288,7 @@ export default function Admin() {
                   )}
                 </div>
 
-                <p className="text-xs text-slate-500 mt-2">
-                  Tip: Klikni “Upravit”, uprav payload a dej “Uložit změny”.
-                </p>
+                <p className="text-xs text-slate-500 mt-2">Tip: Klikni “Upravit”, uprav payload a dej “Uložit změny”.</p>
               </div>
             </div>
           </div>

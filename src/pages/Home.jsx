@@ -233,12 +233,20 @@ export default function Home() {
                 <span className="text-sm font-medium text-slate-600">Učení hrou</span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
-                Uč se snadně
-              </h1>
+              <div className="relative mb-3 flex items-center justify-center">
+                <img
+                  src="/postava.png"
+                  alt="Maskot"
+                  className="absolute left-1/2 -translate-x-1/2 top-[-10px] h-[190px] md:h-[240px] lg:h-[260px] w-auto object-contain pointer-events-none select-none"
+                />
+
+                <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-600 via-orange-500 to-rose-500 bg-clip-text text-transparent">
+                  Uč se snadně
+                </h1>
+              </div>
 
               <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-                {user?.email ? <>Ahoj! Připraven se učit?</> : 'Procvičuj látku ze školy zábavnou formou'}
+                {user?.email ? <>Ahoj</> : 'Procvičuj látku ze školy zábavnou formou'}
               </p>
             </motion.div>
 
