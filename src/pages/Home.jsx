@@ -234,71 +234,74 @@ export default function Home() {
               </div>
 
               <div className="relative mb-3 flex items-center justify-center">
-                <img
-                  src="/postava.png"
-                  alt="Maskot"
-                  className="absolute left-1/2 -translate-x-1/2 top-[-10px] h-[190px] md:h-[240px] lg:h-[260px] w-auto object-contain pointer-events-none select-none"
-                />
-
                 <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-600 via-orange-500 to-rose-500 bg-clip-text text-transparent">
                   Uč se snadně
                 </h1>
               </div>
 
               <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-                {user?.email ? <>Ahoj</> : 'Ahoj'}
+                {user?.email ? <>Ahoj! Připraven se učit?</> : 'Procvičuj látku ze školy zábavnou formou'}
               </p>
             </motion.div>
 
-            {/* Streak */}
-            {!!user?.id && (
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 }}
-                className="mb-6"
-              >
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
-                        <Flame className="w-5 h-5 text-orange-600" />
-                      </div>
-                      <div className="text-left">
-                        <div className="text-sm text-slate-600">Daily streak</div>
-                        <div className="text-lg font-bold text-slate-800">
-                          {streakCount} dní
-                        </div>
-                      </div>
-                    </div>
+            {/* ✅ WRAPPER PRO MASKOTA V POZADÍ (za streak i za stats) */}
+            <div className="relative">
+              <img
+                src="/postava.png"
+                alt="Maskot"
+                className="absolute right-[78%]-translate-x-1/2 top-[-130px] md:top-[-160px] lg:top-[-175px] h-[220px] md:h-[270px] lg:h-[300px] w-auto object-contain pointer-events-none select-none z-[5]"
+              />
 
-                    <div className="text-right">
-                      <div className="flex items-center justify-end gap-2 text-slate-700">
-                        <Trophy className="w-4 h-4 text-yellow-500" />
-                        <span className="text-sm font-medium">Rekord: {longestStreak}</span>
-                      </div>
-                      {lastActiveDate && (
-                        <div className="text-xs text-slate-500">
-                          Poslední aktivita: {lastActiveDate}
+              {/* Streak */}
+              {!!user?.id && (
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 }}
+                  className="mb-6 relative z-10"
+                >
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+                          <Flame className="w-5 h-5 text-orange-600" />
                         </div>
-                      )}
+                        <div className="text-left">
+                          <div className="text-sm text-slate-600">Daily streak</div>
+                          <div className="text-lg font-bold text-slate-800">
+                            {streakCount} dní
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="text-right">
+                        <div className="flex items-center justify-end gap-2 text-slate-700">
+                          <Trophy className="w-4 h-4 text-yellow-500" />
+                          <span className="text-sm font-medium">Rekord: {longestStreak}</span>
+                        </div>
+                        {lastActiveDate && (
+                          <div className="text-xs text-slate-500">
+                            Poslední aktivita: {lastActiveDate}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            )}
+                </motion.div>
+              )}
 
-            {/* Stats */}
-            {shouldShowStats && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="mb-8"
-              >
-                <StatsCard progress={effectiveProgress} />
-              </motion.div>
-            )}
+              {/* Stats */}
+              {shouldShowStats && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="mb-8 relative z-10"
+                >
+                  <StatsCard progress={effectiveProgress} />
+                </motion.div>
+              )}
+            </div>
           </div>
         </div>
       </div>
