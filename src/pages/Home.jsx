@@ -246,7 +246,7 @@ export default function Home() {
               </div>
 
               <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-                {user?.email ? <>Ahoj</> : 'Procvičuj látku ze školy zábavnou formou'}
+                {user?.email ? <>Ahoj</> : 'Ahoj'}
               </p>
             </motion.div>
 
