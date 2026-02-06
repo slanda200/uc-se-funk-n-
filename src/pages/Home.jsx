@@ -245,63 +245,66 @@ export default function Home() {
             </motion.div>
 
             {/* ✅ WRAPPER PRO MASKOTA V POZADÍ (za streak i za stats) */}
-            <div className="relative">
+            <div className="relative isolate min-h-[220px] md:min-h-0">
               <img
                 src="/postava.png"
                 alt="Maskot"
-                className="absolute left-[82%] -translate-x-1/2 top-[110px] h-[160px] sm:left-[78%] sm:top-[-120px] sm:h-[220px] md:top-[-160px] md:h-[270px] lg:top-[-175px] lg:h-[300px] w-auto object-contain pointer-events-none select-none z-0"
-                
+                className="absolute left-[82%] -translate-x-1/2 bottom-[-8px] h-[160px] sm:left-[78%] sm:bottom-[-18px] sm:h-[220px] md:bottom-[-38px] md:h-[270px] lg:bottom-[-52px] lg:h-[300px] w-auto object-contain pointer-events-none select-none z-0"
               />
 
-              {/* Streak */}
-              {!!user?.id && (
-                <motion.div
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 }}
-                  className="mb-6 relative z-10"
-                >
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
-                          <Flame className="w-5 h-5 text-orange-600" />
-                        </div>
-                        <div className="text-left">
-                          <div className="text-sm text-slate-600">Daily streak</div>
-                          <div className="text-lg font-bold text-slate-800">
-                            {streakCount} dní
+              <div className="relative z-10">
+                {/* Streak */}
+                {!!user?.id && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 }}
+                    className="mb-6"
+                  >
+                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+                            <Flame className="w-5 h-5 text-orange-600" />
+                          </div>
+                          <div className="text-left">
+                            <div className="text-sm text-slate-600">Daily streak</div>
+                            <div className="text-lg font-bold text-slate-800">
+                              {streakCount} dní
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="text-right">
-                        <div className="flex items-center justify-end gap-2 text-slate-700">
-                          <Trophy className="w-4 h-4 text-yellow-500" />
-                          <span className="text-sm font-medium">Rekord: {longestStreak}</span>
-                        </div>
-                        {lastActiveDate && (
-                          <div className="text-xs text-slate-500">
-                            Poslední aktivita: {lastActiveDate}
+                        <div className="text-right">
+                          <div className="flex items-center justify-end gap-2 text-slate-700">
+                            <Trophy className="w-4 h-4 text-yellow-500" />
+                            <span className="text-sm font-medium">Rekord: {longestStreak}</span>
                           </div>
-                        )}
+                          {lastActiveDate && (
+                            <div className="text-xs text-slate-500">
+                              Poslední aktivita: {lastActiveDate}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              )}
+                  </motion.div>
+                )}
 
-              {/* Stats */}
-              {shouldShowStats && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="mb-8 relative z-10"
-                >
-                  <StatsCard progress={effectiveProgress} />
-                </motion.div>
-              )}
+                {/* Stats */}
+                {shouldShowStats && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="mb-8"
+                  >
+                    <StatsCard progress={effectiveProgress} />
+                  </motion.div>
+                )}
+
+                {!user?.id && !shouldShowStats && <div className="h-14 md:h-0" />}
+              </div>
             </div>
           </div>
         </div>
