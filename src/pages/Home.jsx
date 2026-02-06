@@ -249,7 +249,7 @@ export default function Home() {
               <img
                 src="/postava.png"
                 alt="Maskot"
-                className="absolute right-[78%]-translate-x-1/2 top-[-130px] md:top-[-160px] lg:top-[-175px] h-[220px] md:h-[270px] lg:h-[300px] w-auto object-contain pointer-events-none select-none z-[5]"
+                className="absolute left-[78%] -translate-x-1/2 top-[-130px] md:top-[-160px] lg:top-[-175px] h-[220px] md:h-[270px] lg:h-[300px] w-auto object-contain pointer-events-none select-none z-[5]"
               />
 
               {/* Streak */}
